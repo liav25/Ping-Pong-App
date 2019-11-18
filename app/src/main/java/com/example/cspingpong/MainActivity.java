@@ -27,28 +27,26 @@ public class MainActivity extends AppCompatActivity {
 
         game1header = "someNumber";
 
+        /* Connect between Objects and XML representation of them         */
         hourPicker = (NumberPicker) findViewById(R.id.hour_picker);
         textView = (TextView) findViewById(R.id.text1);
         textView2 = findViewById(R.id.lower);
         button = (Button) findViewById(R.id.check);
 
-        textView.setText(game1header);
-
-
-
+        /* set range for the hours picker*/
         hourPicker.setMinValue(0);
         hourPicker.setMaxValue(2);
 
+        /* init data for testing*/
         final ArrayList<ArrayList<String>> names = initNames();
 
+        /* time picker on value changed listener*/
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal){
                 int idx = hourPicker.getValue();
                 textView.setText(names.get(idx).get(0));
                 textView2.setText(names.get(idx).get(1));
-                System.out.println(Arrays.toString(names.get(idx).toArray()));
-
             }
         });
 
@@ -62,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * this function is just for testing
+     * create some data for our tryouts
+     * @return a list of lists of names
+     */
     private ArrayList<ArrayList<String>> initNames(){
         ArrayList<ArrayList<String>> names = new ArrayList<>();
         ArrayList<String> temp = new ArrayList<>();
