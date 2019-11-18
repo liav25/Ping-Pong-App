@@ -1,13 +1,15 @@
-package com.example.cspingpong;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 //import gson;
 
 public class Server {
 
     private ArrayList<Game> gamelist;
     private int INTERVAL = 100;
+    private int HOUR = 60;
+    private int SLOT_TIME = 15;
     //private Gson gson;
     private String json;
 
@@ -27,14 +29,25 @@ public class Server {
         return games_by_date;
     }
 
+    //TODO: rename function to get_game_slots
     public ArrayList<Game> get_games_by_date_and_time(int date, int hour){
-        ArrayList<Game> games_by_date = new ArrayList<Game>();
-        for (Game g : gamelist){
-            if(g.getDate() == date && hour <= g.getTime() && g.getTime() < hour + INTERVAL){
-                games_by_date.add(g);
+        ArrayList<Game> game_slots = new ArrayList<Game>();
+        List<Integer> range = IntStream.rangeClosed(0, (HOUR  / SLOT_TIME) - 1)
+                .boxed().collect(Collectors.toList());
+        for (int i : range){
+            boolean flag = false;
+            for (Game g : gamelist){
+                if(g.getDate() == date && hour + (SLOT_TIME * i) == g.getTime()){
+                    game_slots.add(g);
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag){
+                game_slots.add(new Game(date, hour + (SLOT_TIME * i)));
             }
         }
-        return games_by_date;
+        return game_slots;
     }
 
     /**

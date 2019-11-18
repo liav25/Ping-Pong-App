@@ -1,5 +1,3 @@
-package com.example.cspingpong;
-
 public class Game {
     private int date;
     private int time;
@@ -59,12 +57,12 @@ public class Game {
      * or the game is already full
      */
     public boolean addPlayer(String player){
-        if(this.player1.equals(player) || this.player2.equals((player))){
+        if (player == null || player.equals(this.player1) || player.equals(this.player2)){
             return false;
         }
-        if(this.player1.equals("")){
+        if(this.player1 == null){
             this.player1 = player;
-        } else if(this.player2.equals("")){
+        } else if(this.player2 == null){
             this.player2 = player;
         } else return false;
         return true;
