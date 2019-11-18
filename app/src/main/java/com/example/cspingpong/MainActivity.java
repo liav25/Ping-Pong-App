@@ -14,7 +14,6 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     private NumberPicker hourPicker;
-    private String game1header;
     TextView textView;
     TextView textView2;
     private Button button;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        game1header = "someNumber";
+
 
         /* Connect between Objects and XML representation of them         */
         hourPicker = (NumberPicker) findViewById(R.id.hour_picker);
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Toast.makeText(getApplicationContext(), game1header, Toast.LENGTH_SHORT).show();
+               Toast.makeText(getApplicationContext(), "Toast", Toast.LENGTH_SHORT).show();
 
             }
         });
