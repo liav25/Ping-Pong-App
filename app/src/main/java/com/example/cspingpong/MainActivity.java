@@ -9,12 +9,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
     private NumberPicker hourPicker;
     private String game1header;
     TextView textView;
+    TextView textView2;
     private Button button;
 
 
@@ -27,21 +29,25 @@ public class MainActivity extends AppCompatActivity {
 
         hourPicker = (NumberPicker) findViewById(R.id.hour_picker);
         textView = (TextView) findViewById(R.id.text1);
+        textView2 = findViewById(R.id.lower);
         button = (Button) findViewById(R.id.check);
 
         textView.setText(game1header);
 
 
-        hourPicker.setMinValue(0);
-        hourPicker.setMaxValue(5);
 
-        final ArrayList<String> names = initNames();
+        hourPicker.setMinValue(0);
+        hourPicker.setMaxValue(2);
+
+        final ArrayList<ArrayList<String>> names = initNames();
 
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal){
                 int idx = hourPicker.getValue();
-                textView.setText(names.get(idx));
+                textView.setText(names.get(idx).get(0));
+                textView2.setText(names.get(idx).get(1));
+                System.out.println(Arrays.toString(names.get(idx).toArray()));
 
             }
         });
@@ -56,14 +62,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private ArrayList<String> initNames(){
-        ArrayList<String> names = new ArrayList<String>();
-        names.add("Liav");
-        names.add("Avner");
-        names.add("Nir");
-        names.add("Eyal");
-        names.add("Yoni");
-        names.add("Ran");
+    private ArrayList<ArrayList<String>> initNames(){
+        ArrayList<ArrayList<String>> names = new ArrayList<>();
+        ArrayList<String> temp = new ArrayList<>();
+        temp.add("Liav");
+        temp.add("Avner");
+        names.add(new ArrayList<String>(temp));
+        temp.clear();
+        temp.add("Nir");
+        temp.add("Eyal");
+        names.add(new ArrayList<String>(temp));
+        temp.clear();
+        temp.add("Yoni");
+        temp.add("Ran");
+        names.add(temp);
 
         return names;
     }
