@@ -1,3 +1,5 @@
+package com.example.cspingpong;
+
 public class Game {
     private int date;
     private int time;
