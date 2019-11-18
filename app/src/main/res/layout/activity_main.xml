@@ -24,7 +24,7 @@
     android:padding="10dp"
     android:dividerPadding="10dp"
     app:expansion_openOnlyOne="true"
-    and
+
 
     >
 
@@ -117,14 +117,14 @@
         >
 
         <NumberPicker
+            android:id="@+id/number_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:clickable="true"
             android:focusable="true"
-            android:background="@color/com_maxproj_calendarpicker_transparent"
+            android:background="000000"
             android:backgroundTint="@color/colorAccent"
-            
             />
 
 
