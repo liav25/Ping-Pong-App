@@ -15,6 +15,12 @@
     android:layout_height="match_parent"
     android:layout_weight="3">
 
+    <Button
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="check"/>
+
 <com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -34,6 +40,7 @@
             app:expansion_headerIndicator="@id/headerIndicator"
             app:expansion_layout="@id/expansionLayout"
             android:background="#CCFFCC"
+            android:layout_marginBottom="10dp"
 
             >
     <ImageView
@@ -45,6 +52,7 @@
         android:layout_gravity="center|right"
         app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
     <TextView
+        android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hi ! this is ..."
@@ -113,20 +121,16 @@
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="2"
-        >
+        android:layout_weight="2">
 
         <NumberPicker
-            android:id="@+id/number_picker"
+            android:id="@+id/hour_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="000000"
             android:backgroundTint="@color/colorAccent"
-            />
-
+            android:clickable="true"
+            android:focusable="true" />
 
 
     </RelativeLayout>
