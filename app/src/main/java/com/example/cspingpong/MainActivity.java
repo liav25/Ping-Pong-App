@@ -1,12 +1,16 @@
 package com.example.cspingpong;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.github.florent37.expansionpanel.ExpansionHeader;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +21,10 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     TextView textView2;
     private Button button;
-
+    private ExpansionHeader header0;
+    private ExpansionHeader header1;
+    ArrayList<ArrayList<String>> names;
+    private boolean[] availablity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +38,16 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.text1);
         textView2 = findViewById(R.id.lower);
         button = (Button) findViewById(R.id.check);
+        /*expanded headers*/
+        header0 = findViewById(R.id.header_0);
+        header1 = findViewById(R.id.header_1);
 
         /* set range for the hours picker*/
         hourPicker.setMinValue(0);
         hourPicker.setMaxValue(2);
 
         /* init data for testing*/
-        final ArrayList<ArrayList<String>> names = initNames();
+        names = initNames();
 
         /* time picker on value changed listener*/
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -46,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 int idx = hourPicker.getValue();
                 textView.setText(names.get(idx).get(0));
                 textView2.setText(names.get(idx).get(1));
+                availablity = checkAvailablity(idx);
+                setHeaderColors();
             }
         });
 
@@ -82,6 +94,28 @@ public class MainActivity extends AppCompatActivity {
         return names;
     }
 
+    private boolean[] checkAvailablity(int idx){
+        boolean[] availabilty = new boolean[2];
+        for (int i =0; i<2;i++){
+            availabilty[i] = names.get(idx).get(i).equals("Liav");
+        }
+        return availabilty;
+
+    }
+
+    private void setHeaderColors(){
+        for(int i=0; i<2; i++){
+            if (availablity[0]){
+                header0.setBackgroundColor(getResources().getColor(R.color.gray));
+            }
+            else {header0.setBackgroundColor(getResources().getColor(R.color.apple));}
+            if(availablity[1]){
+                header1.setBackgroundColor(getResources().getColor(R.color.gray));
+            }
+            else {header1.setBackgroundColor(getResources().getColor(R.color.apple));}
+
+        }
+    }
 //hi
 
 }

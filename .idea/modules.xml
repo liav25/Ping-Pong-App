@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CS Ping Pong.iml" filepath="$PROJECT_DIR$/CS Ping Pong.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/software_UX-pr1-CS Ping Pong.iml" filepath="$PROJECT_DIR$/software_UX-pr1-CS Ping Pong.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/software_UX-pr1-app.iml" filepath="$PROJECT_DIR$/app/software_UX-pr1-app.iml" />
     </modules>
   </component>
 </project>
