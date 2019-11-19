@@ -1,0 +1,25 @@
+API of Game and Server class
+
+Server:
+    ArrayList<Game> get_hour_agenda(int date, int hour):
+        input: date in the format of DDMMYEAR and hour in format of HHMM.
+        output: ArrayList<Game> - a list of 4 games in the specified time frame
+        example: get_hour_agenda(20112019, 1315)
+
+    ArrayList<Game> get_day_agenda(int dat):
+        input: date in the format of DDMMYEAR
+        output: ArrayList<Game> - a list of 96 games in the specified game (24*4)
+        example: get_day_agenda(20112019)
+
+Game:
+    int getDate(): return the date of the game in the format of DDMMYEAR
+    int getTime(): returns the time of the game in format of HHMM
+    String getPlayer1(): returns the name of player1
+    String getPlayer2(): returns the name of player2
+    boolean isFull(): returns whether the game is full
+    boolean isEmpty(): returns whether the game is empty
+    int empty_slots(): returns the number of empty slots in the game
+
+    boolean addPlayer(String player): tries to add a player to the game
+        input: String of a playername
+        output: true if the player was added, false if not (player already in the game or the game is full)
