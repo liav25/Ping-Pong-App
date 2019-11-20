@@ -1,48 +1,52 @@
 public class Game {
-    private Server serv;
+    private Server server;
     private int date;
     private int time;
     private String player1;
     private String player2;
 
-    public Game(Server server, int date, int time){
-        this.serv = server;
+    Game(Server server, int date, int time){
+        this.server = server;
         this.date = date;
         this.time = time;
     }
 
-    public Game(Server server, int date, int time, String player1){
-        this.serv = server;
+    Game(Server server, int date, int time, String player1){
+        this.server = server;
         this.date = date;
         this.time = time;
         this.player1 = player1;
     }
 
-    public Game(Server server, int date, int time, String player1, String player2){
-        this.serv = server;
+    Game(Server server, int date, int time, String player1, String player2){
+        this.server = server;
         this.date = date;
         this.time = time;
         this.player1 = player1;
         this.player2 = player2;
     }
 
-    public int getDate(){
+    int getDate(){
         return this.date;
     }
 
-    public int getTime(){
+    int getTime(){
         return this.time;
     }
 
-    public String getPlayer1(){ return this.player1; }
+    String getPlayer1(){ return this.player1; }
 
-    public String getPlayer2(){ return this.player2; }
+    String getPlayer2(){ return this.player2; }
 
-    public boolean isFull(){ return this.player1 != null && this.player2 != null; }
+    boolean isFull(){ return this.player1 != null && this.player2 != null; }
 
-    public boolean isEmpty(){ return this.player1 == null && this.player2 == null; }
+    boolean isEmpty(){ return this.player1 == null && this.player2 == null; }
 
-    public int empty_slots(){
+    /**
+     * Get the number of empty position in the game
+     * @return an integer representing available slots in the game
+     */
+    int empty_slots(){
         if(this.isFull()){
             return 0;
         } else if(this.isEmpty()){
@@ -50,6 +54,10 @@ public class Game {
         } return 1;
     }
 
+    /**
+     * String representation of the object
+     * @return a String representing the game
+     */
     @Override
     public String toString() {
         return "Game Object. Date: "+this.getDate()+" Time: "+this.getTime()+
@@ -62,14 +70,14 @@ public class Game {
      * @return true if the player was added successfully, false if the player is already in the game
      * or the game is already full
      */
-    public boolean addPlayer(String player){
+    boolean addPlayer(String player){
         if (player == null || player.equals(this.player1) || player.equals(this.player2)) {
             return false;
         }
         if(this.player1 == null){
             this.player1 = player;
             if(this.player2 == null){
-                this.serv.addGame(this);
+                this.server.addGame(this);
             }
         } else if(this.player2 == null){
             this.player2 = player;
