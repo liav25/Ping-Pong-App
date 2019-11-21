@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#3F51B5"
     android:visibility="visible"
-    tools:context=".MainActivity">
+    tools:context=".MasterActivity">
 
 
     <ImageView

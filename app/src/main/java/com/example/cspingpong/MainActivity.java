@@ -1,29 +1,26 @@
 package com.example.cspingpong;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.github.florent37.expansionpanel.ExpansionHeader;
-
 import java.util.ArrayList;
-import java.util.Arrays;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
     private NumberPicker hourPicker;
-    TextView textView;
-    TextView textView2;
+    private TextView textView;
+    private TextView textView2;
     private Button button;
     private ExpansionHeader header0;
     private ExpansionHeader header1;
-    ArrayList<ArrayList<String>> names;
+    private ArrayList<ArrayList<String>> names;
     private boolean[] availablity;
 
     @Override
