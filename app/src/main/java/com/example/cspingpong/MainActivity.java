@@ -1,6 +1,7 @@
 package com.example.cspingpong;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -116,11 +117,12 @@ public class MainActivity extends AppCompatActivity {
             switch (games.get(i).empty_slots())
             {
                 case 0:
-                    slotHeaders[i].setBackgroundColor(Color.LTGRAY);
+                    slotHeaders[i].setBackgroundTintList(
+                            ContextCompat.getColorStateList(getApplicationContext(), R.color.gray));
                     slotHeaders[i].setClickable(false);
                 case 1:
-                    slotHeaders[i].setBackgroundColor(Color.CYAN);
-                    slotHeaders[i].setClickable(false);
+                    slotHeaders[i].setBackgroundTintList(
+                            ContextCompat.getColorStateList(getApplicationContext(), R.color.apple));
             }
         }
     }
@@ -179,27 +181,31 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void chooseGame(View slotButton) {
-        int time = 0;
+        int time = hourPicker.getValue();
+        String sTime = "";
 
-//        switch (slotButton.getId())
-//        {
-//            case R.id.join_button_1:
-                time = hourPicker.getValue();
-//                break;
-//            case R.id.join_button_2:
-//                time = 1215;
-//                break;
-//            case R.id.join_button_3:
-//                time = 1230;
-//                break;
-//            case R.id.join_button_4:
-//                time = 1245;
-//                break;
-//        }
+        switch (slotButton.getId())
+        {
+            case R.id.join_button_1:
+                sTime = hourPicker.getValue() + ":00";
+                break;
+            case R.id.join_button_2:
+                time += 15;
+                sTime = hourPicker.getValue() + ":15";
+                break;
+            case R.id.join_button_3:
+                time += 30;
+                sTime = hourPicker.getValue() + ":30";
+                break;
+            case R.id.join_button_4:
+                time += 45;
+                sTime = hourPicker.getValue() + ":45";
+                break;
+        }
         server.addPlayer(22122019, time, "Yoni");
         updateHeaderColors();
 
-        String message = "Hi Yoni, You chose to play in " + 22122019 + " at " + time;
+        String message = "Hi Yoni, You chose to play in " + 22122019 + " at " + sTime;
         Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
         gameInfo.show();
     }

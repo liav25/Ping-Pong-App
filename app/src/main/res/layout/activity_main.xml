@@ -161,10 +161,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/expansion_text2"
+                    <Button
+                        android:id="@+id/join_button_2"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="match_parent"
+                        android:onClick="chooseGame"
+                        android:text="Join!"
+                        android:textSize="12sp" />
+
                 </com.github.florent37.expansionpanel.ExpansionLayout>
 
                 <com.github.florent37.expansionpanel.ExpansionHeader
@@ -202,10 +206,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/expansion_text3"
+                    <Button
+                        android:id="@+id/join_button_3"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="match_parent"
+                        android:onClick="chooseGame"
+                        android:text="Join!"
+                        android:textSize="12sp" />
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
 
@@ -245,10 +252,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/expansion_text4"
+                    <Button
+                        android:id="@+id/join_button_4"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="match_parent"
+                        android:onClick="chooseGame"
+                        android:text="Join!"
+                        android:textSize="12sp" />
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
 
