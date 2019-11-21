@@ -3,7 +3,6 @@ package com.example.cspingpong;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.NumberPicker;
@@ -14,7 +13,6 @@ import com.github.florent37.expansionpanel.ExpansionHeader;
 import com.github.florent37.expansionpanel.ExpansionLayout;
 
 import java.util.ArrayList;
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -110,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void updateHeaderColors() {
-        ArrayList<Game> games = server.get_hour_agenda(22122019, 1200);
+        ArrayList<Game> games = server.get_hour_agenda(22122019, hourPicker.getValue());
 
         for (int i = 0; i < 4; i++)
         {
