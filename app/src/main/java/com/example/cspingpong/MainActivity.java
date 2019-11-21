@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.florent37.expansionpanel.ExpansionHeader;
 import com.github.florent37.expansionpanel.ExpansionLayout;
@@ -20,13 +18,14 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int GAMES_PER_HOUR = 4;
     private static final int MIN_HOUR_PICK = 0;
-    private static final int MAX_HOUR_PICK = 24;
+    private static final int MAX_HOUR_PICK = 23;
 
     private Server server;
-    private ExpansionHeader[] slotHeaders;
-    private ExpansionLayout[] slotExpansions;
-    private TextView[] headerTexts;
-    private TextView[] expansionTexts;
+    private ExpansionHeader[] slotHeaders = new ExpansionHeader[GAMES_PER_HOUR];
+    private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
+    private TextView[] headerTexts = new TextView[GAMES_PER_HOUR];
+    private TextView[] expansionTexts = new TextView[GAMES_PER_HOUR];
+    private String[] slotIntervalText = new String[GAMES_PER_HOUR];
 
     private NumberPicker hourPicker;
 
@@ -40,11 +39,22 @@ public class MainActivity extends AppCompatActivity {
 
         connectViewsToXML();
 
-        /* set range for the hours picker*/
-        hourPicker.setMinValue(MIN_HOUR_PICK);
-        hourPicker.setMaxValue(MAX_HOUR_PICK);
+        setHourPickerValues();
 
-        /* time picker on value changed listener*/
+        // todo more elegant
+        setSlotIntervalStrings();
+
+        setHourPickerListener();
+
+        updateHeaderColors();
+    }
+
+
+    /**
+     * time picker on value changed listener
+     */
+    private void setHourPickerListener() {
+
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal){
@@ -52,21 +62,27 @@ public class MainActivity extends AppCompatActivity {
 
                 for (int i = 0; i < GAMES_PER_HOUR; i++)
                 {
-                    String headerText = pickedHour + ":" + (i*15);
-
-                    headerTexts[i].setText(headerText);
+                    headerTexts[i].setText(pickedHour + slotIntervalText[i]);
                 }
 
                 updateHeaderColors();
             }
         });
-
-        updateHeaderColors();
     }
 
+
+    private void setSlotIntervalStrings() {
+        slotIntervalText[0] = ":00";
+        slotIntervalText[1] = ":15";
+        slotIntervalText[2] = ":30";
+        slotIntervalText[3] = ":45";
+    }
+
+    /**
+     * Connect between Objects and XML representation of them
+     */
     private void connectViewsToXML() {
-        /* Connect between Objects and XML representation of them         */
-        hourPicker = (NumberPicker) findViewById(R.id.hour_picker);
+        hourPicker = findViewById(R.id.hour_picker);
 
         slotHeaders[0] = findViewById(R.id.slot_header_1);
         slotHeaders[1] = findViewById(R.id.slot_header_2);
@@ -101,6 +117,24 @@ public class MainActivity extends AppCompatActivity {
                 slotHeaders[i].setClickable(false);
             }
         }
+    }
+
+
+    private void setHourPickerValues() {
+        // TODO generate automatically?
+        final String[] arrayString= new String[] {"00:00","01:00","02:00","03:00","04:00"
+                ,"05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00",
+                "14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"};
+        hourPicker.setMinValue(MIN_HOUR_PICK);
+        hourPicker.setMaxValue(MAX_HOUR_PICK);
+
+        hourPicker.setFormatter(new NumberPicker.Formatter() {
+            @Override
+            public String format(int value) {
+                // TODO Auto-generated method stub
+                return arrayString[value];
+            }
+        });
     }
 
 
