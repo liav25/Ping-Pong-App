@@ -1,305 +1,303 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3F51B5"
+    android:orientation="vertical"
     android:visibility="visible"
     tools:context=".MainActivity">
 
-
-    <ImageView
-        android:id="@+id/pingPongPlayerImg"
-        android:layout_width="147dp"
-        android:layout_height="146dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pingpongman" />
-
-
-    <Button
-        android:id="@+id/savedTurnBtn"
-        android:layout_width="52dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="332dp"
-        android:layout_marginRight="332dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/savedturnimg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/buttomBackground"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/pingPongPlayerImg"
-        android:layout_marginTop="0dp"
-        android:background="@drawable/backgroundbot" />
+        android:layout_weight="3">
 
-    <com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout
-        android:id="@+id/slotButtonsLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pickTurnTxt"
-        android:layout_marginStart="30dp"
-        android:dividerPadding="10dp"
-        android:orientation="vertical"
-        android:padding="10dp"
-        app:expansion_openOnlyOne="true">
+        <TextView
+            android:id="@+id/welcomePlayerTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/savedTurnBtn"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Welcome Player!"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            app:fontFamily="cursive" />
 
-        <com.github.florent37.expansionpanel.ExpansionHeader
-            android:id="@+id/slot_header_1"
+        <ImageView
+            android:id="@+id/pingPongPlayerImg"
+            android:layout_width="147dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/pingpongman" />
+
+
+        <Button
+            android:id="@+id/savedTurnBtn"
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/savedturnimg" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/backgroundbot"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rectangle"
-            android:backgroundTint="@android:color/white"
-            app:expansion_headerIndicator="@id/headerIndicator1"
-            app:expansion_layout="@id/expansionLayout1" >
+            android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/headerIndicator1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="10dp"
-                android:layout_gravity="center|right"
-                android:adjustViewBounds="true"
-                android:background="#FFFFFF000"
-                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
-
-            <TextView
-                android:id="@+id/header_text1"
+            <com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout
+                android:id="@+id/slotButtonsLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Hi ! this is ..."
+                android:layout_below="@+id/pickTurnTxt"
+                android:layout_marginStart="30dp"
+                android:dividerPadding="10dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                app:expansion_openOnlyOne="true">
 
-                />
-        </com.github.florent37.expansionpanel.ExpansionHeader>
+                <com.github.florent37.expansionpanel.ExpansionHeader
+                    android:id="@+id/slot_header_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rectangle"
+                    android:backgroundTint="@android:color/white"
+                    app:expansion_headerIndicator="@id/headerIndicator1"
+                    app:expansion_layout="@id/expansionLayout1">
+
+                    <ImageView
+                        android:id="@+id/headerIndicator1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center|right"
+                        android:layout_marginEnd="10dp"
+                        android:adjustViewBounds="true"
+                        android:background="#FFFFFF000"
+                        app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+                    <TextView
+                        android:id="@+id/header_text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Hi ! this is ..."
+
+                        />
+                </com.github.florent37.expansionpanel.ExpansionHeader>
 
 
-        <com.github.florent37.expansionpanel.ExpansionLayout
-            android:id="@+id/expansionLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <com.github.florent37.expansionpanel.ExpansionLayout
+                    android:id="@+id/expansionLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/expansion_text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I am OPEN !!!" />
+                </com.github.florent37.expansionpanel.ExpansionLayout>
+
+
+                <com.github.florent37.expansionpanel.ExpansionHeader
+                    android:id="@+id/slot_header_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rectangle"
+                    android:backgroundTint="@android:color/white"
+                    app:expansion_headerIndicator="@id/headerIndicator1"
+                    app:expansion_layout="@id/expansionLayout1">
+
+                    <ImageView
+                        android:id="@+id/headerIndicator2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center|right"
+                        android:layout_marginEnd="10dp"
+                        android:adjustViewBounds="true"
+                        android:background="#FFFFFF000"
+                        app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+                    <TextView
+                        android:id="@+id/header_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Hi ! this is ..."
+
+                        />
+                </com.github.florent37.expansionpanel.ExpansionHeader>
+
+
+                <com.github.florent37.expansionpanel.ExpansionLayout
+                    android:id="@+id/expansionLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/expansion_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I am OPEN !!!" />
+                </com.github.florent37.expansionpanel.ExpansionLayout>
+
+                <com.github.florent37.expansionpanel.ExpansionHeader
+                    android:id="@+id/slot_header_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rectangle"
+                    android:backgroundTint="@android:color/white"
+                    app:expansion_headerIndicator="@id/headerIndicator1"
+                    app:expansion_layout="@id/expansionLayout1">
+
+                    <ImageView
+                        android:id="@+id/headerIndicator3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center|right"
+                        android:layout_marginEnd="10dp"
+                        android:adjustViewBounds="true"
+                        android:background="#FFFFFF000"
+                        app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+                    <TextView
+                        android:id="@+id/header_text3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Hi ! this is ..."
+
+                        />
+                </com.github.florent37.expansionpanel.ExpansionHeader>
+
+
+                <com.github.florent37.expansionpanel.ExpansionLayout
+                    android:id="@+id/expansionLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/expansion_text3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I am OPEN !!!" />
+                </com.github.florent37.expansionpanel.ExpansionLayout>
+
+
+                <com.github.florent37.expansionpanel.ExpansionHeader
+                    android:id="@+id/slot_header_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rectangle"
+                    android:backgroundTint="@android:color/white"
+                    app:expansion_headerIndicator="@id/headerIndicator1"
+                    app:expansion_layout="@id/expansionLayout1">
+
+                    <ImageView
+                        android:id="@+id/headerIndicator4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center|right"
+                        android:layout_marginEnd="10dp"
+                        android:adjustViewBounds="true"
+                        android:background="#FFFFFF000"
+                        app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+                    <TextView
+                        android:id="@+id/header_text4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Hi ! this is ..."
+
+                        />
+                </com.github.florent37.expansionpanel.ExpansionHeader>
+
+
+                <com.github.florent37.expansionpanel.ExpansionLayout
+                    android:id="@+id/expansionLayout4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/expansion_text4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I am OPEN !!!" />
+                </com.github.florent37.expansionpanel.ExpansionLayout>
+
+            </com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout>
+
+            <Button
+                android:id="@+id/daySlotBtn"
+                android:layout_width="252dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/daysbtnimg"
+                android:text="Today" />
+
 
             <TextView
-                android:id="@+id/expansion_text1"
+                android:id="@+id/pickTurnTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="I am OPEN !!!" />
-        </com.github.florent37.expansionpanel.ExpansionLayout>
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="47dp"
+                android:layout_marginLeft="47dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="120dp"
+                android:layout_marginRight="120dp"
+
+                android:text="pick up your turn!"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:fontFamily="sans-serif-condensed" />
 
 
-        <com.github.florent37.expansionpanel.ExpansionHeader
-            android:id="@+id/slot_header_2"
-            android:layout_width="match_parent"
+        </RelativeLayout>
+
+
+        <NumberPicker
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:id="@+id/hour_picker"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rectangle"
-            android:backgroundTint="@android:color/white"
-            app:expansion_headerIndicator="@id/headerIndicator1"
-            app:expansion_layout="@id/expansionLayout1" >
+            android:backgroundTint="@color/colorAccent"
+            android:clickable="true"
+            android:focusable="true" />
 
-            <ImageView
-                android:id="@+id/headerIndicator2"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="10dp"
-                android:layout_gravity="center|right"
-                android:adjustViewBounds="true"
-                android:background="#FFFFFF000"
-                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
-
-            <TextView
-                android:id="@+id/header_text2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Hi ! this is ..."
-
-                />
-        </com.github.florent37.expansionpanel.ExpansionHeader>
-
-
-        <com.github.florent37.expansionpanel.ExpansionLayout
-            android:id="@+id/expansionLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/expansion_text2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I am OPEN !!!" />
-        </com.github.florent37.expansionpanel.ExpansionLayout>
-
-        <com.github.florent37.expansionpanel.ExpansionHeader
-            android:id="@+id/slot_header_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rectangle"
-            android:backgroundTint="@android:color/white"
-            app:expansion_headerIndicator="@id/headerIndicator1"
-            app:expansion_layout="@id/expansionLayout1" >
-
-            <ImageView
-                android:id="@+id/headerIndicator3"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="10dp"
-                android:layout_gravity="center|right"
-                android:adjustViewBounds="true"
-                android:background="#FFFFFF000"
-                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
-
-            <TextView
-                android:id="@+id/header_text3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Hi ! this is ..."
-
-                />
-        </com.github.florent37.expansionpanel.ExpansionHeader>
-
-
-        <com.github.florent37.expansionpanel.ExpansionLayout
-            android:id="@+id/expansionLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/expansion_text3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I am OPEN !!!" />
-        </com.github.florent37.expansionpanel.ExpansionLayout>
-
-
-        <com.github.florent37.expansionpanel.ExpansionHeader
-            android:id="@+id/slot_header_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rectangle"
-            android:backgroundTint="@android:color/white"
-            app:expansion_headerIndicator="@id/headerIndicator1"
-            app:expansion_layout="@id/expansionLayout1" >
-
-            <ImageView
-                android:id="@+id/headerIndicator4"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="10dp"
-                android:layout_gravity="center|right"
-                android:adjustViewBounds="true"
-                android:background="#FFFFFF000"
-                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
-
-            <TextView
-                android:id="@+id/header_text4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Hi ! this is ..."
-
-                />
-        </com.github.florent37.expansionpanel.ExpansionHeader>
-
-
-        <com.github.florent37.expansionpanel.ExpansionLayout
-            android:id="@+id/expansionLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/expansion_text4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I am OPEN !!!" />
-        </com.github.florent37.expansionpanel.ExpansionLayout>
-
-    </com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout>
-
-    <Button
-        android:id="@+id/daySlotBtn"
-        android:layout_width="252dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"
-        android:background="@drawable/daysbtnimg"
-        android:text="Today" />
-
-    <NumberPicker
-        android:id="@+id/hour_picker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pingPongPlayerImg"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="106dp"
-        android:layout_marginBottom="160dp"
-        android:layout_toEndOf="@+id/slotButtonsLayout"
-        android:backgroundTint="@color/colorAccent"
-        android:clickable="true"
-        android:focusable="true" />
-
-    <TextView
-        android:id="@+id/welcomePlayerTxt"
-        android:layout_width="250dp"
-        android:layout_height="84dp"
-        android:layout_above="@+id/buttomBackground"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="19dp"
-        android:layout_toStartOf="@+id/pingPongPlayerImg"
-        android:layout_toLeftOf="@+id/pingPongPlayerImg"
-        android:text="  Welcome \n     Player!"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        app:fontFamily="cursive" />
-
-    <TextView
-        android:id="@+id/pickTurnTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/buttomBackground"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="47dp"
-        android:layout_marginLeft="47dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginRight="120dp"
-
-        android:text="pick up your turn!"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:fontFamily="sans-serif-condensed" />
-
-
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
