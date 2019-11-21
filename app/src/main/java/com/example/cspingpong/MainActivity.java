@@ -2,15 +2,23 @@ package com.example.cspingpong;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.florent37.expansionpanel.ExpansionHeader;
 import com.github.florent37.expansionpanel.ExpansionLayout;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -30,11 +38,16 @@ public class MainActivity extends AppCompatActivity {
 
     private NumberPicker hourPicker;
 
+    private  NameDialog nd;
+    private String myName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         server = new Server();
 
@@ -48,7 +61,14 @@ public class MainActivity extends AppCompatActivity {
         setHourPickerListener();
 
         updateHeaderColors();
+
+        FragmentManager fm = getSupportFragmentManager();
+        nd= NameDialog.newInstance("Some Title");
+        nd.show(fm, "fragment_edit_name");
     }
+
+
+
 
 
     /**
@@ -212,5 +232,19 @@ public class MainActivity extends AppCompatActivity {
         String message = "Hi Yoni, You chose to play in " + 22122019 + " at " + sTime;
         Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
         gameInfo.show();
+    }
+
+    public void confirmName(View view) {
+        // todo - do something if name is empty
+        EditText tx = nd.mEditText;
+        myName = tx.getText().toString();
+
+        nd.dismiss();
+
+        Toast toast=Toast.makeText(getApplicationContext(),"Hello "+ myName,Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER,0,0);
+
+        toast.show();
+
     }
 }
