@@ -118,9 +118,15 @@ public class MainActivity extends AppCompatActivity {
                     slotHeaders[i].setBackgroundTintList(
                             ContextCompat.getColorStateList(getApplicationContext(), R.color.gray));
                     slotHeaders[i].setClickable(false);
+                    break;
                 case 1:
                     slotHeaders[i].setBackgroundTintList(
                             ContextCompat.getColorStateList(getApplicationContext(), R.color.apple));
+                    break;
+                case 2:
+                    slotHeaders[i].setBackgroundTintList(
+                            ContextCompat.getColorStateList(getApplicationContext(), R.color.white));
+                    break;
             }
         }
     }
