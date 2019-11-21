@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ExpansionHeader[] slotHeaders = new ExpansionHeader[GAMES_PER_HOUR];
     private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
     private TextView[] headerTexts = new TextView[GAMES_PER_HOUR];
-    private TextView[] expansionTexts = new TextView[GAMES_PER_HOUR];
+//    private TextView[] expansionTexts = new TextView[GAMES_PER_HOUR];
     private String[] slotIntervalText = new String[GAMES_PER_HOUR];
 
     private NumberPicker hourPicker;
@@ -99,10 +99,10 @@ public class MainActivity extends AppCompatActivity {
         headerTexts[2] = findViewById(R.id.header_text3);
         headerTexts[3] = findViewById(R.id.header_text4);
 
-        expansionTexts[0] = findViewById(R.id.expansion_text1);
-        expansionTexts[1] = findViewById(R.id.expansion_text2);
-        expansionTexts[2] = findViewById(R.id.expansion_text3);
-        expansionTexts[3] = findViewById(R.id.expansion_text4);
+//        expansionTexts[0] = findViewById(R.id.expansion_text1);
+//        expansionTexts[1] = findViewById(R.id.expansion_text2);
+//        expansionTexts[2] = findViewById(R.id.expansion_text3);
+//        expansionTexts[3] = findViewById(R.id.expansion_text4);
     }
 
 

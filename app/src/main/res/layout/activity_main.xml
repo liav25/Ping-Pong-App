@@ -65,7 +65,7 @@
 
         <RelativeLayout
             android:id="@+id/slot_expansions_layout"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true" >
 
@@ -285,15 +285,9 @@
                 android:id="@+id/pickTurnTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="47dp"
-                android:layout_marginLeft="47dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginEnd="182dp"
-                android:layout_marginRight="120dp"
-                android:text="pick up your turn!"
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:text="Pick Up Your Turn!"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 app:fontFamily="sans-serif-condensed"
@@ -302,13 +296,16 @@
         </RelativeLayout>
 
         <NumberPicker
-            android:layout_toRightOf="@+id/slot_expansions_layout"
+            android:layout_toEndOf="@+id/slot_expansions_layout"
             android:id="@+id/hour_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="25dp"
             android:backgroundTint="@color/colorAccent"
             android:clickable="true"
             android:focusable="true" />
