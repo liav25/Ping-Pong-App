@@ -24,8 +24,6 @@
     android:padding="10dp"
     android:dividerPadding="10dp"
     app:expansion_openOnlyOne="true"
-
-
     >
 
         <com.github.florent37.expansionpanel.ExpansionHeader

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3F51B5"
+    android:visibility="visible"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/pingPongPlayerImg"
+        android:layout_width="147dp"
+        android:layout_height="146dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pingpongman" />
+
+
+    <Button
+        android:id="@+id/savedTurnBtn"
+        android:layout_width="52dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="332dp"
+        android:layout_marginRight="332dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/savedturnimg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/buttomBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/pingPongPlayerImg"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/backgroundbot" />
+
+    <LinearLayout
+        android:id="@+id/timeSlotBtns"
+        android:layout_width="wrap_content"
+        android:layout_height="274dp"
+        android:layout_below="@id/pingPongPlayerImg"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/timeSlot1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle"
+            android:text="11:00" />
+
+        <Button
+            android:id="@+id/timeSlot2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle"
+            android:text="11:15" />
+
+        <Button
+            android:id="@+id/timeSlot3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle"
+            android:text="11:30" />
+
+        <Button
+            android:id="@+id/timeSlot4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle"
+            android:text="11:45" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/daySlotBtn"
+        android:layout_width="252dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/daysbtnimg"
+        android:text="Sunday" />
+
+    <ImageView
+        android:id="@+id/timeSlotImg"
+        android:layout_width="102dp"
+        android:layout_height="307dp"
+        android:layout_below="@+id/pingPongPlayerImg"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginBottom="141dp"
+        app:srcCompat="@drawable/timeslotimg" />
+
+    <TextView
+        android:id="@+id/welcomePlayerTxt"
+        android:layout_width="250dp"
+        android:layout_height="84dp"
+        android:layout_above="@+id/buttomBackground"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="19dp"
+        android:layout_toStartOf="@+id/pingPongPlayerImg"
+        android:layout_toLeftOf="@+id/pingPongPlayerImg"
+        android:text="  Welcome \n     Player!"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        app:fontFamily="cursive" />
+
+    <TextView
+        android:id="@+id/pickTurnTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/buttomBackground"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginRight="120dp"
+        android:layout_marginBottom="227dp"
+        android:text="pick up your turn!"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:fontFamily="sans-serif-condensed" />
+
+    <ImageButton
+        android:id="@+id/dayRightBtn"
+        android:layout_width="104dp"
+        android:layout_height="84dp"
+        android:layout_below="@+id/timeSlotBtns"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="46dp"
+        android:layout_marginBottom="17dp"
+        android:layout_toEndOf="@+id/daySlotBtn"
+        android:layout_toRightOf="@+id/daySlotBtn"
+        app:srcCompat="@drawable/arrowright" />
+
+
+</RelativeLayout>
