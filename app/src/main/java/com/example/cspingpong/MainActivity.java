@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.florent37.expansionpanel.ExpansionHeader;
 import com.github.florent37.expansionpanel.ExpansionLayout;
@@ -111,10 +113,14 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < 4; i++)
         {
-            if (games.get(i).isFull())
+            switch (games.get(i).empty_slots())
             {
-                slotHeaders[i].setBackgroundColor(Color.GRAY);
-                slotHeaders[i].setClickable(false);
+                case 0:
+                    slotHeaders[i].setBackgroundColor(Color.LTGRAY);
+                    slotHeaders[i].setClickable(false);
+                case 1:
+                    slotHeaders[i].setBackgroundColor(Color.CYAN);
+                    slotHeaders[i].setClickable(false);
             }
         }
     }
@@ -172,29 +178,29 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
-//    public void chooseGame(View slotButton) {
-//        int time = 0;
-//
+    public void chooseGame(View slotButton) {
+        int time = 0;
+
 //        switch (slotButton.getId())
 //        {
-//            case R.id.slot_1:
-//                time = 1200;
+//            case R.id.join_button_1:
+                time = hourPicker.getValue();
 //                break;
-//            case R.id.slot_2:
+//            case R.id.join_button_2:
 //                time = 1215;
 //                break;
-//            case R.id.slot_3:
+//            case R.id.join_button_3:
 //                time = 1230;
 //                break;
-//            case R.id.slot_4:
+//            case R.id.join_button_4:
 //                time = 1245;
 //                break;
 //        }
-//        server.join(22122019, time, "Yoni");
-//        updateButtonInfo();
-//
-//        String message = "Hi Yoni, You chose to play in " + 22122019 + " at " + time;
-//        Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
-//        gameInfo.show();
-//    }
+        server.addPlayer(22122019, time, "Yoni");
+        updateHeaderColors();
+
+        String message = "Hi Yoni, You chose to play in " + 22122019 + " at " + time;
+        Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
+        gameInfo.show();
+    }
 }
