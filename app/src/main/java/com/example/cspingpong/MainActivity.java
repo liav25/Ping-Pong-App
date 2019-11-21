@@ -43,30 +43,23 @@ public class MainActivity extends AppCompatActivity {
         hourPicker.setMinValue(MIN_HOUR_PICK);
         hourPicker.setMaxValue(MAX_HOUR_PICK);
 
-        updateButtonInfo();
-
         /* time picker on value changed listener*/
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal){
-                int idx = hourPicker.getValue();
+                int pickedHour = hourPicker.getValue();
+
                 for (int i = 0; i < GAMES_PER_HOUR; i++)
                 {
+                    String headerText = pickedHour + ":" + (i*15);
 
+                    headerTexts[i].setText(headerText);
                 }
-                availablity = checkAvailablity(idx);
                 setHeaderColors();
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               Toast.makeText(getApplicationContext(), "Toast", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
+        updateHeaderColors();
     }
 
     private void connectViewsToXML() {
@@ -95,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void updateButtonInfo() {
+    private void updateHeaderColors() {
         ArrayList<Game> games = server.get_hour_agenda(22122019, 1200);
 
         for (int i = 0; i < 4; i++)
