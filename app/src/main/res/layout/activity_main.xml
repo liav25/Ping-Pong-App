@@ -55,6 +55,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -63,9 +64,10 @@
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:id="@+id/slot_expansions_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_alignParentStart="true" >
 
             <com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout
                 android:id="@+id/slotButtonsLayout"
@@ -113,10 +115,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
                     <TextView
-                        android:id="@+id/expansion_text1"
+                        android:id="@+id/expansion1_player1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="Player 1: "
+                        android:layout_alignParentStart="true"/>
+
+                    <TextView
+                        android:id="@+id/expansion1_player2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/expansion1_player1"
+                        android:text="Player 2: " />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Join!"
+                            android:textSize="10sp"
+                            />
+
+                    </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
 
@@ -278,6 +302,7 @@
         </RelativeLayout>
 
         <NumberPicker
+            android:layout_toRightOf="@+id/slot_expansions_layout"
             android:id="@+id/hour_picker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
