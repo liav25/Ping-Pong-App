@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.github.florent37.expansionpanel.ExpansionHeader;
 import com.github.florent37.expansionpanel.ExpansionLayout;
 
@@ -55,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
                     headerTexts[i].setText(headerText);
                 }
-                setHeaderColors();
+
+                updateHeaderColors();
             }
         });
 
@@ -93,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < 4; i++)
         {
-
             if (games.get(i).isFull())
             {
                 slotHeaders[i].setBackgroundColor(Color.GRAY);
@@ -103,51 +104,63 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * this function is just for testing
-     * create some data for our tryouts
-     * @return a list of lists of names
-     */
-    private ArrayList<ArrayList<String>> initNames(){
-        ArrayList<ArrayList<String>> names = new ArrayList<>();
-        ArrayList<String> temp = new ArrayList<>();
-        temp.add("Liav");
-        temp.add("Avner");
-        names.add(new ArrayList<String>(temp));
-        temp.clear();
-        temp.add("Nir");
-        temp.add("Eyal");
-        names.add(new ArrayList<String>(temp));
-        temp.clear();
-        temp.add("Yoni");
-        temp.add("Ran");
-        names.add(temp);
+//    /**
+//     * this function is just for testing
+//     * create some data for our tryouts
+//     * @return a list of lists of names
+//     */
+//    private ArrayList<ArrayList<String>> initNames(){
+//        ArrayList<ArrayList<String>> names = new ArrayList<>();
+//        ArrayList<String> temp = new ArrayList<>();
+//        temp.add("Liav");
+//        temp.add("Avner");
+//        names.add(new ArrayList<String>(temp));
+//        temp.clear();
+//        temp.add("Nir");
+//        temp.add("Eyal");
+//        names.add(new ArrayList<String>(temp));
+//        temp.clear();
+//        temp.add("Yoni");
+//        temp.add("Ran");
+//        names.add(temp);
+//
+//        return names;
+//    }
 
-        return names;
-    }
 
-    private boolean[] checkAvailablity(int idx){
-        boolean[] availabilty = new boolean[2];
-        for (int i =0; i<2;i++){
-            availabilty[i] = names.get(idx).get(i).equals("Liav");
-        }
-        return availabilty;
+//    private boolean[] checkAvailablity(int idx){
+//        boolean[] availabilty = new boolean[2];
+//        for (int i =0; i<2;i++){
+//            availabilty[i] = names.get(idx).get(i).equals("Liav");
+//        }
+//        return availabilty;
+//
+//    }
 
-    }
 
-    private void setHeaderColors(){
-        for(int i=0; i<2; i++){
-            if (availablity[0]){
-                header0.setBackgroundColor(getResources().getColor(R.color.gray));
-            }
-            else {header0.setBackgroundColor(getResources().getColor(R.color.apple));}
-            if(availablity[1]){
-                header1.setBackgroundColor(getResources().getColor(R.color.gray));
-            }
-            else {header1.setBackgroundColor(getResources().getColor(R.color.apple));}
-
-        }
-    }
-//hi
-
+//    public void chooseGame(View slotButton) {
+//        int time = 0;
+//
+//        switch (slotButton.getId())
+//        {
+//            case R.id.slot_1:
+//                time = 1200;
+//                break;
+//            case R.id.slot_2:
+//                time = 1215;
+//                break;
+//            case R.id.slot_3:
+//                time = 1230;
+//                break;
+//            case R.id.slot_4:
+//                time = 1245;
+//                break;
+//        }
+//        server.join(22122019, time, "Yoni");
+//        updateButtonInfo();
+//
+//        String message = "Hi Yoni, You chose to play in " + 22122019 + " at " + time;
+//        Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
+//        gameInfo.show();
+//    }
 }
