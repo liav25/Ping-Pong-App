@@ -1,58 +1,59 @@
 package com.example.cspingpong;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.github.florent37.expansionpanel.ExpansionHeader;
+import com.github.florent37.expansionpanel.ExpansionLayout;
+
 import java.util.ArrayList;
 
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int GAMES_PER_HOUR = 4;
+    private static final int MIN_HOUR_PICK = 0;
+    private static final int MAX_HOUR_PICK = 24;
+
+    private Server server;
+    private ExpansionHeader[] slotHeaders;
+    private ExpansionLayout[] slotExpansions;
+    private TextView[] headerTexts;
+    private TextView[] expansionTexts;
+
     private NumberPicker hourPicker;
-    private TextView textView;
-    private TextView textView2;
-    private Button button;
-    private ExpansionHeader header0;
-    private ExpansionHeader header1;
-    private ArrayList<ArrayList<String>> names;
-    private boolean[] availablity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        server = new Server();
 
-
-        /* Connect between Objects and XML representation of them         */
-        hourPicker = (NumberPicker) findViewById(R.id.hour_picker);
-        textView = (TextView) findViewById(R.id.text1);
-        textView2 = findViewById(R.id.lower);
-        button = (Button) findViewById(R.id.check);
-        /*expanded headers*/
-        header0 = findViewById(R.id.header_0);
-        header1 = findViewById(R.id.header_1);
+        connectViewsToXML();
 
         /* set range for the hours picker*/
-        hourPicker.setMinValue(0);
-        hourPicker.setMaxValue(2);
+        hourPicker.setMinValue(MIN_HOUR_PICK);
+        hourPicker.setMaxValue(MAX_HOUR_PICK);
 
-        /* init data for testing*/
-        names = initNames();
+        updateButtonInfo();
 
         /* time picker on value changed listener*/
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal){
                 int idx = hourPicker.getValue();
-                textView.setText(names.get(idx).get(0));
-                textView2.setText(names.get(idx).get(1));
+                for (int i = 0; i < GAMES_PER_HOUR; i++)
+                {
+
+                }
                 availablity = checkAvailablity(idx);
                 setHeaderColors();
             }
@@ -67,6 +68,47 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private void connectViewsToXML() {
+        /* Connect between Objects and XML representation of them         */
+        hourPicker = (NumberPicker) findViewById(R.id.hour_picker);
+
+        slotHeaders[0] = findViewById(R.id.slot_header_1);
+        slotHeaders[1] = findViewById(R.id.slot_header_2);
+        slotHeaders[2] = findViewById(R.id.slot_header_3);
+        slotHeaders[3] = findViewById(R.id.slot_header_4);
+
+        slotExpansions[0] = findViewById(R.id.expansionLayout1);
+        slotExpansions[1] = findViewById(R.id.expansionLayout2);
+        slotExpansions[2] = findViewById(R.id.expansionLayout3);
+        slotExpansions[3] = findViewById(R.id.expansionLayout4);
+
+        headerTexts[0] = findViewById(R.id.header_text1);
+        headerTexts[1] = findViewById(R.id.header_text2);
+        headerTexts[2] = findViewById(R.id.header_text3);
+        headerTexts[3] = findViewById(R.id.header_text4);
+
+        expansionTexts[0] = findViewById(R.id.expansion_text1);
+        expansionTexts[1] = findViewById(R.id.expansion_text2);
+        expansionTexts[2] = findViewById(R.id.expansion_text3);
+        expansionTexts[3] = findViewById(R.id.expansion_text4);
+    }
+
+
+    private void updateButtonInfo() {
+        ArrayList<Game> games = server.get_hour_agenda(22122019, 1200);
+
+        for (int i = 0; i < 4; i++)
+        {
+
+            if (games.get(i).isFull())
+            {
+                slotHeaders[i].setBackgroundColor(Color.GRAY);
+                slotHeaders[i].setClickable(false);
+            }
+        }
+    }
+
 
     /**
      * this function is just for testing
