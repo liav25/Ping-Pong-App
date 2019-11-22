@@ -88,7 +88,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/rectangle"
                     android:backgroundTint="@android:color/white"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator1"
                     app:expansion_layout="@id/expansionLayout1">
 
@@ -99,7 +99,7 @@
                         android:layout_gravity="center|right"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
-                        android:background="@android:color/white"
+                        android:background="@android:color/transparent"
                         app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
 
                     <TextView
@@ -133,7 +133,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/rectangle"
                     android:backgroundTint="@android:color/white"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator2"
                     app:expansion_layout="@id/expansionLayout2">
 
@@ -144,7 +144,7 @@
                         android:layout_gravity="center|right"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
-                        android:background="@android:color/white"
+                        android:background="@android:color/transparent"
                         app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
 
                     <TextView
@@ -178,7 +178,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/rectangle"
                     android:backgroundTint="@android:color/white"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator3"
                     app:expansion_layout="@id/expansionLayout3">
 
@@ -189,7 +189,7 @@
                         android:layout_gravity="center|right"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
-                        android:background="@android:color/white"
+                        android:background="@android:color/transparent"
                         app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
 
                     <TextView
@@ -224,7 +224,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/rectangle"
                     android:backgroundTint="@android:color/white"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator4"
                     app:expansion_layout="@id/expansionLayout4">
 
@@ -235,7 +235,7 @@
                         android:layout_gravity="center|right"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
-                        android:background="@android:color/white"
+                        android:background="@android:color/transparent"
                         app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
 
                     <TextView
