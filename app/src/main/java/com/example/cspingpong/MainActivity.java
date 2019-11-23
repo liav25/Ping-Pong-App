@@ -34,12 +34,13 @@ public class MainActivity extends AppCompatActivity {
     private NameDialog nameDialog;
     private String username;
 
+    private TextView welcomePlayerTxt;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         server = new Server();
 
@@ -92,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private void connectViewsToXML() {
         hourPicker = findViewById(R.id.hour_picker);
+
+        welcomePlayerTxt = findViewById(R.id.welcomePlayerTxt);
 
         slotHeaders[0] = findViewById(R.id.slot_header_1);
         slotHeaders[1] = findViewById(R.id.slot_header_2);
@@ -185,5 +188,7 @@ public class MainActivity extends AppCompatActivity {
         toast.setGravity(Gravity.CENTER, 0, 0);
 
         toast.show();
+        
+        welcomePlayerTxt.setText("Welcome " + username + "!");
     }
 }
