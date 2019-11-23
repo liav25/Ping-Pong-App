@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
         toast.setGravity(Gravity.CENTER, 0, 0);
 
         toast.show();
-        
+
         welcomePlayerTxt.setText("Welcome " + username + "!");
     }
 }
