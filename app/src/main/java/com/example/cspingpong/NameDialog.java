@@ -15,7 +15,7 @@ import androidx.fragment.app.DialogFragment;
 
 public class NameDialog extends DialogFragment {
 
-    public EditText mEditText;
+    EditText mEditText;
 
     public NameDialog() {
         // Empty constructor is required for DialogFragment
@@ -23,7 +23,7 @@ public class NameDialog extends DialogFragment {
         // Use `newInstance` instead as shown below
     }
 
-    public static NameDialog newInstance(String title) {
+    static NameDialog newInstance(String title) {
         NameDialog frag = new NameDialog();
         Bundle args = new Bundle();
         args.putString("title", title);
@@ -40,19 +40,19 @@ public class NameDialog extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         // Get field from view
-        mEditText = (EditText) view.findViewById(R.id.txt_your_name);
+        mEditText = view.findViewById(R.id.txt_your_name);
+
         // Fetch arguments from bundle and set title
         String title = getArguments().getString("title", "Enter Name");
         getDialog().setTitle(title);
+
         // Show soft keyboard automatically and request focus to field
         mEditText.requestFocus();
         getDialog().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         getDialog().setCancelable(false);
         getDialog().setCanceledOnTouchOutside(false);
-
     }
-
-
 }
