@@ -54,7 +54,8 @@ public class NameDialog extends DialogFragment {
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         // set so user cannot avoid entering input
-        getDialog().setCancelable(false);
         getDialog().setCanceledOnTouchOutside(false);
+        this.setCancelable(false);
+
     }
 }
