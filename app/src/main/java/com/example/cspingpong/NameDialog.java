@@ -52,6 +52,8 @@ public class NameDialog extends DialogFragment {
         mEditText.requestFocus();
         getDialog().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
+        // set so user cannot avoid entering input
         getDialog().setCancelable(false);
         getDialog().setCanceledOnTouchOutside(false);
     }

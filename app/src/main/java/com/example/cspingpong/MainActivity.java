@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.github.florent37.expansionpanel.ExpansionHeader;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private NumberPicker hourPicker;
 
+    // used for requesting name from user
     private NameDialog nameDialog;
     private String username;
 
@@ -53,11 +55,24 @@ public class MainActivity extends AppCompatActivity {
 
         setHourPickerListener();
 
+
+        setHourPickerDefault();
+
+
         updateHeaderColors();
 
         FragmentManager fm = getSupportFragmentManager();
         nameDialog = NameDialog.newInstance("Some Title");
         nameDialog.show(fm, "fragment_edit_name");
+    }
+
+    /**
+     * set time picker default value to current time
+     */
+    private void setHourPickerDefault() {
+        Calendar cal = Calendar.getInstance();
+        int currentHour = cal.get(Calendar.HOUR_OF_DAY);
+        hourPicker.setValue(currentHour);
     }
 
 
@@ -183,11 +198,6 @@ public class MainActivity extends AppCompatActivity {
         username = tx.getText().toString();
 
         nameDialog.dismiss();
-
-        Toast toast = Toast.makeText(getApplicationContext(), "Hello " + username, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-
-        toast.show();
 
         welcomePlayerTxt.setText("Welcome " + username + "!");
     }
