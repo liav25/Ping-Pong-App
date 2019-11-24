@@ -199,10 +199,8 @@ public class MainActivity extends AppCompatActivity {
         }
         server.addPlayer(22122019, time, username);
         updateHeaderColors();
-
-
-
-        String message = "Hi " + username + ", You chose to play in " + 22122019 + " at " + sTime;
+        
+        String message = "You chose to play in " + 22122019 + " at " + sTime;
         Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
         gameInfo.show();
     }

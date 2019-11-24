@@ -23,8 +23,12 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeStepGranularity="2sp"
             android:layout_toStartOf="@+id/pingPongPlayerImg"
-            android:text="Welcome!"
+            android:text="Welcome Avner!"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
             app:fontFamily="cursive" />
