@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         setHourPickerDefault();
 
 
+
         updateHeaderColors();
 
         FragmentManager fm = getSupportFragmentManager();
@@ -73,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         int currentHour = cal.get(Calendar.HOUR_OF_DAY);
         hourPicker.setValue(currentHour);
+
+        // fixes default hour being invisible
+        View firstItem = hourPicker.getChildAt(0);
+        if(firstItem!=null){
+            firstItem.setVisibility(View.INVISIBLE);
+        }
+        setHeaderTime();
     }
 
 
@@ -84,15 +92,19 @@ public class MainActivity extends AppCompatActivity {
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                int pickedHour = hourPicker.getValue();
-
-                for (int i = 0; i < GAMES_PER_HOUR; i++) {
-                    headerTexts[i].setText(pickedHour + slotIntervalsSuffix[i]);
-                }
-
-                updateHeaderColors();
+                setHeaderTime();
             }
         });
+    }
+
+    private void setHeaderTime() {
+        int pickedHour = hourPicker.getValue();
+
+        for (int i = 0; i < GAMES_PER_HOUR; i++) {
+            headerTexts[i].setText(pickedHour + slotIntervalsSuffix[i]);
+        }
+
+        updateHeaderColors();
     }
 
 
