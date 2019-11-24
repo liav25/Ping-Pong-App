@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CS Ping Pong</string>
+    <string name="welcome_text">Welcome !</string>
+    <string name="player_image">Player Image</string>
+    <string name="join_button_text">Join!</string>
+    <string name="pick_turn_text">Pick Up Your Turn!</string>
 </resources>
