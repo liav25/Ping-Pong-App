@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -199,6 +200,8 @@ public class MainActivity extends AppCompatActivity {
         server.addPlayer(22122019, time, username);
         updateHeaderColors();
 
+
+
         String message = "Hi " + username + ", You chose to play in " + 22122019 + " at " + sTime;
         Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
         gameInfo.show();
@@ -209,8 +212,14 @@ public class MainActivity extends AppCompatActivity {
         EditText tx = nameDialog.mEditText;
         username = tx.getText().toString();
 
-        nameDialog.dismiss();
+        if(username.length() == 0){
+            tx.getBackground().setTint(Color.RED);
+        }
+        else
+        {
+            nameDialog.dismiss();
 
-        welcomePlayerTxt.setText("Welcome " + username + "!");
+            welcomePlayerTxt.setText("Welcome " + username + "!");
+        }
     }
 }

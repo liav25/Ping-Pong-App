@@ -10,10 +10,13 @@
 
     <EditText
         android:id="@+id/txt_your_name"
-        android:layout_width="match_parent"  android:layout_height="wrap_content"
-        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+
+        android:backgroundTint="#2F959E"
         android:imeOptions="actionDone"
-        android:layout_margin="10dp"/>
+        android:inputType="text" />
 
     <Button
         android:layout_width="wrap_content"
