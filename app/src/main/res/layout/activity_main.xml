@@ -23,8 +23,12 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="26sp"
+            app:autoSizeMaxTextSize="40sp"
+            app:autoSizeStepGranularity="2sp"
             android:layout_toStartOf="@+id/pingPongPlayerImg"
-            android:text="Welcome!"
+            android:text="@string/welcome_text"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
             app:fontFamily="cursive" />
@@ -43,8 +47,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pingpongman" />
-
+            app:srcCompat="@drawable/pingpongman"
+            android:contentDescription="@string/player_image" />
 
         <Button
             android:id="@+id/savedTurnBtn"
@@ -98,7 +102,7 @@
                         android:id="@+id/headerIndicator1"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_gravity="center|right"
+                        android:layout_gravity="center|end"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@android:color/transparent"
@@ -122,7 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:onClick="chooseGame"
-                        android:text="Join!"
+                        android:text="@string/join_button_text"
                         android:textSize="12sp" />
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -143,7 +147,7 @@
                         android:id="@+id/headerIndicator2"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_gravity="center|right"
+                        android:layout_gravity="center|end"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@android:color/transparent"
@@ -168,7 +172,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:onClick="chooseGame"
-                        android:text="Join!"
+                        android:text="@string/join_button_text"
                         android:textSize="12sp" />
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -188,7 +192,7 @@
                         android:id="@+id/headerIndicator3"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_gravity="center|right"
+                        android:layout_gravity="center|end"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@android:color/transparent"
@@ -213,7 +217,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:onClick="chooseGame"
-                        android:text="Join!"
+                        android:text="@string/join_button_text"
                         android:textSize="12sp" />
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -234,7 +238,7 @@
                         android:id="@+id/headerIndicator4"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_gravity="center|right"
+                        android:layout_gravity="center|end"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@android:color/transparent"
@@ -259,7 +263,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:onClick="chooseGame"
-                        android:text="Join!"
+                        android:text="@string/join_button_text"
                         android:textSize="12sp" />
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -268,7 +272,7 @@
 
             <Button
                 android:id="@+id/daySlotBtn"
-                android:layout_width="252dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="10dp"
@@ -276,14 +280,13 @@
                 android:background="@drawable/daysbtnimg"
                 android:text="Today" />
 
-
             <TextView
                 android:id="@+id/pickTurnTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-                android:text="Pick Up Your Turn!"
+                android:text="@string/pick_turn_text"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 app:fontFamily="sans-serif-condensed"

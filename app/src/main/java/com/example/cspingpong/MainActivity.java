@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
         setHourPickerDefault();
 
-
-
         updateHeaderColors();
 
         FragmentManager fm = getSupportFragmentManager();
@@ -78,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         // fixes default hour being invisible
         View firstItem = hourPicker.getChildAt(0);
-        if(firstItem!=null){
+        if (firstItem != null) {
             firstItem.setVisibility(View.INVISIBLE);
         }
         setHeaderTime();
@@ -199,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
         }
         server.addPlayer(22122019, time, username);
         updateHeaderColors();
-        
+
         String message = "You chose to play in " + 22122019 + " at " + sTime;
         Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
         gameInfo.show();
@@ -210,11 +208,9 @@ public class MainActivity extends AppCompatActivity {
         EditText tx = nameDialog.mEditText;
         username = tx.getText().toString();
 
-        if(username.length() == 0){
+        if (username.length() == 0) {
             tx.getBackground().setTint(Color.RED);
-        }
-        else
-        {
+        } else {
             nameDialog.dismiss();
 
             welcomePlayerTxt.setText("Welcome " + username + "!");
