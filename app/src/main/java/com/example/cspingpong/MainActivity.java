@@ -191,11 +191,14 @@ public class MainActivity extends AppCompatActivity {
 
         Button joinButton = (Button) view;
 
-        String sTime = hourPicker.getValue() + slotIntervalsSuffix[(Integer) joinButton.getTag()];
-        int time = hourPicker.getValue() + (((Integer) joinButton.getTag()) * Server.SLOT_TIME);
+//        String sTime = hourPicker.getValue() + slotIntervalsSuffix[(Integer) joinButton.getTag()];
+//        int time = hourPicker.getValue() + (((Integer) joinButton.getTag()) * Server.SLOT_TIME);
+
+        String sTime = "12:00";
+        int time = 1200;
 
         server.addPlayer(selectedDate, time, username);
-        updateHeaders();
+//        updateHeaders();
 
         joinButton.setText(username);
         joinButton.setBackgroundTintList(
@@ -203,8 +206,7 @@ public class MainActivity extends AppCompatActivity {
         joinButton.setClickable(false); // TODO change when leaving a game will be possible
 
         String message = "You chose to play in " + selectedDate + " at " + sTime;
-        Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
-        gameInfo.show();
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     public void confirmName(View view) {
