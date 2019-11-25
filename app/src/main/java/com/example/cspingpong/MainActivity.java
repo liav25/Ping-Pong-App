@@ -8,12 +8,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.florent37.expansionpanel.ExpansionHeader;
+import com.maxproj.calendarpicker.Builder;
+import com.maxproj.calendarpicker.Config.MyConfig;
+import com.maxproj.calendarpicker.Models.YearMonthDay;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -215,5 +219,18 @@ public class MainActivity extends AppCompatActivity {
 
             welcomePlayerTxt.setText("Welcome " + username + "!");
         }
+    }
+
+    public void selectDate(View button){
+
+        Builder builder = new Builder(MainActivity.this, new Builder.CalendarPickerOnConfirm() {
+            @Override
+            public void onComplete(YearMonthDay yearMonthDay) {
+
+                Button daySlotBtn = findViewById(R.id.daySlotBtn);
+                daySlotBtn.setText(yearMonthDay.year+"-"+yearMonthDay.month+"-"+yearMonthDay.day);
+            }
+        });
+        builder.show();
     }
 }
