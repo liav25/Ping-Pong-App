@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentManager;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.NumberPicker;
@@ -14,12 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 
+import com.github.florent37.expansionpanel.ExpansionLayout;
+import com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout;
 import com.maxproj.calendarpicker.Builder;
-import com.maxproj.calendarpicker.Config.MyConfig;
 import com.maxproj.calendarpicker.Models.YearMonthDay;
 import com.github.florent37.expansionpanel.ExpansionHeader;
 
-import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Server server;
     private ExpansionHeader[] slotHeaders = new ExpansionHeader[GAMES_PER_HOUR];
-    //    private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
+    private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
     private TextView[] headerTexts = new TextView[GAMES_PER_HOUR];
     private String[] slotIntervalsSuffix = new String[GAMES_PER_HOUR];
 
@@ -48,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private String username;
 
     private TextView welcomePlayerTxt;
+
+
+
 
 
     @Override
@@ -70,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         setHourPickerDefault();
 
-        updateHeaderColors();
+        updateHeaders();
 
         FragmentManager fm = getSupportFragmentManager();
         nameDialog = NameDialog.newInstance("Welcome!");
@@ -109,6 +111,10 @@ public class MainActivity extends AppCompatActivity {
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+//                updateHeaders();
+                for (ExpansionLayout e : slotExpansions) {
+                    e.collapse(true);
+                }
                 setHeaderTime();
             }
         });
@@ -121,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             headerTexts[i].setText(pickedHour + slotIntervalsSuffix[i]);
         }
 
-        updateHeaderColors();
+        updateHeaders();
     }
 
 
@@ -145,14 +151,22 @@ public class MainActivity extends AppCompatActivity {
         slotHeaders[2] = findViewById(R.id.slot_header_3);
         slotHeaders[3] = findViewById(R.id.slot_header_4);
 
+        slotExpansions[0] = findViewById(R.id.expansionLayout1);
+        slotExpansions[1] = findViewById(R.id.expansionLayout2);
+        slotExpansions[2] = findViewById(R.id.expansionLayout3);
+        slotExpansions[3] = findViewById(R.id.expansionLayout4);
+
+
         headerTexts[0] = findViewById(R.id.header_text1);
         headerTexts[1] = findViewById(R.id.header_text2);
         headerTexts[2] = findViewById(R.id.header_text3);
         headerTexts[3] = findViewById(R.id.header_text4);
 
+
+
     }
 
-    private void updateHeaderColors() {
+    private void updateHeaders() {
         ArrayList<Game> games = server.get_hour_agenda(22122019, hourPicker.getValue()*server.INTERVAL);
 
         for (int i = 0; i < 4; i++) {
@@ -165,10 +179,12 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     slotHeaders[i].setBackgroundTintList(
                             ContextCompat.getColorStateList(getApplicationContext(), R.color.apple));
+                    slotHeaders[i].setClickable(true);
                     break;
                 case 2:
                     slotHeaders[i].setBackgroundTintList(
                             ContextCompat.getColorStateList(getApplicationContext(), R.color.white));
+                    slotHeaders[i].setClickable(true);
                     break;
             }
         }
@@ -182,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
                 "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"};
         hourPicker.setMinValue(MIN_HOUR_PICK);
         hourPicker.setMaxValue(MAX_HOUR_PICK);
+
 
         hourPicker.setFormatter(new NumberPicker.Formatter() {
             @Override
@@ -214,9 +231,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         server.addPlayer(selectedDate, time, username);
-        System.out.println("********!!!!!!!");
-        System.out.println(time);
-        updateHeaderColors();
+        updateHeaders();
 
         String message = "You chose to play in " + selectedDate + " at " + sTime;
         Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
@@ -248,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                 daySlotBtn.setText(yearMonthDay.year+"-"+yearMonthDay.month+"-"+yearMonthDay.day);
                 selectedDate = yearMonthDay.year+yearMonthDay.month*10000+yearMonthDay.day*1000000;
 
-                updateHeaderColors();
+                updateHeaders();
 
 
             }
