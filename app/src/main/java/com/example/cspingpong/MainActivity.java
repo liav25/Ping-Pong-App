@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.github.florent37.expansionpanel.ExpansionHeader;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -47,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         server = new Server();
-        server.fabricate_games();
 
         connectViewsToXML();
 
@@ -137,7 +135,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateHeaderColors() {
-        ArrayList<Game> games = server.get_hour_agenda(22112019, hourPicker.getValue()*100);
+        ArrayList<Game> games = server.get_hour_agenda(22122019, hourPicker.getValue());
+
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
                 case 0:
@@ -176,12 +175,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void chooseGame(View slotButton) {
-        int time = hourPicker.getValue()*server.INTERVAL;
-        String sTime = Integer.toString(time);
+        int time = hourPicker.getValue();
+        String sTime = "";
 
         switch (slotButton.getId()) {
             case R.id.join_button_1:
-                sTime = hourPicker.getValue()+ slotIntervalsSuffix[0];
+                sTime = hourPicker.getValue() + slotIntervalsSuffix[0];
                 break;
             case R.id.join_button_2:
                 time += 15;
@@ -196,9 +195,7 @@ public class MainActivity extends AppCompatActivity {
                 sTime = hourPicker.getValue() + slotIntervalsSuffix[3];
                 break;
         }
-        server.addPlayer(22112019, time, username);
-        System.out.println("********!!!!!!!");
-        System.out.println(time);
+        server.addPlayer(22122019, time, username);
         updateHeaderColors();
 
         String message = "You chose to play in " + 22122019 + " at " + sTime;
