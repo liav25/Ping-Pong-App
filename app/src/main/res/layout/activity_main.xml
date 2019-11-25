@@ -121,16 +121,33 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/expansion_bg">
-
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp">
                     <Button
+                        android:layout_marginTop="20dp"
                         android:id="@+id/join_button_1"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="30dp"
                         android:backgroundTint="@color/orange"
                         android:onClick="chooseGame"
                         android:text="@string/join_button_text"
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />
+
+
+                    <Button
+                        android:layout_marginTop="20dp"
+                        android:id="@+id/test_butt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:backgroundTint="@color/orange"
+                        android:text="@string/join_button_text"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp"
+                        android:layout_marginLeft="30dp"
+                        />
+                </LinearLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
 
@@ -186,6 +203,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp"
                         />
+
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
 
