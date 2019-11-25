@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int MIN_HOUR_PICK = 0;
     private static final int MAX_HOUR_PICK = 23;
     private int selectedDate;
+    private Button dateButton;
 
     private Server server;
     private ExpansionHeader[] slotHeaders = new ExpansionHeader[GAMES_PER_HOUR];
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         nameDialog = NameDialog.newInstance("Welcome!");
         nameDialog.show(fm, "fragment_edit_name");
+
+        selectedDate = 22122019;
     }
 
     /**
@@ -236,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
                 Button daySlotBtn = findViewById(R.id.daySlotBtn);
                 daySlotBtn.setText(yearMonthDay.year+"-"+yearMonthDay.month+"-"+yearMonthDay.day);
                 selectedDate = yearMonthDay.year+yearMonthDay.month*1000+yearMonthDay.day*100000;
+                System.out.println(selectedDate);
                 updateHeaderColors();
 
 

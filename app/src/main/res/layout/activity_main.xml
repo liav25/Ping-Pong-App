@@ -283,6 +283,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
+                android:onClick="selectDate"
                 android:background="@drawable/daysbtnimg"
                 android:text="Today" />
 
