@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateHeaderColors() {
-        ArrayList<Game> games = server.get_hour_agenda(selectedDate, hourPicker.getValue());
+        ArrayList<Game> games = server.get_hour_agenda(22122019, hourPicker.getValue()*server.INTERVAL);
 
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
@@ -238,8 +238,15 @@ public class MainActivity extends AppCompatActivity {
 
                 Button daySlotBtn = findViewById(R.id.daySlotBtn);
                 daySlotBtn.setText(yearMonthDay.year+"-"+yearMonthDay.month+"-"+yearMonthDay.day);
-                selectedDate = yearMonthDay.year+yearMonthDay.month*1000+yearMonthDay.day*100000;
-                System.out.println(selectedDate);
+                selectedDate = yearMonthDay.year+yearMonthDay.month*10000+yearMonthDay.day*1000000;
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+                System.out.println("date is " +Integer.toString(selectedDate));
                 updateHeaderColors();
 
 

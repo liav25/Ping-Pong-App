@@ -33,17 +33,17 @@ class Server {
      * A temporary method that inserts fake games to the server
      */
     public void fabricate_games() {
-        addPlayer(22112019, 1200, "Nir");
-        addPlayer(22112019, 1200, "Eyal");
-        addPlayer(21112019, 1215, "Liav");
-        addPlayer(22112019, 1215, "Ran");
-        addPlayer(22112019, 1230, "Yoni");
-        addPlayer(22112019, 1300, "Avner");
-        addPlayer(22112019, 1600, "Nir");
-        addPlayer(22122019, 1600, "Eyal");
+        addPlayer(22122019, 1200, "Nir");
+        addPlayer(22122019, 1200, "Eyal");
+        addPlayer(21122019, 1215, "Liav");
+        addPlayer(22122019, 1215, "Ran");
+        addPlayer(22122019, 1230, "Yoni");
+        addPlayer(22122019, 1300, "Avner");
+        addPlayer(22122019, 1600, "Nir");
+//        addPlayer(22122019, 1600, "Eyal");
 //        addPlayer(22122019, 1200, "Liav");
 //        addPlayer(22122019, 1200, "Ran");
-//        addPlayer(22122019, 1300, "Yoni");
+        addPlayer(22122019, 1300, "Yoni");
         addPlayer(22122019, 1400, "Avner");
     }
 
