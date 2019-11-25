@@ -12,7 +12,11 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
 
+import com.maxproj.calendarpicker.Builder;
+import com.maxproj.calendarpicker.Config.MyConfig;
+import com.maxproj.calendarpicker.Models.YearMonthDay;
 import com.github.florent37.expansionpanel.ExpansionHeader;
 
 import java.sql.SQLOutput;
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int GAMES_PER_HOUR = 4;
     private static final int MIN_HOUR_PICK = 0;
     private static final int MAX_HOUR_PICK = 23;
+    private int selectedDate;
 
     private Server server;
     private ExpansionHeader[] slotHeaders = new ExpansionHeader[GAMES_PER_HOUR];
@@ -137,7 +142,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateHeaderColors() {
-        ArrayList<Game> games = server.get_hour_agenda(22112019, hourPicker.getValue()*100);
+        ArrayList<Game> games = server.get_hour_agenda(selectedDate, hourPicker.getValue());
+
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
                 case 0:
@@ -196,12 +202,12 @@ public class MainActivity extends AppCompatActivity {
                 sTime = hourPicker.getValue() + slotIntervalsSuffix[3];
                 break;
         }
-        server.addPlayer(22112019, time, username);
+        server.addPlayer(selectedDate, time, username);
         System.out.println("********!!!!!!!");
         System.out.println(time);
         updateHeaderColors();
 
-        String message = "You chose to play in " + 22122019 + " at " + sTime;
+        String message = "You chose to play in " + selectedDate + " at " + sTime;
         Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
         gameInfo.show();
     }
@@ -218,5 +224,23 @@ public class MainActivity extends AppCompatActivity {
 
             welcomePlayerTxt.setText("Welcome " + username + "!");
         }
+    }
+
+
+    public void selectDate(View button){
+
+        Builder builder = new Builder(MainActivity.this, new Builder.CalendarPickerOnConfirm() {
+            @Override
+            public void onComplete(YearMonthDay yearMonthDay) {
+
+                Button daySlotBtn = findViewById(R.id.daySlotBtn);
+                daySlotBtn.setText(yearMonthDay.year+"-"+yearMonthDay.month+"-"+yearMonthDay.day);
+                selectedDate = yearMonthDay.year+yearMonthDay.month*1000+yearMonthDay.day*100000;
+                updateHeaderColors();
+
+
+            }
+        });
+        builder.show();
     }
 }
