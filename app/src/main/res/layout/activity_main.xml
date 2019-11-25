@@ -75,7 +75,7 @@
 
             <com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout
                 android:id="@+id/slotButtonsLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/pickTurnTxt"
                 android:layout_marginStart="20dp"
@@ -88,12 +88,11 @@
                 <com.github.florent37.expansionpanel.ExpansionHeader
                     android:id="@+id/slot_header_1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/rectangle"
-                    android:backgroundTint="@android:color/white"
+                    android:layout_height="60dp"
+                    android:background="@drawable/header_bg"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator1"
+                    android:elevation="3dp"
                     app:expansion_layout="@id/expansionLayout1">
 
                     <ImageView
@@ -117,16 +116,19 @@
                 <com.github.florent37.expansionpanel.ExpansionLayout
                     android:id="@+id/expansionLayout1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/expansion_bg"
+                    android:layout_marginBottom="10dp"
+                    >
 
                     <Button
                         android:id="@+id/join_button_1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:backgroundTint="@color/orange"
-                        android:textColor="@color/colorPrimary"
                         android:onClick="chooseGame"
                         android:text="@string/join_button_text"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -135,11 +137,11 @@
                 <com.github.florent37.expansionpanel.ExpansionHeader
                     android:id="@+id/slot_header_2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/rectangle"
+                    android:layout_height="60dp"
+                    android:background="@drawable/header_bg"
                     android:backgroundTint="@android:color/white"
                     android:textSize="16sp"
+                    android:elevation="3dp"
                     app:expansion_headerIndicator="@id/headerIndicator2"
                     app:expansion_layout="@id/expansionLayout2">
 
@@ -165,7 +167,10 @@
                 <com.github.florent37.expansionpanel.ExpansionLayout
                     android:id="@+id/expansionLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/expansion_bg"
+                    android:layout_marginBottom="10dp"
+                    >
 
                     <Button
                         android:id="@+id/join_button_2"
@@ -182,11 +187,12 @@
                 <com.github.florent37.expansionpanel.ExpansionHeader
                     android:id="@+id/slot_header_3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/rectangle"
+                    android:layout_height="60dp"
+                    android:background="@drawable/header_bg"
                     android:backgroundTint="@android:color/white"
                     android:textSize="16sp"
+                    android:elevation="3dp"
+
                     app:expansion_headerIndicator="@id/headerIndicator3"
                     app:expansion_layout="@id/expansionLayout3">
 
@@ -212,7 +218,10 @@
                 <com.github.florent37.expansionpanel.ExpansionLayout
                     android:id="@+id/expansionLayout3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_marginBottom="10dp"
+
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/expansion_bg">
 
                     <Button
                         android:id="@+id/join_button_3"
@@ -230,11 +239,12 @@
                 <com.github.florent37.expansionpanel.ExpansionHeader
                     android:id="@+id/slot_header_4"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/rectangle"
+                    android:layout_height="60dp"
+                    android:background="@drawable/header_bg"
                     android:backgroundTint="@android:color/white"
                     android:textSize="16sp"
+                    android:elevation="3dp"
+
                     app:expansion_headerIndicator="@id/headerIndicator4"
                     app:expansion_layout="@id/expansionLayout4">
 
@@ -260,7 +270,9 @@
                 <com.github.florent37.expansionpanel.ExpansionLayout
                     android:id="@+id/expansionLayout4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/expansion_bg">
 
                     <Button
                         android:id="@+id/join_button_4"
@@ -283,8 +295,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
-                android:onClick="selectDate"
                 android:background="@drawable/daysbtnimg"
+                android:onClick="selectDate"
                 android:text="Today" />
 
             <TextView
