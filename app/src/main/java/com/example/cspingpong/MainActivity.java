@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
     private String username;
 
     private TextView welcomePlayerTxt;
-
 
 
     @Override
@@ -99,8 +99,6 @@ public class MainActivity extends AppCompatActivity {
         setHeaderTime();
     }
 
-
-
     /**
      * time picker on value changed listener
      */
@@ -109,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-//                updateHeaders();
                 for (ExpansionLayout e : slotExpansions) {
                     e.collapse(true);
                 }
@@ -154,18 +151,16 @@ public class MainActivity extends AppCompatActivity {
         slotExpansions[2] = findViewById(R.id.expansionLayout3);
         slotExpansions[3] = findViewById(R.id.expansionLayout4);
 
-
         headerTexts[0] = findViewById(R.id.header_text1);
         headerTexts[1] = findViewById(R.id.header_text2);
         headerTexts[2] = findViewById(R.id.header_text3);
         headerTexts[3] = findViewById(R.id.header_text4);
 
 
-
     }
 
     private void updateHeaders() {
-        ArrayList<Game> games = server.get_hour_agenda(22122019, hourPicker.getValue()*server.INTERVAL);
+        ArrayList<Game> games = server.get_hour_agenda(22122019, hourPicker.getValue() * server.INTERVAL);
 
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
@@ -207,14 +202,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("ResourceAsColor")
     public void chooseGame(View slotButton) {
-        int time = hourPicker.getValue()*server.INTERVAL;
+        int time = hourPicker.getValue() * server.INTERVAL;
         String sTime = Integer.toString(time);
+        ExpansionLayout chosenExpansion;
 
         switch (slotButton.getId()) {
             case R.id.join_button_left1:
             case R.id.join_button_right1:
-                sTime = hourPicker.getValue()+ slotIntervalsSuffix[0];
+                sTime = hourPicker.getValue() + slotIntervalsSuffix[0];
                 break;
             case R.id.join_button_left2:
             case R.id.join_button_right2:
@@ -235,6 +232,9 @@ public class MainActivity extends AppCompatActivity {
         server.addPlayer(selectedDate, time, username);
         updateHeaders();
 
+        slotButton.setBackgroundColor(R.color.button_gray);
+        slotButton.setClickable(false);
+
         String message = "You chose to play in " + selectedDate + " at " + sTime;
         Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
         gameInfo.show();
@@ -254,16 +254,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    public void selectDate(View button){
+    public void selectDate(View button) {
 
         Builder builder = new Builder(MainActivity.this, new Builder.CalendarPickerOnConfirm() {
             @Override
             public void onComplete(YearMonthDay yearMonthDay) {
 
                 Button daySlotBtn = findViewById(R.id.daySlotBtn);
-                daySlotBtn.setText(yearMonthDay.year+"-"+yearMonthDay.month+"-"+yearMonthDay.day);
-                selectedDate = yearMonthDay.year+yearMonthDay.month*10000+yearMonthDay.day*1000000;
+                daySlotBtn.setText(yearMonthDay.year + "-" + yearMonthDay.month + "-" + yearMonthDay.day);
+                selectedDate = yearMonthDay.year + yearMonthDay.month * 10000 + yearMonthDay.day * 1000000;
 
                 updateHeaders();
             }
@@ -271,5 +270,44 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
+    @SuppressLint("ResourceAsColor")
+    public void updateExpansion(View slotHeader) {
+        Game chosenGame;
+        Button joinLeft, joinRight;
 
+        switch (slotHeader.getId()) {
+
+            case R.id.slot_header_1:
+                chosenGame = server.getGame(selectedDate, hourPicker.getValue());
+                joinLeft = findViewById(R.id.join_button_left1);
+                joinRight = findViewById(R.id.join_button_right1);
+                break;
+            case R.id.slot_header_2:
+                chosenGame = server.getGame(selectedDate, hourPicker.getValue() + 15);
+                joinLeft = findViewById(R.id.join_button_left2);
+                joinRight = findViewById(R.id.join_button_right2);
+                break;
+            case R.id.slot_header_3:
+                chosenGame = server.getGame(selectedDate, hourPicker.getValue() + 30);
+                joinLeft = findViewById(R.id.join_button_left3);
+                joinRight = findViewById(R.id.join_button_right3);
+                break;
+            default:
+                chosenGame = server.getGame(selectedDate, hourPicker.getValue() + 45);
+                joinLeft = findViewById(R.id.join_button_left4);
+                joinRight = findViewById(R.id.join_button_right4);
+                break;
+        }
+
+        if (chosenGame.getPlayer1() != null) {
+            joinLeft.setText(chosenGame.getPlayer1());
+            joinLeft.setBackgroundColor(R.color.button_gray);
+            joinLeft.setClickable(false);
+        }
+        if (chosenGame.getPlayer2() != null) {
+            joinRight.setText(chosenGame.getPlayer2());
+            joinRight.setBackgroundColor(R.color.button_gray);
+            joinRight.setClickable(false);
+        }
+    }
 }

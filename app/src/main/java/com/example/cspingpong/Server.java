@@ -48,6 +48,23 @@ class Server {
     }
 
     /**
+     * Returns a Game object according to a give time and date
+     * @param date - an integer in the format DDMMYEAR or DMMYEAR,
+     *             ex. 20112019, 1012020
+     * @param hour - a round hour in the format of HHMM or HMM or MM:
+     *             ex. 1215 (=12:15), 2330(=23:30), 100(=1:00), 0(=00:00)
+     * @return a Game object according to the given data. If there is no such game, returns null
+     */
+    Game getGame(int date, int hour){
+        for (Game g : this.game_list){
+            if(g.getDate() == date && g.getTime() == hour){
+                return g;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Returns an ArrayList of Games of given date and hour. The size of the ArrayList is the number of game slots
      * that fit in one hour, so if each game is 15 minutes, the returned ArrayList will be of size 4.
      * @param date - an integer in the format DDMMYEAR or DMMYEAR,

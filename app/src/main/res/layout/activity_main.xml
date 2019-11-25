@@ -95,7 +95,8 @@
                     android:elevation="3dp"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator1"
-                    app:expansion_layout="@id/expansionLayout1">
+                    app:expansion_layout="@id/expansionLayout1"
+                    android:onClick="updateExpansion" >
 
                     <ImageView
                         android:id="@+id/headerIndicator1"
@@ -124,13 +125,13 @@
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/join_button_left1"
                             android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
@@ -142,22 +143,19 @@
                         <TextView
                             android:id="@+id/center_expansion_text1"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_centerHorizontal="true"
-                            android:layout_toStartOf="@id/join_button_left1"
-                            android:layout_toEndOf="@id/join_button_right1"
                             android:text="@string/vs_text"
-                            android:textSize="12sp" />
+                            android:textSize="20sp" />
 
                         <Button
                             android:id="@+id/join_button_right1"
                             android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginStart="30dp"
                             android:layout_marginTop="20dp"
-                            android:layout_toEndOf="@id/center_expansion_text1"
                             android:backgroundTint="@color/orange"
                             android:text="@string/join_button_text"
                             android:textColor="@color/colorPrimary"
@@ -202,19 +200,19 @@
                 <com.github.florent37.expansionpanel.ExpansionLayout
                     android:id="@+id/expansionLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/expansion_bg">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/join_button_left2"
                             android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
@@ -226,22 +224,19 @@
                         <TextView
                             android:id="@+id/center_expansion_text2"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_centerHorizontal="true"
-                            android:layout_toStartOf="@id/join_button_left2"
-                            android:layout_toEndOf="@id/join_button_right2"
                             android:text="@string/vs_text"
-                            android:textSize="12sp" />
+                            android:textSize="20sp" />
 
                         <Button
                             android:id="@+id/join_button_right2"
                             android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginStart="30dp"
                             android:layout_marginTop="20dp"
-                            android:layout_toEndOf="@id/center_expansion_text2"
                             android:backgroundTint="@color/orange"
                             android:text="@string/join_button_text"
                             android:textColor="@color/colorPrimary"
@@ -285,19 +280,19 @@
                 <com.github.florent37.expansionpanel.ExpansionLayout
                     android:id="@+id/expansionLayout3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/expansion_bg">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/join_button_left3"
                             android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
@@ -309,22 +304,19 @@
                         <TextView
                             android:id="@+id/center_expansion_text3"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_centerHorizontal="true"
-                            android:layout_toStartOf="@id/join_button_left3"
-                            android:layout_toEndOf="@id/join_button_right3"
                             android:text="@string/vs_text"
-                            android:textSize="12sp" />
+                            android:textSize="20sp" />
 
                         <Button
                             android:id="@+id/join_button_right3"
                             android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginStart="30dp"
                             android:layout_marginTop="20dp"
-                            android:layout_toEndOf="@id/center_expansion_text3"
                             android:backgroundTint="@color/orange"
                             android:text="@string/join_button_text"
                             android:textColor="@color/colorPrimary"
@@ -368,19 +360,19 @@
                 <com.github.florent37.expansionpanel.ExpansionLayout
                     android:id="@+id/expansionLayout4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/expansion_bg">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/join_button_left4"
                             android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
@@ -392,22 +384,19 @@
                         <TextView
                             android:id="@+id/center_expansion_text4"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_centerHorizontal="true"
-                            android:layout_toStartOf="@id/join_button_left4"
-                            android:layout_toEndOf="@id/join_button_right4"
                             android:text="@string/vs_text"
-                            android:textSize="12sp" />
+                            android:textSize="20sp" />
 
                         <Button
                             android:id="@+id/join_button_right4"
                             android:layout_width="wrap_content"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginStart="30dp"
                             android:layout_marginTop="20dp"
-                            android:layout_toEndOf="@id/center_expansion_text4"
                             android:backgroundTint="@color/orange"
                             android:text="@string/join_button_text"
                             android:textColor="@color/colorPrimary"
