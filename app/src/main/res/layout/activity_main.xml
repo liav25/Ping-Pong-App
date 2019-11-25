@@ -65,8 +65,8 @@
         android:layout_weight="1"
         android:background="@drawable/backgroundbot"
         android:baselineAligned="false"
-        android:weightSum="12"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="12">
 
         <RelativeLayout
             android:id="@+id/slot_expansions_layout"
@@ -118,36 +118,51 @@
                 <com.github.florent37.expansionpanel.ExpansionLayout
                     android:id="@+id/expansionLayout1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/expansion_bg">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp">
-                    <Button
-                        android:layout_marginTop="20dp"
-                        android:id="@+id/join_button_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:backgroundTint="@color/orange"
-                        android:onClick="chooseGame"
-                        android:text="@string/join_button_text"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp" />
 
-
-                    <Button
-                        android:layout_marginTop="20dp"
-                        android:id="@+id/test_butt"
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:backgroundTint="@color/orange"
-                        android:text="@string/join_button_text"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
-                        android:layout_marginLeft="30dp"
-                        />
-                </LinearLayout>
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/join_button_left1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/orange"
+                            android:onClick="chooseGame"
+                            android:text="@string/join_button_text"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/center_expansion_text1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_toStartOf="@id/join_button_left1"
+                            android:layout_toEndOf="@id/join_button_right1"
+                            android:text="@string/vs_text"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/join_button_right1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_toEndOf="@id/center_expansion_text1"
+                            android:backgroundTint="@color/orange"
+                            android:text="@string/join_button_text"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
 
@@ -189,20 +204,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    android:background="@drawable/expansion_bg"
+                    android:background="@drawable/expansion_bg">
 
-                    >
-
-                    <Button
-                        android:id="@+id/join_button_2"
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:backgroundTint="@color/orange"
-                        android:onClick="chooseGame"
-                        android:text="@string/join_button_text"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp"
-                        />
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/join_button_left2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/orange"
+                            android:onClick="chooseGame"
+                            android:text="@string/join_button_text"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/center_expansion_text2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_toStartOf="@id/join_button_left2"
+                            android:layout_toEndOf="@id/join_button_right2"
+                            android:text="@string/vs_text"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/join_button_right2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_toEndOf="@id/center_expansion_text2"
+                            android:backgroundTint="@color/orange"
+                            android:text="@string/join_button_text"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
 
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -242,19 +286,50 @@
                     android:id="@+id/expansionLayout3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/expansion_bg">
 
-                    <Button
-                        android:id="@+id/join_button_3"
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:backgroundTint="@color/orange"
-                        android:onClick="chooseGame"
-                        android:text="@string/join_button_text"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp" />
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/join_button_left3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/orange"
+                            android:onClick="chooseGame"
+                            android:text="@string/join_button_text"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/center_expansion_text3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_toStartOf="@id/join_button_left3"
+                            android:layout_toEndOf="@id/join_button_right3"
+                            android:text="@string/vs_text"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/join_button_right3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_toEndOf="@id/center_expansion_text3"
+                            android:backgroundTint="@color/orange"
+                            android:text="@string/join_button_text"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
 
@@ -297,15 +372,47 @@
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/expansion_bg">
 
-                    <Button
-                        android:id="@+id/join_button_4"
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:backgroundTint="@color/orange"
-                        android:onClick="chooseGame"
-                        android:text="@string/join_button_text"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="12sp" />
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/join_button_left4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="20dp"
+                            android:backgroundTint="@color/orange"
+                            android:onClick="chooseGame"
+                            android:text="@string/join_button_text"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/center_expansion_text4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_toStartOf="@id/join_button_left4"
+                            android:layout_toEndOf="@id/join_button_right4"
+                            android:text="@string/vs_text"
+                            android:textSize="12sp" />
+
+                        <Button
+                            android:id="@+id/join_button_right4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_toEndOf="@id/center_expansion_text4"
+                            android:backgroundTint="@color/orange"
+                            android:text="@string/join_button_text"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
 
@@ -327,8 +434,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="@string/pick_turn_text"
                 android:layout_marginTop="10dp"
+                android:text="@string/pick_turn_text"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 app:fontFamily="sans-serif-condensed"
@@ -339,15 +446,15 @@
         <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:layout_toEndOf="@+id/slot_expansions_layout">
+            android:layout_toEndOf="@+id/slot_expansions_layout"
+            android:layout_weight="2">
 
             <NumberPicker
                 android:id="@+id/hour_picker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:backgroundTint="@color/colorAccent"
                 android:clickable="false"
                 android:descendantFocusability="blocksDescendants"

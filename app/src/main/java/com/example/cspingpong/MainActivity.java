@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -214,18 +212,22 @@ public class MainActivity extends AppCompatActivity {
         String sTime = Integer.toString(time);
 
         switch (slotButton.getId()) {
-            case R.id.join_button_1:
+            case R.id.join_button_left1:
+            case R.id.join_button_right1:
                 sTime = hourPicker.getValue()+ slotIntervalsSuffix[0];
                 break;
-            case R.id.join_button_2:
+            case R.id.join_button_left2:
+            case R.id.join_button_right2:
                 time += 15;
                 sTime = hourPicker.getValue() + slotIntervalsSuffix[1];
                 break;
-            case R.id.join_button_3:
+            case R.id.join_button_left3:
+            case R.id.join_button_right3:
                 time += 30;
                 sTime = hourPicker.getValue() + slotIntervalsSuffix[2];
                 break;
-            case R.id.join_button_4:
+            case R.id.join_button_left4:
+            case R.id.join_button_right4:
                 time += 45;
                 sTime = hourPicker.getValue() + slotIntervalsSuffix[3];
                 break;
@@ -264,8 +266,6 @@ public class MainActivity extends AppCompatActivity {
                 selectedDate = yearMonthDay.year+yearMonthDay.month*10000+yearMonthDay.day*1000000;
 
                 updateHeaders();
-
-
             }
         });
         builder.show();
