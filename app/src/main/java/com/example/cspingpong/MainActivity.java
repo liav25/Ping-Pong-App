@@ -152,19 +152,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateHeaders() {
-        ArrayList<Game> games = server.get_hour_agenda(22122019, hourPicker.getValue() * server.INTERVAL);
-
-        for (int i = 0; i < 4; i++) {
-            switch (games.get(i).empty_slots()) {
-                case 0:
-                    slotHeaders[i].setClickable(false);
-                    break;
-                case 1:
-                case 2:
-                    slotHeaders[i].setClickable(true);
-                    break;
-            }
-        }
+//        ArrayList<Game> games = server.get_hour_agenda(22122019, hourPicker.getValue() * server.INTERVAL);
+//
+//        for (int i = 0; i < 4; i++) {
+//            switch (games.get(i).empty_slots()) {
+//                case 0:
+//                    slotHeaders[i].setClickable(false);
+//                    break;
+//                case 1:
+//                case 2:
+//                    slotHeaders[i].setClickable(true);
+//                    break;
+//            }
+//        }
     }
 
     private void setHourPickerValues() {
@@ -190,12 +190,30 @@ public class MainActivity extends AppCompatActivity {
     public void joinButtonHandler(View view) { // TODO better function name
 
         Button joinButton = (Button) view;
+        int time = hourPicker.getValue();
+        String sTime = "";
 
-//        String sTime = hourPicker.getValue() + slotIntervalsSuffix[(Integer) joinButton.getTag()];
-//        int time = hourPicker.getValue() + (((Integer) joinButton.getTag()) * Server.SLOT_TIME);
-
-        String sTime = "12:00";
-        int time = 1200;
+        switch (joinButton.getId()) {
+            case R.id.join_button_left1:
+            case R.id.join_button_right1:
+                sTime = hourPicker.getValue() + slotIntervalsSuffix[0];
+                break;
+            case R.id.join_button_left2:
+            case R.id.join_button_right2:
+                time += 15;
+                sTime = hourPicker.getValue() + slotIntervalsSuffix[1];
+                break;
+            case R.id.join_button_left3:
+            case R.id.join_button_right3:
+                time += 30;
+                sTime = hourPicker.getValue() + slotIntervalsSuffix[2];
+                break;
+            case R.id.join_button_left4:
+            case R.id.join_button_right4:
+                time += 45;
+                sTime = hourPicker.getValue() + slotIntervalsSuffix[3];
+                break;
+        }
 
         server.addPlayer(selectedDate, time, username);
 //        updateHeaders();
@@ -272,13 +290,27 @@ public class MainActivity extends AppCompatActivity {
             joinLeft.setText(chosenGame.getPlayer1());
             joinLeft.setBackgroundTintList(
                     ContextCompat.getColorStateList(getApplicationContext(), R.color.button_gray));
-            joinLeft.setClickable(chosenGame.getPlayer1().equals(username));
         }
+        else {
+            joinLeft.setText(R.string.join_button_text);
+            joinLeft.setBackgroundTintList(
+                    ContextCompat.getColorStateList(getApplicationContext(), R.color.orange));
+
+        }
+        joinLeft.setClickable(chosenGame.getPlayer1().equals(username));
+
         if (chosenGame.getPlayer2() != null) {
             joinRight.setText(chosenGame.getPlayer2());
             joinRight.setBackgroundTintList(
                     ContextCompat.getColorStateList(getApplicationContext(), R.color.button_gray));
             joinRight.setClickable(chosenGame.getPlayer2().equals(username));
         }
+        else {
+            joinRight.setText(R.string.join_button_text);
+            joinRight.setBackgroundTintList(
+                    ContextCompat.getColorStateList(getApplicationContext(), R.color.orange));
+
+        }
+        joinRight.setClickable(chosenGame.getPlayer1().equals(username));
     }
 }

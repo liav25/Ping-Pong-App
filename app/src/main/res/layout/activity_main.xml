@@ -148,6 +148,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="16sp"
                             android:text="@string/vs_text"
                             android:textSize="20sp" />
 
@@ -174,8 +175,8 @@
                     android:layout_height="60dp"
                     android:layout_marginBottom="-10dp"
                     android:background="@drawable/header_bg"
-                    android:onClick="updateExpansion"
                     android:elevation="3dp"
+                    android:onClick="updateExpansion"
                     android:tag="1"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator2"
@@ -232,6 +233,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="16sp"
                             android:text="@string/vs_text"
                             android:textSize="20sp" />
 
@@ -258,8 +260,8 @@
                     android:layout_height="60dp"
                     android:layout_marginBottom="-10dp"
                     android:background="@drawable/header_bg"
-                    android:onClick="updateExpansion"
                     android:elevation="3dp"
+                    android:onClick="updateExpansion"
                     android:tag="2"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator3"
@@ -315,6 +317,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="16sp"
                             android:text="@string/vs_text"
                             android:textSize="20sp" />
 
@@ -341,8 +344,8 @@
                     android:layout_height="60dp"
                     android:layout_marginBottom="-10dp"
                     android:background="@drawable/header_bg"
-                    android:onClick="updateExpansion"
                     android:elevation="3dp"
+                    android:onClick="updateExpansion"
                     android:tag="3"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator4"
@@ -398,6 +401,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="16sp"
                             android:text="@string/vs_text"
                             android:textSize="20sp" />
 
