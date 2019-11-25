@@ -8,12 +8,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.florent37.expansionpanel.ExpansionHeader;
+import com.maxproj.calendarpicker.Builder;
+import com.maxproj.calendarpicker.Config.MyConfig;
+import com.maxproj.calendarpicker.Models.YearMonthDay;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     private String username;
 
     private TextView welcomePlayerTxt;
+
+    private int selectedDate;
 
 
     @Override
@@ -64,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         nameDialog = NameDialog.newInstance("Welcome!");
         nameDialog.show(fm, "fragment_edit_name");
+
+        selectedDate = 22122019;
     }
 
     /**
@@ -135,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateHeaderColors() {
-        ArrayList<Game> games = server.get_hour_agenda(22122019, hourPicker.getValue());
+        ArrayList<Game> games = server.get_hour_agenda(selectedDate, hourPicker.getValue());
 
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
@@ -195,10 +203,10 @@ public class MainActivity extends AppCompatActivity {
                 sTime = hourPicker.getValue() + slotIntervalsSuffix[3];
                 break;
         }
-        server.addPlayer(22122019, time, username);
+        server.addPlayer(selectedDate, time, username);
         updateHeaderColors();
 
-        String message = "You chose to play in " + 22122019 + " at " + sTime;
+        String message = "You chose to play in " + selectedDate + " at " + sTime;
         Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
         gameInfo.show();
     }
@@ -215,5 +223,22 @@ public class MainActivity extends AppCompatActivity {
 
             welcomePlayerTxt.setText("Welcome " + username + "!");
         }
+    }
+
+    public void selectDate(View button){
+
+        Builder builder = new Builder(MainActivity.this, new Builder.CalendarPickerOnConfirm() {
+            @Override
+            public void onComplete(YearMonthDay yearMonthDay) {
+
+                Button daySlotBtn = findViewById(R.id.daySlotBtn);
+                daySlotBtn.setText(yearMonthDay.year+"-"+yearMonthDay.month+"-"+yearMonthDay.day);
+                selectedDate = yearMonthDay.year+yearMonthDay.month*1000+yearMonthDay.day*100000;
+                updateHeaderColors();
+
+
+            }
+        });
+        builder.show();
     }
 }

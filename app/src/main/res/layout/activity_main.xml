@@ -284,7 +284,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/daysbtnimg"
-                android:text="Today" />
+                android:text="Today"
+                android:onClick="selectDate"/>
 
             <TextView
                 android:id="@+id/pickTurnTxt"
