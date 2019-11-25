@@ -20,8 +20,10 @@ import com.maxproj.calendarpicker.Models.YearMonthDay;
 import com.github.florent37.expansionpanel.ExpansionHeader;
 
 import java.sql.SQLOutput;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -82,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
     private void setHourPickerDefault() {
         Calendar cal = Calendar.getInstance();
         int currentHour = cal.get(Calendar.HOUR_OF_DAY);
+        Date date = cal.getTime();
+        SimpleDateFormat dateformat = new SimpleDateFormat("ddMMyyyy");
+        String datetime = dateformat.format(date.getTime());
+        selectedDate = Integer.parseInt(datetime);
         hourPicker.setValue(currentHour);
 
         // fixes default hour being invisible
@@ -239,14 +245,7 @@ public class MainActivity extends AppCompatActivity {
                 Button daySlotBtn = findViewById(R.id.daySlotBtn);
                 daySlotBtn.setText(yearMonthDay.year+"-"+yearMonthDay.month+"-"+yearMonthDay.day);
                 selectedDate = yearMonthDay.year+yearMonthDay.month*10000+yearMonthDay.day*1000000;
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-                System.out.println("date is " +Integer.toString(selectedDate));
                 updateHeaderColors();
 
 
@@ -254,4 +253,6 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.show();
     }
+
+
 }
