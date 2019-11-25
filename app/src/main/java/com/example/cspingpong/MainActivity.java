@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         updateHeaderColors();
 
         FragmentManager fm = getSupportFragmentManager();
-        nameDialog = NameDialog.newInstance("Some Title");
+        nameDialog = NameDialog.newInstance("Welcome!");
         nameDialog.show(fm, "fragment_edit_name");
     }
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             switch (games.get(i).empty_slots()) {
                 case 0:
                     slotHeaders[i].setBackgroundTintList(
-                            ContextCompat.getColorStateList(getApplicationContext(), R.color.gray));
+                            ContextCompat.getColorStateList(getApplicationContext(), R.color.button_gray));
                     slotHeaders[i].setClickable(false);
                     break;
                 case 1:

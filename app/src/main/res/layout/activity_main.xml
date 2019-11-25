@@ -23,14 +23,14 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="26sp"
-            app:autoSizeMaxTextSize="40sp"
-            app:autoSizeStepGranularity="2sp"
             android:layout_toStartOf="@+id/pingPongPlayerImg"
             android:text="@string/welcome_text"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
+            app:autoSizeMaxTextSize="40sp"
+            app:autoSizeMinTextSize="26sp"
+            app:autoSizeStepGranularity="2sp"
+            app:autoSizeTextType="uniform"
             app:fontFamily="cursive" />
 
         <ImageView
@@ -38,17 +38,15 @@
             android:layout_width="147dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="6dp"
+            android:contentDescription="@string/player_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pingpongman"
-            android:contentDescription="@string/player_image" />
+            app:srcCompat="@drawable/pingpongman" />
 
         <Button
             android:id="@+id/savedTurnBtn"
@@ -125,6 +123,8 @@
                         android:id="@+id/join_button_1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:backgroundTint="@color/orange"
+                        android:textColor="@color/colorPrimary"
                         android:onClick="chooseGame"
                         android:text="@string/join_button_text"
                         android:textSize="12sp" />
@@ -171,8 +171,10 @@
                         android:id="@+id/join_button_2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:backgroundTint="@color/orange"
                         android:onClick="chooseGame"
                         android:text="@string/join_button_text"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -216,8 +218,10 @@
                         android:id="@+id/join_button_3"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:backgroundTint="@color/orange"
                         android:onClick="chooseGame"
                         android:text="@string/join_button_text"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -262,8 +266,10 @@
                         android:id="@+id/join_button_4"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:backgroundTint="@color/orange"
                         android:onClick="chooseGame"
                         android:text="@string/join_button_text"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
