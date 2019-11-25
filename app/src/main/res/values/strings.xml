@@ -5,4 +5,5 @@
     <string name="join_button_text">Join!</string>
     <string name="pick_turn_text">Pick Up Your Turn!</string>
     <string name="vs_text">vs.</string>
+    <string name="date_button_init_text">Today</string>
 </resources>

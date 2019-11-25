@@ -10,9 +10,9 @@ class Server {
 
     private ArrayList<Game> game_list;
     int INTERVAL = 100;
-    private int MINUTES_IN_HOUR = 60;
-    private int HOURS_IN_DAY = 24;
-    private int SLOT_TIME = 15; //Number of minutes for each slot. make sure it divides 60
+    static final int MINUTES_IN_HOUR = 60;
+    static final int HOURS_IN_DAY = 24;
+    static final int SLOT_TIME = 15; //Number of minutes for each slot. make sure it divides 60
     //private Gson gson;
     private String json;
 
