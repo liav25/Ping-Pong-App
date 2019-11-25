@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView welcomePlayerTxt;
 
+    private int selectedDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         nameDialog = NameDialog.newInstance("Some Title");
         nameDialog.show(fm, "fragment_edit_name");
+
+        selectedDate = 22122019;
     }
 
     /**
@@ -139,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateHeaderColors() {
-        ArrayList<Game> games = server.get_hour_agenda(22122019, hourPicker.getValue());
+        ArrayList<Game> games = server.get_hour_agenda(selectedDate, hourPicker.getValue());
 
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
@@ -199,10 +203,10 @@ public class MainActivity extends AppCompatActivity {
                 sTime = hourPicker.getValue() + slotIntervalsSuffix[3];
                 break;
         }
-        server.addPlayer(22122019, time, username);
+        server.addPlayer(selectedDate, time, username);
         updateHeaderColors();
 
-        String message = "You chose to play in " + 22122019 + " at " + sTime;
+        String message = "You chose to play in " + selectedDate + " at " + sTime;
         Toast gameInfo = Toast.makeText(this, message, Toast.LENGTH_LONG);
         gameInfo.show();
     }
@@ -229,6 +233,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Button daySlotBtn = findViewById(R.id.daySlotBtn);
                 daySlotBtn.setText(yearMonthDay.year+"-"+yearMonthDay.month+"-"+yearMonthDay.day);
+                selectedDate = yearMonthDay.year+yearMonthDay.month*1000+yearMonthDay.day*100000;
+                updateHeaderColors();
+
+
             }
         });
         builder.show();
