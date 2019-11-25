@@ -9,7 +9,7 @@ import java.util.ArrayList;
 class Server {
 
     private ArrayList<Game> game_list;
-    private int INTERVAL = 100;
+    int INTERVAL = 100;
     private int MINUTES_IN_HOUR = 60;
     private int HOURS_IN_DAY = 24;
     private int SLOT_TIME = 15; //Number of minutes for each slot. make sure it divides 60
@@ -32,19 +32,19 @@ class Server {
     /**
      * A temporary method that inserts fake games to the server
      */
-    private void fabricate_games() {
-        addPlayer(21112019, 1200, "Nir");
-        addPlayer(21112019, 1200, "Eyal");
+    public void fabricate_games() {
+        addPlayer(22112019, 1200, "Nir");
+        addPlayer(22112019, 1200, "Eyal");
         addPlayer(21112019, 1215, "Liav");
-        addPlayer(21112019, 1215, "Ran");
-        addPlayer(21112019, 1230, "Yoni");
-        addPlayer(21112019, 1300, "Avner");
-        addPlayer(21112019, 1600, "Nir");
-        addPlayer(21112019, 1600, "Eyal");
-        addPlayer(22112019, 1200, "Liav");
-        addPlayer(22112019, 1200, "Ran");
-        addPlayer(22112019, 1300, "Yoni");
-        addPlayer(22112019, 1400, "Avner");
+        addPlayer(22112019, 1215, "Ran");
+        addPlayer(22112019, 1230, "Yoni");
+        addPlayer(22112019, 1300, "Avner");
+        addPlayer(22112019, 1600, "Nir");
+        addPlayer(22122019, 1600, "Eyal");
+//        addPlayer(22122019, 1200, "Liav");
+//        addPlayer(22122019, 1200, "Ran");
+//        addPlayer(22122019, 1300, "Yoni");
+        addPlayer(22122019, 1400, "Avner");
     }
 
     /**
