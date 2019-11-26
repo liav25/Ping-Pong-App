@@ -5,9 +5,11 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,9 +39,15 @@ public class MainActivity extends AppCompatActivity {
     private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
     private TextView[] headerTexts = new TextView[GAMES_PER_HOUR];
     private String[] slotIntervalsSuffix = new String[GAMES_PER_HOUR];
+    private ImageView[] racketIcons = new ImageView[GAMES_PER_HOUR];
 
     private NumberPicker hourPicker;
     private TextView welcomePlayerTxt;
+
+    private ImageView racketIcon1;
+    private ImageView racketIcon2;
+    private ImageView racketIcon3;
+    private ImageView racketIcon4;
 
     // used for requesting name from user
     private NameDialog nameDialog;
@@ -148,6 +156,13 @@ public class MainActivity extends AppCompatActivity {
         headerTexts[2] = findViewById(R.id.header_text3);
         headerTexts[3] = findViewById(R.id.header_text4);
 
+        racketIcons[0] = (ImageView) findViewById(R.id.racket_icon1);
+        racketIcons[1] = (ImageView) findViewById(R.id.racket_icon2);
+        racketIcons[2] = (ImageView) findViewById(R.id.racket_icon3);
+        racketIcons[3] = (ImageView) findViewById(R.id.racket_icon4);
+
+//
+
 
     }
 
@@ -159,13 +174,20 @@ public class MainActivity extends AppCompatActivity {
                 case 0:
                     slotHeaders[i].setClickable(false);
                     slotHeaders[i].setBackgroundColor(getResources().getColor(R.color.GREY));
+                    racketIcons[i].setImageResource(R.drawable.two_racket_icon);
+                    racketIcons[i].setVisibility(View.VISIBLE);
                     break;
                 case 1:
-                    slotHeaders[i].setBackgroundColor(getResources().getColor(R.color.com_maxproj_calendarpicker_PaleVioletRed));
+                    slotHeaders[i].setBackgroundColor(getResources().getColor(R.color.apple));
+                    racketIcons[i].setImageResource(R.drawable.single_racket_icon);
+                    racketIcons[i].setVisibility(View.VISIBLE);
+
+                    break;
                 case 2:
                     slotHeaders[i].setClickable(true);
                     slotHeaders[i].setBackgroundColor(getResources().getColor(R.color.white));
-
+                    racketIcons[i].setVisibility(View.INVISIBLE);
+//                    racketIcon.setImageResource(R.drawable.ic_android_black_24dp);
                     break;
             }
         }

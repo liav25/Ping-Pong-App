@@ -43,7 +43,6 @@ class Server {
 //        addPlayer(22122019, 1600, "Eyal");
 //        addPlayer(22122019, 1200, "Liav");
 //        addPlayer(22122019, 1200, "Ran");
-        addPlayer(22122019, 1300, "Yoni");
         addPlayer(22122019, 1400, "Avner");
     }
 
