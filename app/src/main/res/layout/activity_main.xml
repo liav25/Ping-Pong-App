@@ -119,12 +119,13 @@
 
                     <ImageView
                         android:id="@+id/racket_icon1"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_gravity="left|center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/two_racket_icon"
-                        />
+                        android:layout_marginBottom="10dp"
+                        android:rotation="0.0"
+                        android:alpha="0.1"
+                        android:src="@drawable/two_racket_icon" />
 
 
                 </com.github.florent37.expansionpanel.ExpansionHeader>
@@ -212,12 +213,13 @@
 
                     <ImageView
                         android:id="@+id/racket_icon2"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_gravity="left|center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/two_racket_icon"
-                        />
+                        android:layout_marginBottom="10dp"
+                        android:rotation="0.0"
+                        android:alpha="0.1"
+                        android:src="@drawable/two_racket_icon" />
 
 
                 </com.github.florent37.expansionpanel.ExpansionHeader>
@@ -306,12 +308,13 @@
 
                     <ImageView
                         android:id="@+id/racket_icon3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_gravity="left|center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/two_racket_icon"
-                        />
+                        android:layout_marginBottom="10dp"
+                        android:rotation="0.0"
+                        android:alpha="0.1"
+                        android:src="@drawable/two_racket_icon" />
 
                 </com.github.florent37.expansionpanel.ExpansionHeader>
 
@@ -399,12 +402,13 @@
 
                     <ImageView
                         android:id="@+id/racket_icon4"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_gravity="left|center_vertical"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/two_racket_icon"
-                        />
+                        android:layout_marginBottom="10dp"
+                        android:rotation="0.0"
+                        android:alpha="0.1"
+                        android:src="@drawable/two_racket_icon" />
                 </com.github.florent37.expansionpanel.ExpansionHeader>
 
 
@@ -472,7 +476,7 @@
                 android:background="@drawable/daysbtnimg"
                 android:onClick="selectDate"
                 android:backgroundTint="@color/dateorange"
-                android:text="@string/date_button_init_text"/>
+                android:text="@string/date_button_init_text" />
 
 
             <ImageView
