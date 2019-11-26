@@ -152,19 +152,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateHeaders() {
-//        ArrayList<Game> games = server.get_hour_agenda(22122019, hourPicker.getValue() * server.INTERVAL);
-//
-//        for (int i = 0; i < 4; i++) {
-//            switch (games.get(i).empty_slots()) {
-//                case 0:
-//                    slotHeaders[i].setClickable(false);
-//                    break;
-//                case 1:
-//                case 2:
-//                    slotHeaders[i].setClickable(true);
-//                    break;
-//            }
-//        }
+        ArrayList<Game> games = server.get_hour_agenda(selectedDate, hourPicker.getValue() * server.INTERVAL);
+
+        for (int i = 0; i < 4; i++) {
+            switch (games.get(i).empty_slots()) {
+                case 0:
+                    slotHeaders[i].setClickable(false);
+                    slotHeaders[i].setBackgroundColor(getResources().getColor(R.color.GREY));
+                    break;
+                case 1:
+                    slotHeaders[i].setBackgroundColor(getResources().getColor(R.color.com_maxproj_calendarpicker_PaleVioletRed));
+                case 2:
+                    slotHeaders[i].setClickable(true);
+                    slotHeaders[i].setBackgroundColor(getResources().getColor(R.color.white));
+
+                    break;
+            }
+        }
     }
 
     private void setHourPickerValues() {
@@ -216,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         server.addPlayer(selectedDate, time, username);
-//        updateHeaders();
+        updateHeaders();
 
         joinButton.setText(username);
         joinButton.setBackgroundTintList(
