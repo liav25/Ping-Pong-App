@@ -11,5 +11,8 @@
     <color name="game_full">#284186</color>
     <color name="primary_blue">#3F51B5</color>
     <color name="GREY">#A9A9A9</color>
+    <color name="dateorange">#ffd54e</color>
+    <color name="white_80">#ffffff</color>
+    <color name="whitey">#FFFCFCFC</color>
 
 </resources>

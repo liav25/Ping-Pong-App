@@ -212,9 +212,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     @SuppressLint("ResourceAsColor")
     public void joinButtonHandler(View view) { // TODO better function name
-
         Button joinButton = (Button) view;
         int time = hourPicker.getValue();
         String sTime = "";
@@ -279,7 +279,11 @@ public class MainActivity extends AppCompatActivity {
 
                 updateHeaders();
             }
-        });
+        })
+                ///here design
+                .setPromptText("Select a day to play !")
+                .setMonthBaseBgColor(0xF2FCFCFC)
+                .setSelectedBgColor(0xFFF9AD90);
         builder.show();
     }
 
