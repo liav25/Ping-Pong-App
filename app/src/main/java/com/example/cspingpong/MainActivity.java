@@ -5,7 +5,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -30,27 +29,18 @@ public class MainActivity extends AppCompatActivity {
     private static final int MIN_HOUR_PICK = 0;
     private static final int MAX_HOUR_PICK = 23;
 
-
     private int selectedDate;
     private Server server;
-    private String username;
+    private String username;private
+    NumberPicker hourPicker;
+    private TextView welcomePlayerTxt;
+    private NameDialog nameDialog;
 
     private ExpansionHeader[] slotHeaders = new ExpansionHeader[GAMES_PER_HOUR];
     private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
     private TextView[] headerTexts = new TextView[GAMES_PER_HOUR];
     private String[] slotIntervalsSuffix = new String[GAMES_PER_HOUR];
     private ImageView[] racketIcons = new ImageView[GAMES_PER_HOUR];
-
-    private NumberPicker hourPicker;
-    private TextView welcomePlayerTxt;
-
-    private ImageView racketIcon1;
-    private ImageView racketIcon2;
-    private ImageView racketIcon3;
-    private ImageView racketIcon4;
-
-    // used for requesting name from user
-    private NameDialog nameDialog;
 
 
     @Override
@@ -74,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
         updateHeaders();
 
+        launchNameDialog();
+    }
+
+    private void launchNameDialog() {
         FragmentManager fm = getSupportFragmentManager();
         nameDialog = NameDialog.newInstance("Welcome!");
         nameDialog.show(fm, "fragment_edit_name");
@@ -86,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         int currentHour = cal.get(Calendar.HOUR_OF_DAY);
         Date date = cal.getTime();
-        SimpleDateFormat dateformat = new SimpleDateFormat("ddMMyyyy");
-        String datetime = dateformat.format(date.getTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
+        String datetime = dateFormat.format(date.getTime());
         selectedDate = Integer.parseInt(datetime);
         hourPicker.setValue(currentHour);
 
@@ -96,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         if (firstItem != null) {
             firstItem.setVisibility(View.INVISIBLE);
         }
-        setHeaderTime();
+        updateHeaderTimes();
     }
 
     /**
@@ -110,12 +104,12 @@ public class MainActivity extends AppCompatActivity {
                 for (ExpansionLayout e : slotExpansions) {
                     e.collapse(true);
                 }
-                setHeaderTime();
+                updateHeaderTimes();
             }
         });
     }
 
-    private void setHeaderTime() {
+    private void updateHeaderTimes() {
         int pickedHour = hourPicker.getValue();
 
         for (int i = 0; i < GAMES_PER_HOUR; i++) {
@@ -161,18 +155,16 @@ public class MainActivity extends AppCompatActivity {
         racketIcons[2] = (ImageView) findViewById(R.id.racket_icon3);
         racketIcons[3] = (ImageView) findViewById(R.id.racket_icon4);
 
-//
-
 
     }
 
     private void updateHeaders() {
-        ArrayList<Game> games = server.get_hour_agenda(selectedDate, hourPicker.getValue() * server.INTERVAL);
+        ArrayList<Game> games = server.get_hour_agenda(selectedDate, hourPicker.getValue() * Server.INTERVAL);
 
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
                 case 0:
-                    slotHeaders[i].setClickable(false);
+//                    slotHeaders[i].setClickable(false);
                     slotHeaders[i].setBackgroundColor(getResources().getColor(R.color.GREY));
                     racketIcons[i].setImageResource(R.drawable.two_racket_icon);
                     racketIcons[i].setVisibility(View.VISIBLE);
@@ -216,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void joinButtonHandler(View view) { // TODO better function name
         Button joinButton = (Button) view;
-        int time = hourPicker.getValue();
+        int time = hourPicker.getValue() * Server.INTERVAL;
         String sTime = "";
 
         switch (joinButton.getId()) {
@@ -295,22 +287,22 @@ public class MainActivity extends AppCompatActivity {
         switch (slotHeader.getId()) {
 
             case R.id.slot_header_1:
-                chosenGame = server.getGame(selectedDate, hourPicker.getValue());
+                chosenGame = server.getGame(selectedDate, hourPicker.getValue()*Server.INTERVAL);
                 joinLeft = findViewById(R.id.join_button_left1);
                 joinRight = findViewById(R.id.join_button_right1);
                 break;
             case R.id.slot_header_2:
-                chosenGame = server.getGame(selectedDate, hourPicker.getValue() + 15);
+                chosenGame = server.getGame(selectedDate, hourPicker.getValue()*Server.INTERVAL + 15);
                 joinLeft = findViewById(R.id.join_button_left2);
                 joinRight = findViewById(R.id.join_button_right2);
                 break;
             case R.id.slot_header_3:
-                chosenGame = server.getGame(selectedDate, hourPicker.getValue() + 30);
+                chosenGame = server.getGame(selectedDate, hourPicker.getValue()*Server.INTERVAL + 30);
                 joinLeft = findViewById(R.id.join_button_left3);
                 joinRight = findViewById(R.id.join_button_right3);
                 break;
             default:
-                chosenGame = server.getGame(selectedDate, hourPicker.getValue() + 45);
+                chosenGame = server.getGame(selectedDate, hourPicker.getValue()*Server.INTERVAL + 45);
                 joinLeft = findViewById(R.id.join_button_left4);
                 joinRight = findViewById(R.id.join_button_right4);
                 break;
@@ -333,7 +325,6 @@ public class MainActivity extends AppCompatActivity {
             joinRight.setText(chosenGame.getPlayer2());
             joinRight.setBackgroundTintList(
                     ContextCompat.getColorStateList(getApplicationContext(), R.color.button_gray));
-            joinRight.setClickable(chosenGame.getPlayer2().equals(username));
         }
         else {
             joinRight.setText(R.string.join_button_text);
@@ -341,6 +332,6 @@ public class MainActivity extends AppCompatActivity {
                     ContextCompat.getColorStateList(getApplicationContext(), R.color.orange));
 
         }
-        joinRight.setClickable(chosenGame.getPlayer1().equals(username));
+        joinRight.setClickable(chosenGame.getPlayer2().equals(username));
     }
 }

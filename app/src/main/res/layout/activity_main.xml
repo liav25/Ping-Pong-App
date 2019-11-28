@@ -473,11 +473,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="20dp"
+                android:textAlignment="center"
                 android:background="@drawable/daysbtnimg"
                 android:onClick="selectDate"
-                android:backgroundTint="@color/dateorange"
+                android:backgroundTint="@color/primary_blue"
+                android:textColor="@color/white"
                 android:text="@string/date_button_init_text" />
-
 
             <ImageView
                 android:layout_width="60dp"

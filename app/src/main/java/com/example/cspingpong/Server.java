@@ -9,7 +9,7 @@ import java.util.ArrayList;
 class Server {
 
     private ArrayList<Game> game_list;
-    int INTERVAL = 100;
+    static final int INTERVAL = 100;
     static final int MINUTES_IN_HOUR = 60;
     static final int HOURS_IN_DAY = 24;
     static final int SLOT_TIME = 15; //Number of minutes for each slot. make sure it divides 60
