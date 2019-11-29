@@ -3,7 +3,7 @@ package com.example.cspingpong;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
-import android.annotation.SuppressLint;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
     NumberPicker hourPicker;
     private TextView welcomePlayerTxt;
     private NameDialog nameDialog;
+    Button dateButton;
 
-//    private ExpansionHeader[] slotHeaders = new ExpansionHeader[GAMES_PER_HOUR];
     private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
     private TextView[] headerTexts = new TextView[GAMES_PER_HOUR];
     private ImageView[] headerRacketIcons = new ImageView[GAMES_PER_HOUR];
@@ -95,6 +95,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void selectDate(View button) {
+
+        Builder builder = new Builder(MainActivity.this, new Builder.CalendarPickerOnConfirm() {
+            @Override
+            public void onComplete(YearMonthDay date) {
+
+                dateButton.setText(
+                        getString(R.string.date_button_text, date.day, date.month, date.year));
+                selectedDate = date.year + date.month * 10000 + date.day * 1000000;
+
+                updateHeaderIcons();
+            }
+        })
+                // design
+                .setPromptText("Select a day to play !")
+                .setMonthBaseBgColor(0xF2FCFCFC)
+                .setSelectedBgColor(0xFFF9AD90);
+        builder.show();
+    }
+
     /**
      * time picker on value changed listener
      */
@@ -127,12 +147,9 @@ public class MainActivity extends AppCompatActivity {
     private void connectViewsToXML() {
         hourPicker = findViewById(R.id.hour_picker);
 
-        welcomePlayerTxt = findViewById(R.id.welcomePlayerTxt);
+        dateButton = findViewById(R.id.dateButton);
 
-//        slotHeaders[0] = findViewById(R.id.slot_header_1);
-//        slotHeaders[1] = findViewById(R.id.slot_header_2);
-//        slotHeaders[2] = findViewById(R.id.slot_header_3);
-//        slotHeaders[3] = findViewById(R.id.slot_header_4);
+        welcomePlayerTxt = findViewById(R.id.welcomePlayerTxt);
 
         slotExpansions[0] = findViewById(R.id.expansionLayout1);
         slotExpansions[1] = findViewById(R.id.expansionLayout2);
@@ -215,7 +232,6 @@ public class MainActivity extends AppCompatActivity {
         joinButton.setText(username);
         joinButton.setBackgroundTintList(
                 ContextCompat.getColorStateList(getApplicationContext(), R.color.apple));
-        joinButton.setClickable(false); // TODO change when leaving a game will be possible
 
         String message = "You chose to play in " + selectedDate + " at " + time;
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
@@ -235,79 +251,60 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void selectDate(View button) {
-
-        Builder builder = new Builder(MainActivity.this, new Builder.CalendarPickerOnConfirm() {
-            @Override
-            public void onComplete(YearMonthDay date) {
-
-                Button dateButton = findViewById(R.id.dateButton);
-                dateButton.setText(
-                        getString(R.string.date_button_text, date.day, date.month, date.year));
-                selectedDate = date.year + date.month * 10000 + date.day * 1000000;
-
-                updateHeaderIcons();
-            }
-        })
-                // design
-                .setPromptText("Select a day to play !")
-                .setMonthBaseBgColor(0xF2FCFCFC)
-                .setSelectedBgColor(0xFFF9AD90);
-        builder.show();
-    }
-
     public void updateExpansion(View slotHeader) {
+        ArrayList<Game> games // todo more efficient ?
+                = server.get_hour_agenda(selectedDate, hourPicker.getValue() * Server.INTERVAL);
+
         Game chosenGame;
         Button joinLeft, joinRight;
 
         switch (slotHeader.getId()) {
 
             case R.id.slot_header_1:
-                chosenGame = server.getGame(selectedDate, hourPicker.getValue()*Server.INTERVAL);
+                chosenGame = games.get(0);
                 joinLeft = findViewById(R.id.join_button_left1);
                 joinRight = findViewById(R.id.join_button_right1);
                 break;
             case R.id.slot_header_2:
-                chosenGame = server.getGame(selectedDate, hourPicker.getValue()*Server.INTERVAL + 15);
+                chosenGame = games.get(1);
                 joinLeft = findViewById(R.id.join_button_left2);
                 joinRight = findViewById(R.id.join_button_right2);
                 break;
             case R.id.slot_header_3:
-                chosenGame = server.getGame(selectedDate, hourPicker.getValue()*Server.INTERVAL + 30);
+                chosenGame = games.get(2);
                 joinLeft = findViewById(R.id.join_button_left3);
                 joinRight = findViewById(R.id.join_button_right3);
                 break;
             default:
-                chosenGame = server.getGame(selectedDate, hourPicker.getValue()*Server.INTERVAL + 45);
+                chosenGame = games.get(3);
                 joinLeft = findViewById(R.id.join_button_left4);
                 joinRight = findViewById(R.id.join_button_right4);
                 break;
         }
 
-        if (chosenGame.getPlayer1() != null) {
-            joinLeft.setText(chosenGame.getPlayer1());
-            joinLeft.setBackgroundTintList(
-                    ContextCompat.getColorStateList(getApplicationContext(), R.color.button_gray));
+        updateJoinButton(joinLeft, chosenGame.getPlayer1());
+
+        updateJoinButton(joinRight, chosenGame.getPlayer2());
+    }
+
+    private void updateJoinButton(Button joinButton, String playerName) {
+        if (playerName != null) {
+            joinButton.setText(playerName);
         }
         else {
-            joinLeft.setText(R.string.join_button_text);
-            joinLeft.setBackgroundTintList(
+            joinButton.setText(R.string.join_button_init_text);
+            joinButton.setBackgroundTintList(
                     ContextCompat.getColorStateList(getApplicationContext(), R.color.orange));
-
         }
-        joinLeft.setClickable(chosenGame.getPlayer1().equals(username));
-
-        if (chosenGame.getPlayer2() != null) {
-            joinRight.setText(chosenGame.getPlayer2());
-            joinRight.setBackgroundTintList(
-                    ContextCompat.getColorStateList(getApplicationContext(), R.color.button_gray));
+        if (username.equals(playerName)) {
+            joinButton.setBackgroundTintList(
+                    ContextCompat.getColorStateList(getApplicationContext(), R.color.apple));
+            joinButton.setClickable(true);
         }
         else {
-            joinRight.setText(R.string.join_button_text);
-            joinRight.setBackgroundTintList(
-                    ContextCompat.getColorStateList(getApplicationContext(), R.color.orange));
-
+            joinButton.setBackgroundTintList(
+                    ContextCompat.getColorStateList(getApplicationContext(), R.color.button_gray));
+            joinButton.setClickable(false);
         }
-        joinRight.setClickable(chosenGame.getPlayer2().equals(username));
     }
 }

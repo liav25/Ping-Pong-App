@@ -149,7 +149,7 @@
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:tag="0"
-                            android:text="@string/join_button_text"
+                            android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
 
@@ -172,7 +172,7 @@
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:tag="0"
-                            android:text="@string/join_button_text"
+                            android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
                     </RelativeLayout>
@@ -244,7 +244,7 @@
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:tag="1"
-                            android:text="@string/join_button_text"
+                            android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
 
@@ -267,7 +267,7 @@
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:tag="1"
-                            android:text="@string/join_button_text"
+                            android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
                     </RelativeLayout>
@@ -338,7 +338,7 @@
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:tag="2"
-                            android:text="@string/join_button_text"
+                            android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
 
@@ -361,7 +361,7 @@
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:tag="2"
-                            android:text="@string/join_button_text"
+                            android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
                     </RelativeLayout>
@@ -431,7 +431,7 @@
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:tag="3"
-                            android:text="@string/join_button_text"
+                            android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
 
@@ -455,7 +455,7 @@
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:tag="3"
-                            android:text="@string/join_button_text"
+                            android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
                     </RelativeLayout>
@@ -476,14 +476,14 @@
                 android:onClick="selectDate"
                 android:backgroundTint="@color/primary_blue"
                 android:textColor="@color/white"
-                android:text="@string/date_button_text"/>
+                android:text="@string/date_button_init_text"/>
 
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignBottom="@id/dateButton"
-                android:layout_marginLeft="-35dp"
-                android:layout_toRightOf="@id/dateButton"
+                android:layout_marginStart="-30dp"
+                android:layout_toEndOf="@id/dateButton"
                 android:elevation="3dp"
                 android:outlineProvider="none"
                 android:src="@drawable/calendar" />
