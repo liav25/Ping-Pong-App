@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 for (ExpansionLayout e : slotExpansions) {
                     e.collapse(true);
                 }
-                selectedHour = hourPicker.getValue() * Server.INTERVAL;
+                selectedHour = newVal * Server.INTERVAL;
                 updateHeaders();
                 updateExpansions();
             }
