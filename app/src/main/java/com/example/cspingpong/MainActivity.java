@@ -269,12 +269,17 @@ public class MainActivity extends AppCompatActivity {
     public void updateExpansions() {
         ArrayList<Game> games = server.get_hour_agenda(selectedDate, selectedHour);
 
+        StringBuilder debugMessage = new StringBuilder();
+        
         for (int i = 0; i < GAMES_PER_HOUR; i++) {
+            debugMessage.append(games.get(i).toString());
+            debugMessage.append("\n");
 
             updateJoinButton(leftJoinButtons[i], games.get(i).getPlayer1());
 
             updateJoinButton(rightJoinButtons[i], games.get(i).getPlayer2());
         }
+        Toast.makeText(this, debugMessage.toString(), Toast.LENGTH_LONG).show();
     }
 
     private void updateJoinButton(Button joinButton, String playerName) {
@@ -285,11 +290,13 @@ public class MainActivity extends AppCompatActivity {
             joinButton.setClickable(true);
         }
         else if (username.equals(playerName)) {
+            joinButton.setText(playerName);
             joinButton.setBackgroundTintList(
                     ContextCompat.getColorStateList(getApplicationContext(), R.color.apple));
             joinButton.setClickable(true);
         }
         else {
+            joinButton.setText(playerName);
             joinButton.setBackgroundTintList(
                     ContextCompat.getColorStateList(getApplicationContext(), R.color.button_gray));
             joinButton.setClickable(false);
