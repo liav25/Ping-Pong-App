@@ -93,7 +93,6 @@
                     android:layout_marginBottom="-10dp"
                     android:background="@drawable/header_bg"
                     android:elevation="3dp"
-                    android:onClick="updateExpansion"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator1"
                     app:expansion_layout="@id/expansionLayout1">
@@ -184,7 +183,6 @@
                     android:layout_marginBottom="-10dp"
                     android:background="@drawable/header_bg"
                     android:elevation="3dp"
-                    android:onClick="updateExpansion"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator2"
                     app:expansion_layout="@id/expansionLayout2">
@@ -276,7 +274,6 @@
                     android:layout_marginBottom="-10dp"
                     android:background="@drawable/header_bg"
                     android:elevation="3dp"
-                    android:onClick="updateExpansion"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator3"
                     app:expansion_layout="@id/expansionLayout3">
@@ -367,7 +364,6 @@
                     android:layout_marginBottom="-10dp"
                     android:background="@drawable/header_bg"
                     android:elevation="3dp"
-                    android:onClick="updateExpansion"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator4"
                     app:expansion_layout="@id/expansionLayout4">

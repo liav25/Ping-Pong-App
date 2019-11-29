@@ -9,10 +9,10 @@
     <string name="date_button_init_text">Today</string>
 
     <string-array name="header_times">
-        <item>%d :00</item>
-        <item>%d :15</item>
-        <item>%d :30</item>
-        <item>%d :45</item>
+        <item>%d:00</item>
+        <item>%d:15</item>
+        <item>%d:30</item>
+        <item>%d:45</item>
     </string-array>
 
     <string-array name="hour_picker_strings">

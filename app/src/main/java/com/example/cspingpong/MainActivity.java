@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 //    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private int selectedDate;
+    private int selectedHour;
     private Server server;
     private String username;private
     NumberPicker hourPicker;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
     private TextView[] headerTexts = new TextView[GAMES_PER_HOUR];
     private ImageView[] headerRacketIcons = new ImageView[GAMES_PER_HOUR];
+    private Button[] leftJoinButtons = new Button[GAMES_PER_HOUR];
+    private Button[] rightJoinButtons = new Button[GAMES_PER_HOUR];
 
 
     @Override
@@ -87,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         selectedDate = Integer.parseInt(datetime);
         hourPicker.setValue(calendar.get(Calendar.HOUR_OF_DAY));
+        selectedHour = hourPicker.getValue() * Server.INTERVAL;
 
         // fixes default hour being invisible
         View firstItem = hourPicker.getChildAt(0);
@@ -106,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 selectedDate = date.year + date.month * 10000 + date.day * 1000000;
 
                 updateHeaderIcons();
+                updateExpansions();
             }
         })
                 // design
@@ -126,18 +131,20 @@ public class MainActivity extends AppCompatActivity {
                 for (ExpansionLayout e : slotExpansions) {
                     e.collapse(true);
                 }
+                selectedHour = hourPicker.getValue() * Server.INTERVAL;
                 updateHeaders();
+                updateExpansions();
             }
         });
     }
 
     private void updateHeaderTimes() {
-        int pickedHour = hourPicker.getValue();
+
         String[] headerTimes = getResources().getStringArray(R.array.header_times);
 
         for (int i = 0; i < GAMES_PER_HOUR; i++) {
 
-            headerTexts[i].setText(String.format(headerTimes[i], pickedHour));
+            headerTexts[i].setText(String.format(headerTimes[i], selectedHour));
         }
     }
 
@@ -165,11 +172,20 @@ public class MainActivity extends AppCompatActivity {
         headerRacketIcons[1] = findViewById(R.id.racket_icon2);
         headerRacketIcons[2] = findViewById(R.id.racket_icon3);
         headerRacketIcons[3] = findViewById(R.id.racket_icon4);
+
+        leftJoinButtons[0] = findViewById(R.id.join_button_left1);
+        leftJoinButtons[1] = findViewById(R.id.join_button_left2);
+        leftJoinButtons[2] = findViewById(R.id.join_button_left3);
+        leftJoinButtons[3] = findViewById(R.id.join_button_left4);
+
+        rightJoinButtons[0] = findViewById(R.id.join_button_right1);
+        rightJoinButtons[1] = findViewById(R.id.join_button_right2);
+        rightJoinButtons[2] = findViewById(R.id.join_button_right3);
+        rightJoinButtons[3] = findViewById(R.id.join_button_right4);
     }
 
     private void updateHeaderIcons() {
-        ArrayList<Game> games
-                = server.get_hour_agenda(selectedDate, hourPicker.getValue() * Server.INTERVAL);
+        ArrayList<Game> games = server.get_hour_agenda(selectedDate, selectedHour);
 
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
@@ -206,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void joinButtonHandler(View view) {
         Button joinButton = (Button) view;
-        int time = hourPicker.getValue() * Server.INTERVAL;
+        int time = selectedHour;
 
         switch (joinButton.getId()) {
             case R.id.join_button_left1:
@@ -251,43 +267,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void updateExpansion(View slotHeader) {
-        ArrayList<Game> games // todo more efficient ?
-                = server.get_hour_agenda(selectedDate, hourPicker.getValue() * Server.INTERVAL);
+    public void updateExpansions() {
+        ArrayList<Game> games = server.get_hour_agenda(selectedDate, selectedHour);
 
-        Game chosenGame;
-        Button joinLeft, joinRight;
+        for (int i = 0; i < GAMES_PER_HOUR; i++) {
 
-        switch (slotHeader.getId()) {
+            updateJoinButton(leftJoinButtons[i], games.get(i).getPlayer1());
 
-            case R.id.slot_header_1:
-                chosenGame = games.get(0);
-                joinLeft = findViewById(R.id.join_button_left1);
-                joinRight = findViewById(R.id.join_button_right1);
-                break;
-            case R.id.slot_header_2:
-                chosenGame = games.get(1);
-                joinLeft = findViewById(R.id.join_button_left2);
-                joinRight = findViewById(R.id.join_button_right2);
-                break;
-            case R.id.slot_header_3:
-                chosenGame = games.get(2);
-                joinLeft = findViewById(R.id.join_button_left3);
-                joinRight = findViewById(R.id.join_button_right3);
-                break;
-            default:
-                chosenGame = games.get(3);
-                joinLeft = findViewById(R.id.join_button_left4);
-                joinRight = findViewById(R.id.join_button_right4);
-                break;
+            updateJoinButton(rightJoinButtons[i], games.get(i).getPlayer2());
         }
-
-        String message = "Updating clicked header. " + chosenGame;
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-
-        updateJoinButton(joinLeft, chosenGame.getPlayer1());
-
-        updateJoinButton(joinRight, chosenGame.getPlayer2());
     }
 
     private void updateJoinButton(Button joinButton, String playerName) {
