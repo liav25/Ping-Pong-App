@@ -289,12 +289,12 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (username.equals(playerName)) {
             joinButton.setText(playerName);
-            joinButton.setTextColor(getResources().getColor(R.color.apple));
+            joinButton.setTextColor(getResources().getColor(R.color.button_light_blue));
             joinButton.setClickable(true);
         }
         else {
             joinButton.setText(playerName);
-            joinButton.setTextColor(getResources().getColor(R.color.button_gray));
+            joinButton.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
             joinButton.setClickable(false);
         }
     }
