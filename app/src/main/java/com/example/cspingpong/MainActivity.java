@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int GAMES_PER_HOUR = Server.MINUTES_IN_HOUR/Server.SLOT_TIME;
     private static final int MIN_HOUR_PICK = 0;
     private static final int MAX_HOUR_PICK = 23;
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+//    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private int selectedDate;
     private Server server;
@@ -281,6 +281,9 @@ public class MainActivity extends AppCompatActivity {
                 joinRight = findViewById(R.id.join_button_right4);
                 break;
         }
+
+        String message = "Updating clicked header. " + chosenGame;
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 
         updateJoinButton(joinLeft, chosenGame.getPlayer1());
 

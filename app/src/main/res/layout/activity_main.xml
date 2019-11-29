@@ -24,7 +24,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
             android:layout_toStartOf="@+id/pingPongPlayerImg"
-            android:text="@string/welcome_text"
+            android:text="@string/init_welcome_text"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
             app:autoSizeMaxTextSize="40sp"
@@ -94,7 +94,6 @@
                     android:background="@drawable/header_bg"
                     android:elevation="3dp"
                     android:onClick="updateExpansion"
-                    android:tag="0"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator1"
                     app:expansion_layout="@id/expansionLayout1">
@@ -148,7 +147,6 @@
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
-                            android:tag="0"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
@@ -171,7 +169,6 @@
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
-                            android:tag="0"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
@@ -188,7 +185,6 @@
                     android:background="@drawable/header_bg"
                     android:elevation="3dp"
                     android:onClick="updateExpansion"
-                    android:tag="1"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator2"
                     app:expansion_layout="@id/expansionLayout2">
@@ -243,7 +239,6 @@
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
-                            android:tag="1"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
@@ -266,7 +261,6 @@
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
-                            android:tag="1"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
@@ -283,7 +277,6 @@
                     android:background="@drawable/header_bg"
                     android:elevation="3dp"
                     android:onClick="updateExpansion"
-                    android:tag="2"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator3"
                     app:expansion_layout="@id/expansionLayout3">
@@ -337,7 +330,6 @@
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
-                            android:tag="2"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
@@ -360,7 +352,6 @@
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
-                            android:tag="2"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
@@ -377,7 +368,6 @@
                     android:background="@drawable/header_bg"
                     android:elevation="3dp"
                     android:onClick="updateExpansion"
-                    android:tag="3"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator4"
                     app:expansion_layout="@id/expansionLayout4">
@@ -430,7 +420,6 @@
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
-                            android:tag="3"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
@@ -454,7 +443,6 @@
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
                             android:onClick="joinButtonHandler"
-                            android:tag="3"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
