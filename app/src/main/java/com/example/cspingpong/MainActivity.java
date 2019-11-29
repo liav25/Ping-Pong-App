@@ -16,7 +16,7 @@ import android.widget.Button;
 import com.github.florent37.expansionpanel.ExpansionLayout;
 import com.maxproj.calendarpicker.Builder;
 import com.maxproj.calendarpicker.Models.YearMonthDay;
-import com.github.florent37.expansionpanel.ExpansionHeader;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int GAMES_PER_HOUR = Server.MINUTES_IN_HOUR/Server.SLOT_TIME;
     private static final int MIN_HOUR_PICK = 0;
     private static final int MAX_HOUR_PICK = 23;
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private int selectedDate;
     private Server server;
@@ -36,11 +37,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView welcomePlayerTxt;
     private NameDialog nameDialog;
 
-    private ExpansionHeader[] slotHeaders = new ExpansionHeader[GAMES_PER_HOUR];
+//    private ExpansionHeader[] slotHeaders = new ExpansionHeader[GAMES_PER_HOUR];
     private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
     private TextView[] headerTexts = new TextView[GAMES_PER_HOUR];
-    private String[] slotIntervalsSuffix = new String[GAMES_PER_HOUR];
-    private ImageView[] racketIcons = new ImageView[GAMES_PER_HOUR];
+    private ImageView[] headerRacketIcons = new ImageView[GAMES_PER_HOUR];
 
 
     @Override
@@ -55,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
         setHourPickerValues();
 
-        // todo more elegant
-        setSlotIntervalStrings();
-
         setHourPickerListener();
 
         setDefaultDateAndTime();
@@ -65,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
         updateHeaders();
 
         launchNameDialog();
+    }
+
+    private void updateHeaders() {
+        updateHeaderIcons();
+        updateHeaderTimes();
     }
 
     private void launchNameDialog() {
@@ -77,20 +79,20 @@ public class MainActivity extends AppCompatActivity {
      * set time picker default value to current time
      */
     private void setDefaultDateAndTime() {
-        Calendar cal = Calendar.getInstance();
-        int currentHour = cal.get(Calendar.HOUR_OF_DAY);
-        Date date = cal.getTime();
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
         String datetime = dateFormat.format(date.getTime());
+
         selectedDate = Integer.parseInt(datetime);
-        hourPicker.setValue(currentHour);
+        hourPicker.setValue(calendar.get(Calendar.HOUR_OF_DAY));
 
         // fixes default hour being invisible
         View firstItem = hourPicker.getChildAt(0);
         if (firstItem != null) {
             firstItem.setVisibility(View.INVISIBLE);
         }
-        updateHeaderTimes();
     }
 
     /**
@@ -104,27 +106,19 @@ public class MainActivity extends AppCompatActivity {
                 for (ExpansionLayout e : slotExpansions) {
                     e.collapse(true);
                 }
-                updateHeaderTimes();
+                updateHeaders();
             }
         });
     }
 
     private void updateHeaderTimes() {
         int pickedHour = hourPicker.getValue();
+        String[] headerTimes = getResources().getStringArray(R.array.header_times);
 
         for (int i = 0; i < GAMES_PER_HOUR; i++) {
-            headerTexts[i].setText(pickedHour + slotIntervalsSuffix[i]);
+
+            headerTexts[i].setText(String.format(headerTimes[i], pickedHour));
         }
-
-        updateHeaders();
-    }
-
-
-    private void setSlotIntervalStrings() {
-        slotIntervalsSuffix[0] = ":00";
-        slotIntervalsSuffix[1] = ":15";
-        slotIntervalsSuffix[2] = ":30";
-        slotIntervalsSuffix[3] = ":45";
     }
 
     /**
@@ -135,10 +129,10 @@ public class MainActivity extends AppCompatActivity {
 
         welcomePlayerTxt = findViewById(R.id.welcomePlayerTxt);
 
-        slotHeaders[0] = findViewById(R.id.slot_header_1);
-        slotHeaders[1] = findViewById(R.id.slot_header_2);
-        slotHeaders[2] = findViewById(R.id.slot_header_3);
-        slotHeaders[3] = findViewById(R.id.slot_header_4);
+//        slotHeaders[0] = findViewById(R.id.slot_header_1);
+//        slotHeaders[1] = findViewById(R.id.slot_header_2);
+//        slotHeaders[2] = findViewById(R.id.slot_header_3);
+//        slotHeaders[3] = findViewById(R.id.slot_header_4);
 
         slotExpansions[0] = findViewById(R.id.expansionLayout1);
         slotExpansions[1] = findViewById(R.id.expansionLayout2);
@@ -150,98 +144,80 @@ public class MainActivity extends AppCompatActivity {
         headerTexts[2] = findViewById(R.id.header_text3);
         headerTexts[3] = findViewById(R.id.header_text4);
 
-        racketIcons[0] = (ImageView) findViewById(R.id.racket_icon1);
-        racketIcons[1] = (ImageView) findViewById(R.id.racket_icon2);
-        racketIcons[2] = (ImageView) findViewById(R.id.racket_icon3);
-        racketIcons[3] = (ImageView) findViewById(R.id.racket_icon4);
-
-
+        headerRacketIcons[0] = findViewById(R.id.racket_icon1);
+        headerRacketIcons[1] = findViewById(R.id.racket_icon2);
+        headerRacketIcons[2] = findViewById(R.id.racket_icon3);
+        headerRacketIcons[3] = findViewById(R.id.racket_icon4);
     }
 
-    private void updateHeaders() {
-        ArrayList<Game> games = server.get_hour_agenda(selectedDate, hourPicker.getValue() * Server.INTERVAL);
+    private void updateHeaderIcons() {
+        ArrayList<Game> games
+                = server.get_hour_agenda(selectedDate, hourPicker.getValue() * Server.INTERVAL);
 
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
                 case 0:
-//                    slotHeaders[i].setClickable(false);
-                    slotHeaders[i].setBackgroundColor(getResources().getColor(R.color.GREY));
-                    racketIcons[i].setImageResource(R.drawable.two_racket_icon);
-                    racketIcons[i].setVisibility(View.VISIBLE);
+                    headerRacketIcons[i].setImageResource(R.drawable.two_racket_icon);
+                    headerRacketIcons[i].setVisibility(View.VISIBLE);
                     break;
                 case 1:
-                    slotHeaders[i].setBackgroundColor(getResources().getColor(R.color.apple));
-                    racketIcons[i].setImageResource(R.drawable.single_racket_icon);
-                    racketIcons[i].setVisibility(View.VISIBLE);
-
+                    headerRacketIcons[i].setImageResource(R.drawable.single_racket_icon);
+                    headerRacketIcons[i].setVisibility(View.VISIBLE);
                     break;
                 case 2:
-                    slotHeaders[i].setClickable(true);
-                    slotHeaders[i].setBackgroundColor(getResources().getColor(R.color.white));
-                    racketIcons[i].setVisibility(View.INVISIBLE);
-//                    racketIcon.setImageResource(R.drawable.ic_android_black_24dp);
+                    headerRacketIcons[i].setVisibility(View.INVISIBLE);
                     break;
             }
         }
     }
 
     private void setHourPickerValues() {
-        // TODO generate automatically?
-        final String[] arrayString = new String[]{
-                "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00",
-                "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00",
-                "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"};
+
+        final String[] hourStrings = getResources().getStringArray(R.array.hour_picker_strings);
+
         hourPicker.setMinValue(MIN_HOUR_PICK);
         hourPicker.setMaxValue(MAX_HOUR_PICK);
-
 
         hourPicker.setFormatter(new NumberPicker.Formatter() {
             @Override
             public String format(int value) {
-                // TODO Auto-generated method stub
-                return arrayString[value];
+                // TODO Auto-generated method stub ???
+                return hourStrings[value];
             }
         });
     }
 
-
-    @SuppressLint("ResourceAsColor")
-    public void joinButtonHandler(View view) { // TODO better function name
+    public void joinButtonHandler(View view) {
         Button joinButton = (Button) view;
         int time = hourPicker.getValue() * Server.INTERVAL;
-        String sTime = "";
 
         switch (joinButton.getId()) {
             case R.id.join_button_left1:
             case R.id.join_button_right1:
-                sTime = hourPicker.getValue() + slotIntervalsSuffix[0];
                 break;
             case R.id.join_button_left2:
             case R.id.join_button_right2:
                 time += 15;
-                sTime = hourPicker.getValue() + slotIntervalsSuffix[1];
                 break;
             case R.id.join_button_left3:
             case R.id.join_button_right3:
                 time += 30;
-                sTime = hourPicker.getValue() + slotIntervalsSuffix[2];
                 break;
             case R.id.join_button_left4:
             case R.id.join_button_right4:
                 time += 45;
-                sTime = hourPicker.getValue() + slotIntervalsSuffix[3];
                 break;
         }
 
         server.addPlayer(selectedDate, time, username);
-        updateHeaders();
+        updateHeaderIcons();
 
         joinButton.setText(username);
         joinButton.setBackgroundTintList(
                 ContextCompat.getColorStateList(getApplicationContext(), R.color.apple));
         joinButton.setClickable(false); // TODO change when leaving a game will be possible
 
-        String message = "You chose to play in " + selectedDate + " at " + sTime;
+        String message = "You chose to play in " + selectedDate + " at " + time;
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
@@ -255,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             nameDialog.dismiss();
 
-            welcomePlayerTxt.setText("Welcome " + username + "!");
+            welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
         }
     }
 
@@ -263,23 +239,23 @@ public class MainActivity extends AppCompatActivity {
 
         Builder builder = new Builder(MainActivity.this, new Builder.CalendarPickerOnConfirm() {
             @Override
-            public void onComplete(YearMonthDay yearMonthDay) {
+            public void onComplete(YearMonthDay date) {
 
-                Button daySlotBtn = findViewById(R.id.daySlotBtn);
-                daySlotBtn.setText(yearMonthDay.year + "-" + yearMonthDay.month + "-" + yearMonthDay.day);
-                selectedDate = yearMonthDay.year + yearMonthDay.month * 10000 + yearMonthDay.day * 1000000;
+                Button dateButton = findViewById(R.id.dateButton);
+                dateButton.setText(
+                        getString(R.string.date_button_text, date.day, date.month, date.year));
+                selectedDate = date.year + date.month * 10000 + date.day * 1000000;
 
-                updateHeaders();
+                updateHeaderIcons();
             }
         })
-                ///here design
+                // design
                 .setPromptText("Select a day to play !")
                 .setMonthBaseBgColor(0xF2FCFCFC)
                 .setSelectedBgColor(0xFFF9AD90);
         builder.show();
     }
 
-    @SuppressLint("ResourceAsColor")
     public void updateExpansion(View slotHeader) {
         Game chosenGame;
         Button joinLeft, joinRight;

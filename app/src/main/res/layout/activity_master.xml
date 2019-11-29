@@ -99,7 +99,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/daySlotBtn"
+        android:id="@+id/dateButton"
         android:layout_width="252dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -172,8 +172,8 @@
         android:layout_marginEnd="46dp"
         android:layout_marginRight="46dp"
         android:layout_marginBottom="17dp"
-        android:layout_toEndOf="@+id/daySlotBtn"
-        android:layout_toRightOf="@+id/daySlotBtn"
+        android:layout_toEndOf="@+id/dateButton"
+        android:layout_toRightOf="@+id/dateButton"
         app:srcCompat="@drawable/arrowright" />
 
 
