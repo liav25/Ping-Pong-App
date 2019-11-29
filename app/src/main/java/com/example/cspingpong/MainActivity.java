@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int GAMES_PER_HOUR = Server.MINUTES_IN_HOUR/Server.SLOT_TIME;
     private static final int MIN_HOUR_PICK = 0;
     private static final int MAX_HOUR_PICK = 23;
-//    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private int selectedDate;
     private int selectedHour;
@@ -144,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < GAMES_PER_HOUR; i++) {
 
-            headerTexts[i].setText(String.format(headerTimes[i], selectedHour));
+            headerTexts[i].setText(String.format(headerTimes[i], hourPicker.getValue()));
         }
     }
 
@@ -279,15 +278,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateJoinButton(Button joinButton, String playerName) {
-        if (playerName != null) {
-            joinButton.setText(playerName);
-        }
-        else {
+        if (playerName == null) {
             joinButton.setText(R.string.join_button_init_text);
             joinButton.setBackgroundTintList(
                     ContextCompat.getColorStateList(getApplicationContext(), R.color.orange));
+            joinButton.setClickable(true);
         }
-        if (username.equals(playerName)) {
+        else if (username.equals(playerName)) {
             joinButton.setBackgroundTintList(
                     ContextCompat.getColorStateList(getApplicationContext(), R.color.apple));
             joinButton.setClickable(true);
