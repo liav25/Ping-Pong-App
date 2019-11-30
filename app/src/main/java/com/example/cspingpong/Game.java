@@ -86,4 +86,19 @@ public class Game {
         } else return false;
         return true;
     }
+
+    boolean removePlayer(String player){
+        if (player == null) {
+            return false;
+        }
+        if (player.equals(this.player1))
+        {
+            player1 = null;
+        }
+        else if (player.equals(this.player2))
+        {
+            player2 = null;
+        }
+        return true;
+    }
 }

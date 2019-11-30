@@ -1,7 +1,6 @@
 package com.example.cspingpong;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import android.graphics.Color;
@@ -51,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         server = new Server();
-        server.fabricate_games();
 
         connectViewsToXML();
 
@@ -60,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         setHourPickerListener();
 
         setDefaultDateAndTime();
+
+        server.fabricateGames(selectedDate);
 
         updateHeaders();
 
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateHeaderIcons() {
-        ArrayList<Game> games = server.get_hour_agenda(selectedDate, selectedHour);
+        ArrayList<Game> games = server.getHourAgenda(selectedDate, selectedHour);
 
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
@@ -240,18 +240,20 @@ public class MainActivity extends AppCompatActivity {
                 time += 45;
                 break;
         }
-
         Game chosenGame = server.getGame(selectedDate, time);
 
         if (chosenGame.addPlayer(username))
-
+        {
+            joinButton.setText(username);
+            String message = "Your turn was saved.\nClick again to cancel";
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            chosenGame.removePlayer(username);
+            joinButton.setText(R.string.join_button_init_text);
+        }
         updateHeaderIcons();
-
-        joinButton.setText(username);
-        joinButton.setTextColor(getResources().getColor(R.color.apple));
-
-        String message = "You chose to play in " + selectedDate + " at " + time;
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     public void confirmName(View view) {
@@ -270,19 +272,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateExpansions() {
-        ArrayList<Game> games = server.get_hour_agenda(selectedDate, selectedHour);
-
-//        StringBuilder debugMessage = new StringBuilder();
+        ArrayList<Game> games = server.getHourAgenda(selectedDate, selectedHour);
 
         for (int i = 0; i < GAMES_PER_HOUR; i++) {
-//            debugMessage.append(games.get(i).toString());
-//            debugMessage.append("\n");
 
             updateJoinButton(leftJoinButtons[i], games.get(i).getPlayer1());
 
             updateJoinButton(rightJoinButtons[i], games.get(i).getPlayer2());
         }
-//        Toast.makeText(this, debugMessage.toString(), Toast.LENGTH_LONG).show();
     }
 
     private void updateJoinButton(Button joinButton, String playerName) {
