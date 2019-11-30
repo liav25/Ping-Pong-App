@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.github.florent37.expansionpanel.ExpansionLayout;
 import com.maxproj.calendarpicker.Builder;
 import com.maxproj.calendarpicker.Models.YearMonthDay;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private int selectedDate;
     private int selectedHour;
     private Server server;
-    private String username;private
-    NumberPicker hourPicker;
+    private String username;
+    private NumberPicker hourPicker;
     private TextView welcomePlayerTxt;
     private NameDialog nameDialog;
     Button dateButton;
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView[] headerRacketIcons = new ImageView[GAMES_PER_HOUR];
     private Button[] leftJoinButtons = new Button[GAMES_PER_HOUR];
     private Button[] rightJoinButtons = new Button[GAMES_PER_HOUR];
+
+    private Button myTurnsBtn;
 
 
     @Override
@@ -64,6 +68,23 @@ public class MainActivity extends AppCompatActivity {
         updateHeaders();
 
         launchNameDialog();
+
+        myTurnsBtn = findViewById(R.id.savedTurnBtn);
+        myTurnsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToMyTurnsActivity();
+            }
+        });
+
+
+    }
+    private void moveToMyTurnsActivity(){
+        Intent intent = new Intent(getApplicationContext(),MyTurnsActivity.class);
+        intent.putExtra("username", this.username);
+//        intent.putExtra("server", (Serializable) this.server);
+        startActivity(intent);
+
     }
 
     private void updateHeaders() {

@@ -159,7 +159,23 @@ class Server {
         }
         return games_by_date;
     }
-
+    /**
+     * Returns an ArrayList of Games of a given player.
+     * @param player the player name to get games of
+     * @return an ArrayList of games of all games where player plays
+     */
+    ArrayList<Game> get_player_agenda(String player){
+        ArrayList<Game> game_slots = new ArrayList<>();
+        if (player == null){
+            return game_slots;
+        }
+        for (Game g : this.game_list){
+            if(player.equals(g.getPlayer1()) || player.equals(g.getPlayer2())){
+                game_slots.add(g);
+            }
+        }
+        return game_slots;
+    }
     /**
      * Saves the game_list to a json file
      */
