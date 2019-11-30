@@ -60,7 +60,9 @@ class Server {
                 return g;
             }
         }
-        return null;
+        Game g = new Game(this, date, hour);
+        addGame(g);
+        return g;
     }
 
     /**
@@ -77,16 +79,16 @@ class Server {
         ArrayList<Game> gameSlots = new ArrayList<>();
 
         for (int slot = 0; slot < MINUTES_IN_HOUR / SLOT_TIME; slot++) {
-            boolean flag = false;
+            boolean found = false;
 
             for (Game g : this.gameList) {
                 if (g.getDate() == date && hour + (SLOT_TIME * slot) == g.getTime()) {
                     gameSlots.add(g);
-                    flag = true;
+                    found = true;
                     break;
                 }
             }
-            if (!flag) {
+            if (!found) {
                 gameSlots.add(new Game(this, date, hour + (SLOT_TIME * slot)));
             }
         }

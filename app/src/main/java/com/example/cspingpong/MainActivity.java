@@ -12,6 +12,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
+
 import com.github.florent37.expansionpanel.ExpansionLayout;
 import com.maxproj.calendarpicker.Builder;
 import com.maxproj.calendarpicker.Models.YearMonthDay;
@@ -24,14 +25,15 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int GAMES_PER_HOUR = Server.MINUTES_IN_HOUR/Server.SLOT_TIME;
+    private static final int GAMES_PER_HOUR = Server.MINUTES_IN_HOUR / Server.SLOT_TIME;
     private static final int MIN_HOUR_PICK = 0;
     private static final int MAX_HOUR_PICK = 23;
 
     private int selectedDate;
     private int selectedHour;
     private Server server;
-    private String username;private
+    private String username;
+    private
     NumberPicker hourPicker;
     private TextView welcomePlayerTxt;
     private NameDialog nameDialog;
@@ -242,16 +244,16 @@ public class MainActivity extends AppCompatActivity {
         }
         Game chosenGame = server.getGame(selectedDate, time);
 
-        if (chosenGame.addPlayer(username))
-        {
+        if (chosenGame.addPlayer(username)) {
             joinButton.setText(username);
             String message = "Your turn was saved.\nClick again to cancel";
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-        }
-        else
-        {
+        } else if (joinButton.getText().toString().equals(username)) {
             chosenGame.removePlayer(username);
             joinButton.setText(R.string.join_button_init_text);
+        } else {
+            String message = "You can't play against yourself ;)";
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         }
         updateHeaderIcons();
     }
@@ -286,12 +288,10 @@ public class MainActivity extends AppCompatActivity {
         if (playerName == null) {
             joinButton.setText(R.string.join_button_init_text);
             joinButton.setClickable(true);
-        }
-        else if (username.equals(playerName)) {
+        } else if (username.equals(playerName)) {
             joinButton.setText(playerName);
             joinButton.setClickable(true);
-        }
-        else {
+        } else {
             joinButton.setText(playerName);
             joinButton.setClickable(false);
         }
