@@ -241,7 +241,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        server.addPlayer(selectedDate, time, username);
+        Game chosenGame = server.getGame(selectedDate, time);
+
+        if (chosenGame.addPlayer(username))
+
         updateHeaderIcons();
 
         joinButton.setText(username);
@@ -254,7 +257,8 @@ public class MainActivity extends AppCompatActivity {
     public void confirmName(View view) {
         // todo - do something if name is empty
         EditText tx = nameDialog.mEditText;
-        username = tx.getText().toString();
+        username = tx.getText().toString().toLowerCase();
+        username = username.substring(0, 1).toUpperCase() + username.substring(1);
 
         if (username.length() == 0) {
             tx.getBackground().setTint(Color.RED);
@@ -284,17 +288,14 @@ public class MainActivity extends AppCompatActivity {
     private void updateJoinButton(Button joinButton, String playerName) {
         if (playerName == null) {
             joinButton.setText(R.string.join_button_init_text);
-            joinButton.setTextColor(getResources().getColor(R.color.colorPrimary));
             joinButton.setClickable(true);
         }
         else if (username.equals(playerName)) {
             joinButton.setText(playerName);
-            joinButton.setTextColor(getResources().getColor(R.color.button_light_blue));
             joinButton.setClickable(true);
         }
         else {
             joinButton.setText(playerName);
-            joinButton.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
             joinButton.setClickable(false);
         }
     }
