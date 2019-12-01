@@ -279,7 +279,7 @@ public class MainActivity extends AppCompatActivity {
             tx.getBackground().setTint(Color.RED);
         } else {
             nameDialog.dismiss();
-
+            updateExpansions();
             welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
         }
     }
