@@ -20,7 +20,8 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:padding="2dp"
-            app:srcCompat="@drawable/two_racket_icon" />
+            app:srcCompat="@drawable/two_racket_icon"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/txtViewTime1"
@@ -32,7 +33,8 @@
             android:layout_toRightOf="@+id/imgViewTurn1"
             android:text="Turn's Time:"
             android:textSize="15dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/alef"
+            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/txtAgainst1"
@@ -45,7 +47,8 @@
             android:layout_toRightOf="@+id/imgViewTurn1"
             android:text="Your turn is against:"
             android:textSize="13dp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/alef"
+            android:textStyle="italic"/>
 
         <ImageView
             android:id="@+id/deleteImg"

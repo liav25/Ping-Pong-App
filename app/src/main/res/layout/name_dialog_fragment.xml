@@ -4,9 +4,11 @@
     android:layout_gravity="center" android:orientation="vertical"  >
 
     <TextView
-        android:id="@+id/lbl_your_name" android:text="please enter your name"
+        android:id="@+id/lbl_your_name" android:text="Please enter your name"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:fontFamily="@font/alef"
+        android:textStyle="italic" />
 
     <EditText
         android:id="@+id/txt_your_name"
@@ -23,5 +25,7 @@
         android:layout_height="wrap_content"
         android:text="confirm"
         android:layout_margin="10dp"
-        android:onClick="confirmName"/>
+        android:fontFamily="@font/alef"
+        android:textStyle="italic"
+        android:onClick="confirmName" />
 </LinearLayout>

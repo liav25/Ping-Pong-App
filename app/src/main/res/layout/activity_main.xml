@@ -24,14 +24,15 @@
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
             android:layout_toStartOf="@+id/pingPongPlayerImg"
+            android:fontFamily="@font/alef"
+            android:textStyle="italic"
             android:text="@string/init_welcome_text"
             android:textColor="#FFFFFF"
             android:textSize="34sp"
             app:autoSizeMaxTextSize="40sp"
             app:autoSizeMinTextSize="26sp"
             app:autoSizeStepGranularity="2sp"
-            app:autoSizeTextType="uniform"
-            app:fontFamily="cursive" />
+            app:autoSizeTextType="uniform" />
 
         <ImageView
             android:id="@+id/pingPongPlayerImg"
@@ -112,7 +113,8 @@
                         android:id="@+id/header_text1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/alef" />
 
                     <ImageView
                         android:id="@+id/racket_icon1"
@@ -146,21 +148,24 @@
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
-                            android:onClick="joinButtonHandler"
-                            android:text="@string/join_button_init_text"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="12sp"
                             android:clickable="true"
                             android:focusable="true"
-                            />
+                            android:onClick="joinButtonHandler"
+                            android:fontFamily="@font/alef"
+                            android:textStyle="italic"
+                            android:text="@string/join_button_init_text"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/center_expansion_text1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="30dp"
                             android:layout_centerHorizontal="true"
+                            android:layout_marginTop="30dp"
                             android:text="@string/vs_text"
+                            android:fontFamily="@font/alef"
+                            android:textStyle="italic"
                             android:textSize="20sp" />
 
                         <Button
@@ -170,13 +175,14 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/alef"
+                            android:textStyle="italic"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp"
-                            android:clickable="true"
-                            android:focusable="true"
-                            />
+                            android:textSize="12sp" />
                     </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -207,7 +213,8 @@
                         android:id="@+id/header_text2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/alef" />
 
                     <ImageView
                         android:id="@+id/racket_icon2"
@@ -242,20 +249,24 @@
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/alef"
+                            android:textStyle="italic"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp"
-                            android:clickable="true"
-                            android:focusable="true"/>
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/center_expansion_text2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="30dp"
                             android:layout_centerHorizontal="true"
+                            android:layout_marginTop="30dp"
                             android:text="@string/vs_text"
+                            android:fontFamily="@font/alef"
+                            android:textStyle="italic"
                             android:textSize="20sp" />
 
                         <Button
@@ -265,13 +276,15 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/alef"
+                            android:textStyle="italic"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="12sp"
 
-                            android:clickable="true"
-                            android:focusable="true"/>
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12sp" />
                     </RelativeLayout>
 
 
@@ -302,7 +315,8 @@
                         android:id="@+id/header_text3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/alef" />
 
                     <ImageView
                         android:id="@+id/racket_icon3"
@@ -336,19 +350,23 @@
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/alef"
+                            android:textStyle="italic"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp"
-                            android:clickable="true"
-                            android:focusable="true"/>
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/center_expansion_text3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="30dp"
                             android:layout_centerHorizontal="true"
+                            android:fontFamily="@font/alef"
+                            android:textStyle="italic"
+                            android:layout_marginTop="30dp"
                             android:text="@string/vs_text"
                             android:textSize="20sp" />
 
@@ -359,13 +377,14 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
+                            android:fontFamily="@font/alef"
+                            android:textStyle="italic"
+                            android:clickable="true"
+                            android:focusable="true"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp"
-                            android:clickable="true"
-                            android:focusable="true"
-                            />
+                            android:textSize="12sp" />
                     </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -396,7 +415,8 @@
                         android:id="@+id/header_text4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/alef" />
 
                     <ImageView
                         android:id="@+id/racket_icon4"
@@ -427,15 +447,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
+                            android:fontFamily="@font/alef"
+                            android:textStyle="italic"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
+                            android:clickable="true"
+                            android:focusable="true"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp"
-                            android:clickable="true"
-                            android:focusable="true"
-                            />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/center_expansion_text4"
@@ -452,15 +473,16 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginStart="30dp"
+                            android:fontFamily="@font/alef"
+                            android:textStyle="italic"
                             android:layout_marginTop="20dp"
                             android:backgroundTint="@color/orange"
+                            android:clickable="true"
+                            android:focusable="true"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp"
-                            android:clickable="true"
-                            android:focusable="true"
-                            />
+                            android:textSize="12sp" />
                     </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -478,6 +500,8 @@
                 android:backgroundTint="@color/primary_blue"
                 android:onClick="selectDate"
                 android:text="@string/date_button_init_text"
+                android:fontFamily="@font/alef"
+                android:textStyle="italic"
                 android:textAlignment="center"
                 android:textColor="@color/white" />
 
@@ -500,7 +524,8 @@
                 android:text="@string/pick_turn_text"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
-                app:fontFamily="sans-serif-condensed"
+                android:fontFamily="@font/alef"
+                android:textStyle="italic"
                 tools:ignore="RtlHardcoded" />
 
         </RelativeLayout>
