@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private NameDialog nameDialog;
     Button dateButton;
 
+    Button test;
+
     private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
     private TextView[] headerTexts = new TextView[GAMES_PER_HOUR];
     private ImageView[] headerRacketIcons = new ImageView[GAMES_PER_HOUR];
@@ -66,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
         updateHeaders();
 
         launchNameDialog();
+
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                test.setBackgroundColor(getResources().getColor(R.color.apple));
+            }
+        });
     }
 
     private void updateHeaders() {
@@ -183,6 +192,8 @@ public class MainActivity extends AppCompatActivity {
         rightJoinButtons[1] = findViewById(R.id.join_button_right2);
         rightJoinButtons[2] = findViewById(R.id.join_button_right3);
         rightJoinButtons[3] = findViewById(R.id.join_button_right4);
+
+        test = findViewById(R.id.savedTurnBtn);
     }
 
     private void updateHeaderIcons() {
@@ -293,7 +304,9 @@ public class MainActivity extends AppCompatActivity {
             joinButton.setClickable(true);
         } else {
             joinButton.setText(playerName);
+            joinButton.setBackgroundColor(getResources().getColor(R.color.apple));
             joinButton.setClickable(false);
+
         }
     }
 }

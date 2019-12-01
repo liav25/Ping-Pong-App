@@ -52,7 +52,7 @@
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@drawable/savedturnimg" />
+            android:background="@color/colorAccent" />
 
 
     </RelativeLayout>
@@ -144,11 +144,14 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="20dp"
-                            android:backgroundTint="@color/orange"
+                            android:background="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            />
 
                         <TextView
                             android:id="@+id/center_expansion_text1"
@@ -165,11 +168,14 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="20dp"
-                            android:backgroundTint="@color/orange"
+                            android:background="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            />
                     </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -234,11 +240,13 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="20dp"
-                            android:backgroundTint="@color/orange"
+                            android:background="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                         <TextView
                             android:id="@+id/center_expansion_text2"
@@ -255,11 +263,14 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="20dp"
-                            android:backgroundTint="@color/orange"
+                            android:background="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+
+                            android:clickable="true"
+                            android:focusable="true"/>
                     </RelativeLayout>
 
 
@@ -323,11 +334,13 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="20dp"
-                            android:backgroundTint="@color/orange"
+                            android:background="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                         <TextView
                             android:id="@+id/center_expansion_text3"
@@ -344,11 +357,14 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="20dp"
-                            android:backgroundTint="@color/orange"
+                            android:background="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            />
                     </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -411,11 +427,14 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_marginTop="20dp"
-                            android:backgroundTint="@color/orange"
+                            android:background="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            />
 
                         <TextView
                             android:id="@+id/center_expansion_text4"
@@ -433,11 +452,14 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginStart="30dp"
                             android:layout_marginTop="20dp"
-                            android:backgroundTint="@color/orange"
+                            android:background="@color/orange"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            />
                     </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
