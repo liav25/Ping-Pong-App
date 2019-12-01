@@ -24,14 +24,14 @@
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
             android:layout_toStartOf="@+id/pingPongPlayerImg"
-            android:text="@string/init_welcome_text"
+            android:fontFamily="@font/alef"
+            android:textStyle="bold|italic"
             android:textColor="#FFFFFF"
-            android:textSize="34sp"
-            app:autoSizeMaxTextSize="40sp"
+            android:textSize="30sp"
+            app:autoSizeMaxTextSize="30sp"
             app:autoSizeMinTextSize="26sp"
             app:autoSizeStepGranularity="2sp"
-            app:autoSizeTextType="uniform"
-            app:fontFamily="cursive" />
+            app:autoSizeTextType="uniform" />
 
         <ImageView
             android:id="@+id/pingPongPlayerImg"
@@ -75,7 +75,7 @@
             android:id='@+id/recyclerViewTurns'
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"/>
 

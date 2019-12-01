@@ -8,7 +8,7 @@
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:fontFamily="@font/alef"
-        android:textStyle="italic" />
+        android:textStyle="bold|italic" />
 
     <EditText
         android:id="@+id/txt_your_name"
@@ -26,6 +26,6 @@
         android:text="confirm"
         android:layout_margin="10dp"
         android:fontFamily="@font/alef"
-        android:textStyle="italic"
+        android:textStyle="bold|italic"
         android:onClick="confirmName" />
 </LinearLayout>
