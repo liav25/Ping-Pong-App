@@ -61,20 +61,15 @@ public class MyTurnsActivity extends AppCompatActivity {
 
             slot.setTurnTime(game.getDateString() + " at " + game.getTimeString());
 
-            if (username.equals(game.getPlayer1())) {
-                slot.setTurnAgainst("Playing against: " + game.getPlayer2());
-            }
-            else if (username.equals(game.getPlayer2())) {
-                slot.setTurnAgainst("Playing against: " + game.getPlayer1());
-            }
-            else {
-                slot.setTurnAgainst("Waiting for an opponent");
-            }
-
-            if (game.isFull()) {
+            if (game.isFull())
+            {
+                String opponent =
+                        username.equals(game.getPlayer1()) ? game.getPlayer2() : game.getPlayer1();
+                slot.setTurnAgainst("Playing against: " + opponent);
                 slot.setSlotImage(R.drawable.two_racket_icon);
             }
             else {
+                slot.setTurnAgainst("Waiting for an opponent");
                 slot.setSlotImage(R.drawable.single_racket_icon);
             }
 

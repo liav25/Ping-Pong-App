@@ -114,7 +114,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/alef" />
+                        android:fontFamily="@font/alef"
+                        android:textStyle="bold|italic"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimary" />
 
                     <ImageView
                         android:id="@+id/racket_icon1"
@@ -214,7 +217,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/alef" />
+                        android:fontFamily="@font/alef"
+                        android:textStyle="bold|italic"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimary" />
 
                     <ImageView
                         android:id="@+id/racket_icon2"
@@ -316,7 +322,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/alef" />
+                        android:fontFamily="@font/alef"
+                        android:textStyle="bold|italic"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimary" />
 
                     <ImageView
                         android:id="@+id/racket_icon3"
@@ -416,7 +425,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/alef" />
+                        android:fontFamily="@font/alef"
+                        android:textStyle="bold|italic"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorPrimary" />
 
                     <ImageView
                         android:id="@+id/racket_icon4"

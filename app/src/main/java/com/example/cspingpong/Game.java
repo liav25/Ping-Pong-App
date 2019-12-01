@@ -58,10 +58,10 @@ public class Game implements Parcelable {
     String getDateString() {
         int day, month, year;
         day = date / 1000000;
-        month = date - day * 10000;
-        year = date - day*1000000 - month*10000;
+        month = (date - day * 1000000) / 10000;
+        year = date % 10000;
 
-        return day + " / " + month + " / " + year;
+        return day + "/" + month + "/" + year;
     }
 
     int getTime() {
@@ -72,7 +72,7 @@ public class Game implements Parcelable {
         int hour, offset;
         hour = time / Server.INTERVAL;
         offset = time - hour * Server.INTERVAL;
-        return hour + ":" + offset;
+        return hour + ":" + (offset == 0 ? "00" : offset);
     }
 
     String getPlayer1() {
