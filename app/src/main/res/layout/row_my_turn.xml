@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/header_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    >
+
+    <RelativeLayout
+        android:layout_width="393dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header_bg"
+        android:backgroundTint="#E6F3F8"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imgViewTurn1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="2dp"
+            app:srcCompat="@drawable/two_racket_icon" />
+
+        <TextView
+            android:id="@+id/txtViewTime1"
+            android:layout_width='wrap_content'
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/imgViewTurn1"
+            android:layout_toRightOf="@+id/imgViewTurn1"
+            android:text="Turn's Time:"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAgainst1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_toEndOf="@+id/imgViewTurn1"
+            android:layout_toRightOf="@+id/imgViewTurn1"
+            android:text="Your turn is against:"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/deleteImg"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_delete" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

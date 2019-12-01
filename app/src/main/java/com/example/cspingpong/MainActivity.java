@@ -3,6 +3,7 @@ package com.example.cspingpong;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.github.florent37.expansionpanel.ExpansionLayout;
 import com.maxproj.calendarpicker.Builder;
 import com.maxproj.calendarpicker.Models.YearMonthDay;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -36,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private NumberPicker hourPicker;
     private TextView welcomePlayerTxt;
     private NameDialog nameDialog;
-    Button dateButton;
+    private Button dateButton;
+    private Button myTurnsBtn;
 
 //    Button test;
 
@@ -74,6 +77,13 @@ public class MainActivity extends AppCompatActivity {
 //                test.setBackgroundColor(getResources().getColor(R.color.apple));
 //            }
 //        });
+    }
+
+    public void moveToMyTurnsActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(),MyTurnsActivity.class);
+        intent.putExtra("username", this.username);
+//        intent.putExtra("server", (Serializable) this.server);
+        startActivity(intent);
     }
 
     private void updateHeaders() {
@@ -164,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
         hourPicker = findViewById(R.id.hour_picker);
 
         dateButton = findViewById(R.id.dateButton);
+
+        myTurnsBtn = findViewById(R.id.savedTurnBtn);
 
         welcomePlayerTxt = findViewById(R.id.welcomePlayerTxt);
 
