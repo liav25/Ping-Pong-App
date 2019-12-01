@@ -7,6 +7,8 @@
     <string name="vs_text">vs.</string>
     <string name="date_button_text">%1$d / %2$d / %3$d</string>
     <string name="date_button_init_text">Today</string>
+    <string name="join_message">Your turn was saved. Click again to cancel</string>
+    <string name="join_twice_message">You can\'t play against yourself ;)</string>
 
     <string-array name="header_times">
         <item>%d:00</item>

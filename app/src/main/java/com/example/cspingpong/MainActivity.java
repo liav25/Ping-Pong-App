@@ -257,14 +257,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (chosenGame.addPlayer(username)) {
             joinButton.setText(username);
-            String message = "Your turn was saved.\nClick again to cancel";
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.join_message), Toast.LENGTH_LONG).show();
         } else if (joinButton.getText().toString().equals(username)) {
-            chosenGame.removePlayer(username);
             joinButton.setText(R.string.join_button_init_text);
+            chosenGame.removePlayer(username);
         } else {
-            String message = "You can't play against yourself ;)";
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.join_twice_message), Toast.LENGTH_SHORT).show();
         }
         updateHeaderIcons();
     }
@@ -304,7 +302,6 @@ public class MainActivity extends AppCompatActivity {
             joinButton.setClickable(true);
         } else {
             joinButton.setText(playerName);
-            joinButton.setBackgroundColor(getResources().getColor(R.color.apple));
             joinButton.setClickable(false);
 
         }
