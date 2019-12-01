@@ -52,7 +52,8 @@
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@drawable/savedturnimg" />
+            android:background="@drawable/savedturnimg"
+            android:onClick="moveToMyTurnsActivity" />
 
 
     </RelativeLayout>
