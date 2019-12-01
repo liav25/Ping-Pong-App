@@ -257,9 +257,11 @@ public class MainActivity extends AppCompatActivity {
         Game chosenGame = server.getGame(selectedDate, time);
 
         if (chosenGame.addPlayer(username)) {
+            joinButton.setBackgroundColor(getResources().getColor(R.color.apple));
             joinButton.setText(username);
             Toast.makeText(this, getString(R.string.join_message), Toast.LENGTH_SHORT).show();
         } else if (joinButton.getText().toString().equals(username)) {
+            joinButton.setBackgroundColor(getResources().getColor(R.color.orange));
             joinButton.setText(R.string.join_button_init_text);
             chosenGame.removePlayer(username);
         } else {
@@ -299,9 +301,11 @@ public class MainActivity extends AppCompatActivity {
             joinButton.setText(R.string.join_button_init_text);
             joinButton.setClickable(true);
         } else if (username.equals(playerName)) {
+            joinButton.setBackgroundColor(getResources().getColor(R.color.apple));
             joinButton.setText(playerName);
             joinButton.setClickable(true);
         } else {
+            joinButton.setBackgroundColor(getResources().getColor(R.color.com_maxproj_calendarpicker_transparent));
             joinButton.setText(playerName);
             joinButton.setClickable(false);
 
