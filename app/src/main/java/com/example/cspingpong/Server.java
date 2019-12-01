@@ -143,6 +143,24 @@ class Server {
     }
 
     /**
+     * Returns an ArrayList of Games of a given player.
+     * @param player the player name to get games of
+     * @return an ArrayList of games of all games where player plays
+     */
+    ArrayList<Game> getPlayerAgenda(String player){
+        ArrayList<Game> game_slots = new ArrayList<>();
+        if (player == null){
+            return game_slots;
+        }
+        for (Game g : this.gameList){
+            if(player.equals(g.getPlayer1()) || player.equals(g.getPlayer2())){
+                game_slots.add(g);
+            }
+        }
+        return game_slots;
+    }
+
+    /**
      * Deprecated xD ----> I mean that "frontend" might prefer working with getDayAgenda instead
      * Gets a list of games in a given day
      *
