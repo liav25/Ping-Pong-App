@@ -5,27 +5,27 @@ import android.os.Parcelable;
 
 public class Game implements Parcelable {
 
-    private Server server;
+//    private Server server;
     private int date;
     private int time;
     private String player1;
     private String player2;
 
     Game(Server server, int date, int time) {
-        this.server = server;
+//        this.server = server;
         this.date = date;
         this.time = time;
     }
 
     Game(Server server, int date, int time, String player1) {
-        this.server = server;
+//        this.server = server;
         this.date = date;
         this.time = time;
         this.player1 = player1;
     }
 
     Game(Server server, int date, int time, String player1, String player2) {
-        this.server = server;
+//        this.server = server;
         this.date = date;
         this.time = time;
         this.player1 = player1;
@@ -55,8 +55,24 @@ public class Game implements Parcelable {
         return this.date;
     }
 
+    String getDateString() {
+        int day, month, year;
+        day = date / 1000000;
+        month = (date - day) / 10000;
+        year = date - day - month;
+
+        return day + " / " + month + " / " + year;
+    }
+
     int getTime() {
         return this.time;
+    }
+
+    String getTimeString() {
+        int hour, offset;
+        hour = time / Server.INTERVAL;
+        offset = time - hour;
+        return hour + ":" + offset;
     }
 
     String getPlayer1() {
@@ -113,9 +129,9 @@ public class Game implements Parcelable {
         }
         if (this.player1 == null) {
             this.player1 = player;
-            if (this.player2 == null) {
-                this.server.addGame(this);
-            }
+//            if (this.player2 == null) {
+//                this.server.addGame(this);
+//            }
         } else if (this.player2 == null) {
             this.player2 = player;
         } else return false;

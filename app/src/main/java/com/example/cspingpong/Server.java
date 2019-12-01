@@ -14,7 +14,7 @@ class Server {
     static final int MINUTES_IN_HOUR = 60;
     private static final int HOURS_IN_DAY = 24;
     static final int SLOT_TIME = 15; //Number of minutes for each slot. make sure it divides 60
-    //private Gson gson;
+//    private Gson gson;
 //    private String json;
 
     /**
@@ -40,9 +40,9 @@ class Server {
         addPlayer(date, 1230, "Yoni");
         addPlayer(date, 1300, "Avner");
         addPlayer(date, 1600, "Nir");
-        addPlayer(22122019, 1600, "Eyal");
-        addPlayer(22122019, 1200, "Liav");
-        addPlayer(22122019, 1200, "Ran");
+//        addPlayer(22122019, 1600, "Eyal");
+//        addPlayer(22122019, 1200, "Liav");
+//        addPlayer(22122019, 1200, "Ran");
         addPlayer(date, 1400, "Avner");
     }
 

@@ -259,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
         Button joinButton = (Button) view;
         Drawable bg = joinButton.getBackground();
         bg = DrawableCompat.wrap(bg);
+
         int time = selectedHour + timeOffset(joinButton.getId());
         Game chosenGame = server.getGame(selectedDate, time);
 
