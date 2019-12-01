@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     public void moveToMyTurnsActivity(View view) {
         Intent intent = new Intent(getApplicationContext(),MyTurnsActivity.class);
         intent.putExtra("username", this.username);
-//        intent.putExtra("server", (Serializable) this.server);
+        intent.putExtra("game_list", server.getPlayerAgenda(username));
         startActivity(intent);
     }
 
