@@ -49,9 +49,9 @@ public class NameDialog extends DialogFragment {
         getDialog().setTitle(title);
 
         // Show soft keyboard automatically and request focus to field
-        mEditText.requestFocus();
-        getDialog().getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+//        mEditText.requestFocus();
+//        getDialog().getWindow().setSoftInputMode(
+//                WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         // set so user cannot avoid entering input
         getDialog().setCanceledOnTouchOutside(false);
