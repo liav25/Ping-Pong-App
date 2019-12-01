@@ -1,6 +1,7 @@
 package com.example.cspingpong;
 
 import java.util.ArrayList;
+
 //import gson;
 
 /**
@@ -14,7 +15,7 @@ class Server {
     private static final int HOURS_IN_DAY = 24;
     static final int SLOT_TIME = 15; //Number of minutes for each slot. make sure it divides 60
     //private Gson gson;
-    private String json;
+//    private String json;
 
     /**
      * Creates a server object, tries to load data from file, if available.
@@ -144,16 +145,19 @@ class Server {
 
     /**
      * Returns an ArrayList of Games of a given player.
+     *
      * @param player the player name to get games of
      * @return an ArrayList of games of all games where player plays
      */
-    ArrayList<Game> getPlayerAgenda(String player){
+    ArrayList<Game> getPlayerAgenda(String player) {
         ArrayList<Game> game_slots = new ArrayList<>();
-        if (player == null){
+
+        if (player == null) {
             return game_slots;
         }
-        for (Game g : this.gameList){
-            if(player.equals(g.getPlayer1()) || player.equals(g.getPlayer2())){
+        for (Game g : this.gameList) {
+
+            if (player.equals(g.getPlayer1()) || player.equals(g.getPlayer2())) {
                 game_slots.add(g);
             }
         }

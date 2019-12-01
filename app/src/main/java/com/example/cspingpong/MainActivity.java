@@ -5,7 +5,6 @@ import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -74,9 +73,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void moveToMyTurnsActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(),MyTurnsActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MyTurnsActivity.class);
         intent.putExtra("username", this.username);
-        intent.putExtra("game_list", server.getPlayerAgenda(username));
+
+        intent.putParcelableArrayListExtra("game_list", server.getPlayerAgenda(username));
+
         startActivity(intent);
     }
 
@@ -262,14 +263,15 @@ public class MainActivity extends AppCompatActivity {
         Game chosenGame = server.getGame(selectedDate, time);
 
         if (chosenGame.addPlayer(username)) {
-            DrawableCompat.setTint(bg,getResources().getColor(R.color.apple));
+            DrawableCompat.setTint(bg, getResources().getColor(R.color.apple));
             joinButton.setText(username);
             Toast.makeText(this, getString(R.string.join_message), Toast.LENGTH_SHORT).show();
-        } else if (joinButton.getText().toString().equals(username)) {
 
-            DrawableCompat.setTint(bg,getResources().getColor(R.color.orange));
+        } else if (joinButton.getText().toString().equals(username)) {
+            DrawableCompat.setTint(bg, getResources().getColor(R.color.orange));
             joinButton.setText(R.string.join_button_init_text);
             chosenGame.removePlayer(username);
+
         } else {
             Toast.makeText(this, getString(R.string.join_twice_message), Toast.LENGTH_SHORT).show();
         }
@@ -305,17 +307,19 @@ public class MainActivity extends AppCompatActivity {
     private void updateJoinButton(Button joinButton, String playerName) {
         Drawable bg = joinButton.getBackground();
         bg = DrawableCompat.wrap(bg);
+
         if (playerName == null) {
             joinButton.setText(R.string.join_button_init_text);
-            DrawableCompat.setTint(bg,getResources().getColor(R.color.orange));
+            DrawableCompat.setTint(bg, getResources().getColor(R.color.orange));
             joinButton.setClickable(true);
-        } else if (username.equals(playerName)) {
 
-            DrawableCompat.setTint(bg,getResources().getColor(R.color.apple));
+        } else if (username.equals(playerName)) {
+            DrawableCompat.setTint(bg, getResources().getColor(R.color.apple));
             joinButton.setText(playerName);
             joinButton.setClickable(true);
+
         } else {
-            DrawableCompat.setTint(bg,getResources().getColor(R.color.com_maxproj_calendarpicker_transparent));
+            DrawableCompat.setTint(bg, getResources().getColor(R.color.com_maxproj_calendarpicker_transparent));
             joinButton.setText(playerName);
             joinButton.setClickable(false);
 

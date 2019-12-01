@@ -16,6 +16,8 @@ public class MyTurnsActivity extends AppCompatActivity {
 
     private TextView welcomePlayerTxt;
     private Button returnBtn;
+    private String username;
+    private ArrayList<Game> gameList;
 
     RecyclerView myTurnsRecyclerView;
     MyTurnAdapter myTurnAdapter;
@@ -29,10 +31,7 @@ public class MyTurnsActivity extends AppCompatActivity {
         myTurnsRecyclerView = findViewById(R.id.recyclerViewTurns);
         myTurnsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-
         welcomePlayerTxt = findViewById(R.id.welcomePlayerTxt);
-
 
         returnBtn = findViewById(R.id.returnBtn);
         returnBtn.setOnClickListener(new View.OnClickListener() {
@@ -43,51 +42,49 @@ public class MyTurnsActivity extends AppCompatActivity {
         });
 
         Intent incomingIntent = getIntent();
-        String username = incomingIntent.getStringExtra("username");
-        Server server = incomingIntent.getParcelableExtra("server");
+        username = incomingIntent.getStringExtra("username");
+        gameList = incomingIntent.getParcelableArrayListExtra("game_list");
+
         welcomePlayerTxt.setText(username +"'s Turns:");
 
         myTurnAdapter = new MyTurnAdapter(this, getMyList());
         myTurnsRecyclerView.setAdapter(myTurnAdapter);
-
     }
 
 
-    private ArrayList<MyTurnSlot> getMyList(){
-
-//        int length = server.length;
+    private ArrayList<MyTurnSlot> getMyList() {
         
         ArrayList<MyTurnSlot> turns = new ArrayList<>();
-        MyTurnSlot slot = new MyTurnSlot();
-        slot.setTurnTime("Turn's Time: 30.11.19 13:30");
-        slot.setTurnAgainst("Your turn is against: Nir");
-        slot.setSlotImage(R.drawable.two_racket_icon);
-        turns.add(slot);
 
-        slot = new MyTurnSlot();
-        slot.setTurnTime("Turn's Time: 1.12.19 12:00");
-        slot.setTurnAgainst("Your turn is against: No one");
-        slot.setSlotImage(R.drawable.single_racket_icon);
-        turns.add(slot);
+        for (Game game : gameList)
+        {
+            MyTurnSlot slot = new MyTurnSlot();
 
-        slot = new MyTurnSlot();
-        slot.setTurnTime("Turn's Time: 2.12.19 12:30");
-        slot.setTurnAgainst("Your turn is against: Avner");
-        slot.setSlotImage(R.drawable.two_racket_icon);
-        turns.add(slot);
+            slot.setTurnTime("Turn's Time: " + game.getDate() + " " + game.getTime());
 
-        slot = new MyTurnSlot();
-        slot.setTurnTime("Turn's Time: 2.12.19 14:00");
-        slot.setTurnAgainst("Your turn is against: No one");
-        slot.setSlotImage(R.drawable.single_racket_icon);
-        turns.add(slot);
+            if (game.getPlayer1().equals(username)) {
+                slot.setTurnAgainst("Your turn is against: " + game.getPlayer2());
+            }
+            else {
+                slot.setTurnAgainst("Your turn is against: " + game.getPlayer1());
+            }
 
-        slot = new MyTurnSlot();
-        slot.setTurnTime("Turn's Time: 3.12.19 14:30");
-        slot.setTurnAgainst("Your turn is against: Liav");
-        slot.setSlotImage(R.drawable.two_racket_icon);
-        turns.add(slot);
+            if (game.isFull()) {
+                slot.setSlotImage(R.drawable.two_racket_icon);
+            }
+            else {
+                slot.setSlotImage(R.drawable.single_racket_icon);
+            }
+
+            turns.add(slot);
+        }
+
+//        MyTurnSlot slot = new MyTurnSlot();
+//        slot.setTurnTime("Turn's Time: 30.11.19 13:30");
+//        slot.setTurnAgainst("Your turn is against: Nir");
+//        slot.setSlotImage(R.drawable.two_racket_icon);
+//        turns.add(slot);
+
         return turns;
-
     }
 }
