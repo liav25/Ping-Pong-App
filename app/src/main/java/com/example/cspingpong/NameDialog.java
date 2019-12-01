@@ -34,7 +34,7 @@ public class NameDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_name_dialog, container);
+        return inflater.inflate(R.layout.name_dialog_fragment, container);
     }
 
     @Override

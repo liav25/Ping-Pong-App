@@ -33,13 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private int selectedHour;
     private Server server;
     private String username;
-    private
-    NumberPicker hourPicker;
+    private NumberPicker hourPicker;
     private TextView welcomePlayerTxt;
     private NameDialog nameDialog;
     Button dateButton;
 
-    Button test;
+//    Button test;
 
     private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
     private TextView[] headerTexts = new TextView[GAMES_PER_HOUR];
@@ -69,12 +68,12 @@ public class MainActivity extends AppCompatActivity {
 
         launchNameDialog();
 
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                test.setBackgroundColor(getResources().getColor(R.color.apple));
-            }
-        });
+//        test.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                test.setBackgroundColor(getResources().getColor(R.color.apple));
+//            }
+//        });
     }
 
     private void updateHeaders() {
@@ -193,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         rightJoinButtons[2] = findViewById(R.id.join_button_right3);
         rightJoinButtons[3] = findViewById(R.id.join_button_right4);
 
-        test = findViewById(R.id.savedTurnBtn);
+//        test = findViewById(R.id.savedTurnBtn);
     }
 
     private void updateHeaderIcons() {
@@ -232,27 +231,29 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void joinButtonHandler(View view) {
-        Button joinButton = (Button) view;
-        int time = selectedHour;
-
-        switch (joinButton.getId()) {
-            case R.id.join_button_left1:
-            case R.id.join_button_right1:
-                break;
+    private int timeOffset(int buttonId) {
+        switch (buttonId) {
             case R.id.join_button_left2:
             case R.id.join_button_right2:
-                time += 15;
-                break;
+                return 15;
+
             case R.id.join_button_left3:
             case R.id.join_button_right3:
-                time += 30;
-                break;
+                return 30;
+
             case R.id.join_button_left4:
             case R.id.join_button_right4:
-                time += 45;
-                break;
+                return 45;
+
+            default:
+                return 0;
         }
+    }
+
+    public void joinButtonHandler(View view) {
+        Button joinButton = (Button) view;
+
+        int time = selectedHour + timeOffset(joinButton.getId());
         Game chosenGame = server.getGame(selectedDate, time);
 
         if (chosenGame.addPlayer(username)) {
