@@ -1,10 +1,13 @@
 package com.example.cspingpong;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -264,16 +267,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void joinButtonHandler(View view) {
         Button joinButton = (Button) view;
-
+        Drawable bg = joinButton.getBackground();
+        bg = DrawableCompat.wrap(bg);
         int time = selectedHour + timeOffset(joinButton.getId());
         Game chosenGame = server.getGame(selectedDate, time);
 
         if (chosenGame.addPlayer(username)) {
-            joinButton.setBackgroundColor(getResources().getColor(R.color.apple));
+            DrawableCompat.setTint(bg,getResources().getColor(R.color.apple));
             joinButton.setText(username);
             Toast.makeText(this, getString(R.string.join_message), Toast.LENGTH_SHORT).show();
         } else if (joinButton.getText().toString().equals(username)) {
-            joinButton.setBackgroundColor(getResources().getColor(R.color.orange));
+
+            DrawableCompat.setTint(bg,getResources().getColor(R.color.orange));
             joinButton.setText(R.string.join_button_init_text);
             chosenGame.removePlayer(username);
         } else {
@@ -309,15 +314,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateJoinButton(Button joinButton, String playerName) {
+        Drawable bg = joinButton.getBackground();
+        bg = DrawableCompat.wrap(bg);
         if (playerName == null) {
             joinButton.setText(R.string.join_button_init_text);
             joinButton.setClickable(true);
         } else if (username.equals(playerName)) {
-            joinButton.setBackgroundColor(getResources().getColor(R.color.apple));
+
+            DrawableCompat.setTint(bg,getResources().getColor(R.color.apple));
             joinButton.setText(playerName);
             joinButton.setClickable(true);
         } else {
-            joinButton.setBackgroundColor(getResources().getColor(R.color.com_maxproj_calendarpicker_transparent));
+            DrawableCompat.setTint(bg,getResources().getColor(R.color.com_maxproj_calendarpicker_transparent));
             joinButton.setText(playerName);
             joinButton.setClickable(false);
 
