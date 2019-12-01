@@ -50,7 +50,7 @@ public class MyTurnsActivity extends AppCompatActivity {
         myTurnAdapter = new MyTurnAdapter(this, getMyList());
         myTurnsRecyclerView.setAdapter(myTurnAdapter);
     }
-    
+
     private ArrayList<MyTurnSlot> getMyList() {
         
         ArrayList<MyTurnSlot> turns = new ArrayList<>();
@@ -59,13 +59,13 @@ public class MyTurnsActivity extends AppCompatActivity {
         {
             MyTurnSlot slot = new MyTurnSlot();
 
-            slot.setTurnTime("Turn's Time: " + game.getDateString() + " " + game.getTimeString());
+            slot.setTurnTime(game.getDateString() + " at " + game.getTimeString());
 
             if (username.equals(game.getPlayer1())) {
-                slot.setTurnAgainst("Your turn is against: " + game.getPlayer2());
+                slot.setTurnAgainst("Playing against: " + game.getPlayer2());
             }
             else if (username.equals(game.getPlayer2())) {
-                slot.setTurnAgainst("Your turn is against: " + game.getPlayer1());
+                slot.setTurnAgainst("Playing against: " + game.getPlayer1());
             }
             else {
                 slot.setTurnAgainst("Waiting for an opponent");
