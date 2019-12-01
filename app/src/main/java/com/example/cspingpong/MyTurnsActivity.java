@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
 public class MyTurnsActivity extends AppCompatActivity {
 
     private TextView welcomePlayerTxt;

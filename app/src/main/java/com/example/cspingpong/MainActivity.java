@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int GAMES_PER_HOUR = Server.MINUTES_IN_HOUR / Server.SLOT_TIME;
     private static final int MIN_HOUR_PICK = 0;
     private static final int MAX_HOUR_PICK = 23;
+    private static final int MAX_USERNAME_LEN = 9;
 
     private int selectedDate;
     private int selectedHour;
@@ -282,13 +283,19 @@ public class MainActivity extends AppCompatActivity {
     public void confirmName(View view) {
         // todo - do something if name is empty
         EditText tx = nameDialog.mEditText;
-        username = tx.getText().toString().toLowerCase();
-        username = username.substring(0, 1).toUpperCase() + username.substring(1);
+        username = tx.getText().toString();
 
         if (username.length() == 0) {
             tx.getBackground().setTint(Color.RED);
-        } else {
+        }
+        else if (username.length() > MAX_USERNAME_LEN)
+        {
+            Toast.makeText(this, getString(R.string.name_too_long_message), Toast.LENGTH_SHORT).show();
+        }
+        else {
             nameDialog.dismiss();
+            username = username.toLowerCase();
+            username = username.substring(0, 1).toUpperCase() + username.substring(1);
             updateExpansions();
             welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
         }
