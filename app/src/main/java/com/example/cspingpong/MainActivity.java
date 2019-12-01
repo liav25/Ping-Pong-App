@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (chosenGame.addPlayer(username)) {
             joinButton.setText(username);
-            Toast.makeText(this, getString(R.string.join_message), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.join_message), Toast.LENGTH_SHORT).show();
         } else if (joinButton.getText().toString().equals(username)) {
             joinButton.setText(R.string.join_button_init_text);
             chosenGame.removePlayer(username);
