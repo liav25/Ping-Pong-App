@@ -318,6 +318,7 @@ public class MainActivity extends AppCompatActivity {
         bg = DrawableCompat.wrap(bg);
         if (playerName == null) {
             joinButton.setText(R.string.join_button_init_text);
+            DrawableCompat.setTint(bg,getResources().getColor(R.color.orange));
             joinButton.setClickable(true);
         } else if (username.equals(playerName)) {
 
