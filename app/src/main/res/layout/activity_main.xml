@@ -27,7 +27,7 @@
             android:layout_marginBottom="7dp"
             android:layout_toStartOf="@+id/pingPongPlayerImg"
             android:fontFamily="@font/roboto"
-            android:text="@string/init_welcome_text"
+            android:text="Hi, "
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             app:autoSizeMaxTextSize="30sp"

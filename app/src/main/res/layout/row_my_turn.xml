@@ -51,7 +51,7 @@
             android:text="Your turn is against:"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:fontFamily="@font/sans-serif"/>
+            android:fontFamily="@font/roboto"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
