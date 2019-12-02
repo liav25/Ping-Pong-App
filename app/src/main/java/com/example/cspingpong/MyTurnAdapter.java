@@ -1,5 +1,6 @@
 package com.example.cspingpong;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -31,7 +32,7 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyTurnHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyTurnHolder holder, final int position) {
 
         holder.mTextView1.setText(myTurns.get(position).getTurnTime());
         holder.mTextView2.setText(myTurns.get(position).getTurnAgainst());
@@ -41,7 +42,13 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder> {
             public void onClick(View v) {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+                if(myTurns.get(position).getTurnAgainst().equals("Waiting for an opponent")){
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, "Play PingPong against me in: "+myTurns.get(position).getTurnTime());
+                }
+                else{
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, "Watch me play PingPong against "+ myTurns.get(position).getTurnAgainst().substring(17) + " in: " + myTurns.get(position).getTurnTime());
+                }
+
                 sendIntent.setType("text/plain");
 
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
