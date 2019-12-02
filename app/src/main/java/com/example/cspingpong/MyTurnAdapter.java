@@ -1,6 +1,7 @@
 package com.example.cspingpong;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,18 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder> {
         holder.mTextView1.setText(myTurns.get(position).getTurnTime());
         holder.mTextView2.setText(myTurns.get(position).getTurnAgainst());
         holder.mImageView.setImageResource(myTurns.get(position).getSlotImage());
+        holder.mShareImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                c.startActivity(shareIntent);
+            }
+        });
 
     }
 

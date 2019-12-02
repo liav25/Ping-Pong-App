@@ -49,15 +49,33 @@
             android:textSize="13dp"
             android:fontFamily="@font/alef"
             android:textStyle="bold|italic"/>
-
-        <ImageView
-            android:id="@+id/deleteImg"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
             android:layout_marginEnd="6dp"
-            android:src="@drawable/ic_delete" />
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageView
+                android:id="@+id/shareImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="6dp"
+
+                android:src="@drawable/ic_share" />
+
+            <ImageView
+                android:id="@+id/deleteImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="6dp"
+
+                android:src="@drawable/ic_delete" />
+
+        </LinearLayout>
 
 
     </RelativeLayout>

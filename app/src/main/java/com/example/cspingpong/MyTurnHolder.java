@@ -13,6 +13,7 @@ public class MyTurnHolder extends RecyclerView.ViewHolder {
     public TextView mTextView1;
     public TextView mTextView2;
     public ImageView mDeleteImage;
+    public ImageView mShareImage;
 
     public MyTurnHolder(@NonNull View itemView) {
         super(itemView);
@@ -20,6 +21,7 @@ public class MyTurnHolder extends RecyclerView.ViewHolder {
         this.mTextView1 = itemView.findViewById(R.id.txtViewTime1);
         this.mTextView2 = itemView.findViewById(R.id.txtAgainst1);
         this.mDeleteImage = itemView.findViewById(R.id.deleteImg);
+        this.mShareImage = itemView.findViewById(R.id.shareImg);
 
     }
 }

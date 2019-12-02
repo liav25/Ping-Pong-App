@@ -327,7 +327,7 @@ public class MainActivity extends AppCompatActivity {
             joinButton.setClickable(true);
 
         } else {
-            DrawableCompat.setTint(bg, getResources().getColor(R.color.com_maxproj_calendarpicker_transparent));
+            DrawableCompat.setTint(bg, Color.TRANSPARENT);
             joinButton.setText(playerName);
             joinButton.setClickable(false);
 
