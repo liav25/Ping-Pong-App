@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -50,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
     private Button[] leftJoinButtons = new Button[GAMES_PER_HOUR];
     private Button[] rightJoinButtons = new Button[GAMES_PER_HOUR];
 
+    private SharedPreferences sharedPref;
+    private SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +76,23 @@ public class MainActivity extends AppCompatActivity {
 
         updateHeaders();
 
-        launchNameDialog();
+
+        sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
+
+        username = sharedPref.getString(getString(R.string.username),null);
+
+        if(username==null){
+            launchNameDialog();
+        }
+        else{
+            updateExpansions();
+            welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
+        }
+
+
+
+
     }
 
     public void moveToMyTurnsActivity(View view) {
@@ -296,6 +318,8 @@ public class MainActivity extends AppCompatActivity {
             nameDialog.dismiss();
             username = username.toLowerCase();
             username = username.substring(0, 1).toUpperCase() + username.substring(1);
+            editor.putString(getString(R.string.username),username);
+            editor.commit();
             updateExpansions();
             welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
         }
