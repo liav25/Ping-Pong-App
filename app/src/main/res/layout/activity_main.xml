@@ -21,14 +21,15 @@
             android:layout_below="@id/savedTurnBtn"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="7dp"
             android:layout_toStartOf="@+id/pingPongPlayerImg"
-            android:fontFamily="@font/alef"
+            android:fontFamily="@font/roboto"
             android:text="@string/init_welcome_text"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
-            android:textStyle="bold|italic"
             app:autoSizeMaxTextSize="30sp"
             app:autoSizeMinTextSize="26sp"
             app:autoSizeStepGranularity="2sp"
@@ -513,12 +514,11 @@
                 android:layout_marginStart="20dp"
                 android:background="@drawable/daysbtnimg"
                 android:backgroundTint="@color/primary_blue"
-                android:fontFamily="@font/alef"
+                android:fontFamily="@font/roboto"
                 android:onClick="selectDate"
                 android:text="@string/date_button_init_text"
                 android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textStyle="bold|italic" />
+                android:textColor="@color/white" />
 
             <ImageView
                 android:layout_width="60dp"
@@ -536,11 +536,11 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/alef"
+                android:fontFamily="@font/roboto"
                 android:text="@string/pick_turn_text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
-                android:textStyle="bold|italic"
                 tools:ignore="RtlHardcoded" />
 
         </RelativeLayout>
