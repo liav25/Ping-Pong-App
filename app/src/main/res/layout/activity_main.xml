@@ -27,7 +27,7 @@
             android:layout_marginBottom="7dp"
             android:layout_toStartOf="@+id/pingPongPlayerImg"
             android:fontFamily="@font/roboto"
-            android:text="@string/init_welcome_text"
+            android:text="Hi, "
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             app:autoSizeMaxTextSize="30sp"
@@ -126,13 +126,11 @@
 
                     <ImageView
                         android:id="@+id/racket_icon1"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="left|center_vertical"
-                        android:layout_marginBottom="10dp"
-                        android:alpha="0.1"
-                        android:rotation="0.0"
-                        android:src="@drawable/two_racket_icon" />
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/lock" />
 
 
                 </com.github.florent37.expansionpanel.ExpansionHeader>
@@ -191,6 +189,9 @@
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp"
 />
+
+
+
                     </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -226,15 +227,15 @@
                         android:textSize="16sp"
                         android:textColor="@color/colorPrimary" />
 
+
+
                     <ImageView
                         android:id="@+id/racket_icon2"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="left|center_vertical"
-                        android:layout_marginBottom="10dp"
-                        android:alpha="0.1"
-                        android:rotation="0.0"
-                        android:src="@drawable/two_racket_icon" />
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/lock" />
 
 
                 </com.github.florent37.expansionpanel.ExpansionHeader>
@@ -330,15 +331,14 @@
                         android:textSize="16sp"
                         android:textColor="@color/colorPrimary" />
 
+
                     <ImageView
                         android:id="@+id/racket_icon3"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="left|center_vertical"
-                        android:layout_marginBottom="10dp"
-                        android:alpha="0.1"
-                        android:rotation="0.0"
-                        android:src="@drawable/two_racket_icon" />
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/lock" />
 
                 </com.github.florent37.expansionpanel.ExpansionHeader>
 
@@ -432,15 +432,14 @@
                         android:textSize="16sp"
                         android:textColor="@color/colorPrimary" />
 
+
                     <ImageView
                         android:id="@+id/racket_icon4"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="left|center_vertical"
-                        android:layout_marginBottom="10dp"
-                        android:alpha="0.1"
-                        android:rotation="0.0"
-                        android:src="@drawable/two_racket_icon" />
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/lock" />
                 </com.github.florent37.expansionpanel.ExpansionHeader>
 
 

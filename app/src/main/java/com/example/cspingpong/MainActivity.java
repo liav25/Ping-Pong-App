@@ -229,15 +229,20 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
                 case 0:
-                    headerRacketIcons[i].setImageResource(R.drawable.two_racket_icon);
+                    headerRacketIcons[i].setImageResource(R.drawable.lock);
                     headerRacketIcons[i].setVisibility(View.VISIBLE);
+                    headerTexts[i].setTextColor(getResources().getColor(R.color.GREY));
                     break;
                 case 1:
-                    headerRacketIcons[i].setImageResource(R.drawable.single_racket_icon);
+                    headerRacketIcons[i].setImageResource(R.drawable.matka);
                     headerRacketIcons[i].setVisibility(View.VISIBLE);
+                    headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
+
                     break;
                 case 2:
                     headerRacketIcons[i].setVisibility(View.INVISIBLE);
+                    headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
+
                     break;
             }
         }

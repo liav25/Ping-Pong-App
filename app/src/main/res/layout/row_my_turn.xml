@@ -12,14 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/header_bg"
-        android:backgroundTint="#E6F3F8"
+        android:backgroundTint="#FCFCFC"
         android:padding="12dp">
+
 
         <ImageView
             android:id="@+id/imgViewTurn1"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:padding="2dp"
+            android:tint="@color/primary_blue"
+            android:rotation="10"
             app:srcCompat="@drawable/two_racket_icon"
             android:layout_alignParentStart="true" />
 
@@ -33,8 +36,8 @@
             android:layout_toRightOf="@+id/imgViewTurn1"
             android:text="Turn's Time:"
             android:textSize="15dp"
-            android:fontFamily="@font/alef"
-            android:textStyle="bold|italic" />
+            android:fontFamily="@font/roboto"
+ />
 
         <TextView
             android:id="@+id/txtAgainst1"
@@ -46,9 +49,9 @@
             android:layout_toEndOf="@+id/imgViewTurn1"
             android:layout_toRightOf="@+id/imgViewTurn1"
             android:text="Your turn is against:"
-            android:textSize="13dp"
-            android:fontFamily="@font/alef"
-            android:textStyle="bold|italic"/>
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,21 +59,26 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             >
+
             <ImageView
                 android:id="@+id/deleteImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="6dp"
-                android:tint="#FF0000"
-                android:src="@drawable/ic_delete_foreground" />
+                android:layout_marginRight="15dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:src="@drawable/ic_delete_foreground"
+                android:tint="#c4c4c4" />
 
             <ImageView
                 android:id="@+id/shareImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:scaleY="1.2"
+                android:scaleX="1.2"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="6dp"
+                android:tint="#c4c4c4"
                 android:src="@drawable/ic_share_foreground" />
 
 
