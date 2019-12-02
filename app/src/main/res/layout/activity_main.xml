@@ -120,8 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/alef"
-                        android:textStyle="bold|italic"
+                        android:fontFamily="@font/roboto"
                         android:textSize="16sp"
                         android:textColor="@color/colorPrimary" />
 
@@ -172,10 +171,10 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="30dp"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:text="@string/vs_text"
-                            android:textSize="20sp"
-                            android:textStyle="bold|italic" />
+                            android:textSize="14sp"
+ />
 
                         <Button
                             android:id="@+id/join_button_right1"
@@ -223,8 +222,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/alef"
-                        android:textStyle="bold|italic"
+                        android:fontFamily="@font/roboto"
                         android:textSize="16sp"
                         android:textColor="@color/colorPrimary" />
 
@@ -276,10 +274,10 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="30dp"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:text="@string/vs_text"
-                            android:textSize="20sp"
-                            android:textStyle="bold|italic" />
+                            android:textSize="14sp"
+ />
 
                         <Button
                             android:id="@+id/join_button_right2"
@@ -328,8 +326,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/alef"
-                        android:textStyle="bold|italic"
+                        android:fontFamily="@font/roboto"
                         android:textSize="16sp"
                         android:textColor="@color/colorPrimary" />
 
@@ -380,10 +377,10 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="30dp"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:text="@string/vs_text"
-                            android:textSize="20sp"
-                            android:textStyle="bold|italic" />
+                            android:textSize="14sp"
+/>
 
                         <Button
                             android:id="@+id/join_button_right3"
@@ -431,8 +428,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/alef"
-                        android:textStyle="bold|italic"
+                        android:fontFamily="@font/roboto"
                         android:textSize="16sp"
                         android:textColor="@color/colorPrimary" />
 
@@ -482,10 +478,10 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="32dp"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:text="@string/vs_text"
-                            android:textSize="20sp"
-                            android:textStyle="bold|italic" />
+                            android:textSize="14sp"
+ />
 
                         <Button
                             android:id="@+id/join_button_right4"
@@ -518,12 +514,12 @@
                 android:layout_marginStart="35dp"
                 android:background="@drawable/daysbtnimg"
                 android:backgroundTint="@color/primary_blue"
-                android:fontFamily="@font/alef"
+                android:fontFamily="@font/roboto"
                 android:onClick="selectDate"
                 android:text="@string/date_button_init_text"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textStyle="bold|italic" />
+/>
 
             <ImageView
                 android:layout_width="60dp"
