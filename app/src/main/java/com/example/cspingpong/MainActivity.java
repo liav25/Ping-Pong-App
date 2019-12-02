@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         updateHeaders();
 
         launchNameDialog();
+
+
     }
 
     public void moveToMyTurnsActivity(View view) {
@@ -158,8 +161,8 @@ public class MainActivity extends AppCompatActivity {
         String[] headerTimes = getResources().getStringArray(R.array.header_times);
 
         for (int i = 0; i < GAMES_PER_HOUR; i++) {
-
             headerTexts[i].setText(String.format(headerTimes[i], hourPicker.getValue()));
+            headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
         }
     }
 
@@ -210,16 +213,20 @@ public class MainActivity extends AppCompatActivity {
                     headerRacketIcons[i].setImageResource(R.drawable.lock);
                     headerRacketIcons[i].setVisibility(View.VISIBLE);
                     headerTexts[i].setTextColor(getResources().getColor(R.color.GREY));
+                    headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
+
                     break;
                 case 1:
                     headerRacketIcons[i].setImageResource(R.drawable.matka);
                     headerRacketIcons[i].setVisibility(View.VISIBLE);
                     headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
+                    headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
 
                     break;
                 case 2:
                     headerRacketIcons[i].setVisibility(View.INVISIBLE);
                     headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
+                    headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
 
                     break;
             }
