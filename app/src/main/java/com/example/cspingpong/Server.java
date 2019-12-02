@@ -39,7 +39,12 @@ class Server {
         addPlayer(date, 1215, "Ran");
         addPlayer(date, 1230, "Yoni");
         addPlayer(date, 1300, "Avner");
-        addPlayer(date, 1600, "Nir");
+        addPlayer(date, 1500, "Nir");
+        addPlayer(date, 1515, "Ran");
+        addPlayer(date, 1515, "Nir");
+        addPlayer(date, 1645, "Ran");
+        addPlayer(date, 1645, "Nir");
+        addPlayer(date, 1615, "Nir");
 //        addPlayer(22122019, 1600, "Eyal");
 //        addPlayer(22122019, 1200, "Liav");
 //        addPlayer(22122019, 1200, "Ran");
