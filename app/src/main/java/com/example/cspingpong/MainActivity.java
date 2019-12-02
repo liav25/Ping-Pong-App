@@ -109,11 +109,8 @@ public class MainActivity extends AppCompatActivity {
 
         intent.putExtra("game_list", server.getPlayerAgenda(username));
 
-        Bundle bundle = ActivityOptionsCompat.makeCustomAnimation(this,
-                android.R.anim.fade_in, android.R.anim.fade_out).toBundle();
-        startActivity(intent, bundle);
-
         startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     private void updateHeaders() {

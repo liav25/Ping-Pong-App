@@ -18,11 +18,11 @@
             android:id="@+id/welcomePlayerTxt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/savedTurnBtn"
+            android:layout_below="@id/saved_layout"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="14dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="7dp"
             android:layout_toStartOf="@+id/pingPongPlayerImg"
@@ -48,20 +48,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/pingpongman" />
-
+<LinearLayout
+    android:id="@+id/saved_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
         <Button
             android:id="@+id/savedTurnBtn"
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-
-            android:background="@drawable/ic_list"
-            android:backgroundTint="@color/white"
+            android:padding="5dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_star_black_24dp"
             android:onClick="moveToMyTurnsActivity" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Games"
+        android:textSize="10sp"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FCFCFC"
+        />
+</LinearLayout>
 
     </RelativeLayout>
 

@@ -39,11 +39,14 @@ public class MyTurnsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                overridePendingTransition(0, android.R.anim.fade_out);
+
             }
         });
 
         Intent incomingIntent = getIntent();
         username = incomingIntent.getStringExtra("username");
+
         gameList = (ArrayList<Game>) getIntent().getExtras().getSerializable("game_list");
 
 
@@ -79,5 +82,11 @@ public class MyTurnsActivity extends AppCompatActivity {
         }
 
         return turns;
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        overridePendingTransition(0, android.R.anim.fade_out);
     }
 }
