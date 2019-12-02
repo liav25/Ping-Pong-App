@@ -1,6 +1,7 @@
 package com.example.cspingpong;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.FragmentManager;
 
@@ -108,6 +109,10 @@ public class MainActivity extends AppCompatActivity {
 
         intent.putExtra("game_list", server.getPlayerAgenda(username));
 
+        Bundle bundle = ActivityOptionsCompat.makeCustomAnimation(this,
+                android.R.anim.fade_in, android.R.anim.fade_out).toBundle();
+        startActivity(intent, bundle);
+
         startActivity(intent);
     }
 
@@ -136,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         hourPicker.setValue(calendar.get(Calendar.HOUR_OF_DAY));
         selectedHour = hourPicker.getValue() * Server.INTERVAL;
 
-        // fixes default hour being invisible
+        // fixes default hour being invisibleArrayList<MyClass> list = (ArrayList<MyClass>)getIntent().getExtras()getSerializable("myClassList");
         View firstItem = hourPicker.getChildAt(0);
         if (firstItem != null) {
             firstItem.setVisibility(View.INVISIBLE);
@@ -232,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateHeaderIcons() {
         ArrayList<Game> games = server.getHourAgenda(selectedDate, selectedHour);
-
+        server.saveState();
         for (int i = 0; i < 4; i++) {
             switch (games.get(i).empty_slots()) {
                 case 0:
@@ -305,6 +310,7 @@ public class MainActivity extends AppCompatActivity {
         if (chosenGame.addPlayer(username)) {
             DrawableCompat.setTint(bg, getResources().getColor(R.color.apple));
             joinButton.setText(username);
+            server.saveState();
             Toast.makeText(this, getString(R.string.join_message), Toast.LENGTH_SHORT).show();
 
         } else if (joinButton.getText().toString().equals(username)) {

@@ -235,6 +235,8 @@ class Server implements java.io.Serializable{
      * Saves the server state in a file, server_data.ser
      */
     void saveState(){
+        System.out.println(System.getProperty("user.dir")+"/server_data.ser");
+
         try {
             FileOutputStream fileOut =
                     new FileOutputStream(System.getProperty("user.dir")+"/server_data.ser");
@@ -244,6 +246,9 @@ class Server implements java.io.Serializable{
             fileOut.close();
         } catch (IOException i) {
             i.printStackTrace();
+            System.out.println("!!!!!!!!!!!!!!");
+            System.out.println(System.getProperty("user.dir")+"/server_data.ser");
+
         }
     }
 
