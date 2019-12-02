@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
         updateHeaders();
 
-        launchNameDialog();
 
         sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
@@ -91,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
             updateExpansions();
             welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
         }
+
+//        launchNameDialog();
 
 
 
