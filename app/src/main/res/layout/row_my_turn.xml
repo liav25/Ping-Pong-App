@@ -56,6 +56,14 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             >
+            <ImageView
+                android:id="@+id/deleteImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="6dp"
+                android:tint="#FF0000"
+                android:src="@drawable/ic_delete_foreground" />
 
             <ImageView
                 android:id="@+id/shareImg"
@@ -63,17 +71,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="6dp"
+                android:src="@drawable/ic_share_foreground" />
 
-                android:src="@drawable/ic_share" />
 
-            <ImageView
-                android:id="@+id/deleteImg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="6dp"
-
-                android:src="@drawable/ic_delete" />
 
         </LinearLayout>
 
