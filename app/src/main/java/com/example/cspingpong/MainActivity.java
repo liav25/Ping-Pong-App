@@ -256,12 +256,13 @@ public class MainActivity extends AppCompatActivity {
                     headerRacketIcons[i].setVisibility(View.VISIBLE);
                     headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
 
-                    if(games.get(i).getPlayer1().equals(username) || games.get(i).getPlayer2().equals(username)){
+                    if( ( (games.get(i).getPlayer1()!=null)&&(games.get(i).getPlayer1().equals(username))
+                    )|| ( (games.get(i).getPlayer2()!=null)&&(games.get(i).getPlayer2().equals(username)) )  ){
                         headerRacketIcons[i].setImageResource(R.drawable.ic_star_half_black_24dp);
                     }
                     else{
                     headerRacketIcons[i].setImageResource(R.drawable.matka);
-                }
+                    }
                     break;
                 case 2:
                     headerRacketIcons[i].setVisibility(View.INVISIBLE);
@@ -391,7 +392,6 @@ public class MainActivity extends AppCompatActivity {
         server.addPlayer(date, 1200, "Nir");
         server.addPlayer(date, 1200, "Eyal");
         server.addPlayer(date, 1215, "Liav");
-        server.addPlayer(date, 1215, "Ran");
         server.addPlayer(date, 1230, "Yoni");
         server.addPlayer(date, 1300, "Avner");
         server.addPlayer(date, 1500, "Nir");
