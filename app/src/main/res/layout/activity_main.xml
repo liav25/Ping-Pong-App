@@ -155,12 +155,12 @@
                             android:backgroundTint="@color/orange"
                             android:clickable="true"
                             android:focusable="true"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp"
-                            android:textStyle="bold|italic" />
+/>
 
                         <TextView
                             android:id="@+id/center_expansion_text1"
@@ -182,12 +182,12 @@
                             android:backgroundTint="@color/orange"
                             android:clickable="true"
                             android:focusable="true"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp"
-                            android:textStyle="bold|italic" />
+/>
                     </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -259,12 +259,12 @@
                             android:backgroundTint="@color/orange"
                             android:clickable="true"
                             android:focusable="true"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp"
-                            android:textStyle="bold|italic" />
+/>
 
                         <TextView
                             android:id="@+id/center_expansion_text2"
@@ -286,13 +286,13 @@
                             android:backgroundTint="@color/orange"
                             android:clickable="true"
                             android:focusable="true"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
 
                             android:textSize="12sp"
-                            android:textStyle="bold|italic" />
+/>
                     </RelativeLayout>
 
 
@@ -363,12 +363,12 @@
                             android:backgroundTint="@color/orange"
                             android:clickable="true"
                             android:focusable="true"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp"
-                            android:textStyle="bold|italic" />
+ />
 
                         <TextView
                             android:id="@+id/center_expansion_text3"
@@ -390,12 +390,12 @@
                             android:backgroundTint="@color/orange"
                             android:clickable="true"
                             android:focusable="true"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp"
-                            android:textStyle="bold|italic" />
+/>
                     </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -465,12 +465,12 @@
                             android:backgroundTint="@color/orange"
                             android:clickable="true"
                             android:focusable="true"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp"
-                            android:textStyle="bold|italic" />
+ />
 
                         <TextView
                             android:id="@+id/center_expansion_text4"
@@ -493,12 +493,12 @@
                             android:backgroundTint="@color/orange"
                             android:clickable="true"
                             android:focusable="true"
-                            android:fontFamily="@font/alef"
+                            android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12sp"
-                            android:textStyle="bold|italic" />
+/>
                     </RelativeLayout>
 
                 </com.github.florent37.expansionpanel.ExpansionLayout>
@@ -514,11 +514,12 @@
                 android:layout_marginStart="20dp"
                 android:background="@drawable/daysbtnimg"
                 android:backgroundTint="@color/primary_blue"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/alef"
                 android:onClick="selectDate"
                 android:text="@string/date_button_init_text"
                 android:textAlignment="center"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textStyle="bold|italic" />
 
             <ImageView
                 android:layout_width="60dp"
@@ -536,7 +537,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="sans-serif-medium"
                 android:text="@string/pick_turn_text"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#FFFFFF"
