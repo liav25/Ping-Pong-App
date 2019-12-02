@@ -46,7 +46,7 @@ public class MyTurnsActivity extends AppCompatActivity {
         username = incomingIntent.getStringExtra("username");
         gameList = incomingIntent.getParcelableArrayListExtra("game_list");
 
-        welcomePlayerTxt.setText(username +"'s Turns:");
+        welcomePlayerTxt.setText("My Turns:");
 
         myTurnAdapter = new MyTurnAdapter(this, getMyList());
         myTurnsRecyclerView.setAdapter(myTurnAdapter);
