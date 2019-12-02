@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
         }
 
-//        launchNameDialog();
+        launchNameDialog();
 
 
 
