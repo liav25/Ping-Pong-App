@@ -235,27 +235,37 @@ public class MainActivity extends AppCompatActivity {
     private void updateHeaderIcons() {
         ArrayList<Game> games = server.getHourAgenda(selectedDate, selectedHour);
         server.saveState();
+
         for (int i = 0; i < 4; i++) {
+//            headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
             switch (games.get(i).empty_slots()) {
                 case 0:
-                    headerRacketIcons[i].setImageResource(R.drawable.lock);
-                    headerRacketIcons[i].setVisibility(View.VISIBLE);
-                    headerTexts[i].setTextColor(getResources().getColor(R.color.GREY));
-                    headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
+                    if(games.get(i).getPlayer1().equals(username) || games.get(i).getPlayer2().equals(username)){
+                        headerRacketIcons[i].setImageResource(R.drawable.ic_star_gray_24dp);
+                        headerRacketIcons[i].setVisibility(View.VISIBLE);
+                        headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
+                    }
+                    else {
+                        headerRacketIcons[i].setImageResource(R.drawable.lock);
+                        headerRacketIcons[i].setVisibility(View.VISIBLE);
+                        headerTexts[i].setTextColor(getResources().getColor(R.color.GREY));
+                    }
 
                     break;
                 case 1:
-                    headerRacketIcons[i].setImageResource(R.drawable.matka);
                     headerRacketIcons[i].setVisibility(View.VISIBLE);
                     headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
-                    headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
 
+                    if(games.get(i).getPlayer1().equals(username) || games.get(i).getPlayer2().equals(username)){
+                        headerRacketIcons[i].setImageResource(R.drawable.ic_star_half_black_24dp);
+                    }
+                    else{
+                    headerRacketIcons[i].setImageResource(R.drawable.matka);
+                }
                     break;
                 case 2:
                     headerRacketIcons[i].setVisibility(View.INVISIBLE);
                     headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
-                    headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
-
                     break;
             }
         }
