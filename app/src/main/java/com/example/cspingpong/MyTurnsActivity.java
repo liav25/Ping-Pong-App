@@ -44,7 +44,8 @@ public class MyTurnsActivity extends AppCompatActivity {
 
         Intent incomingIntent = getIntent();
         username = incomingIntent.getStringExtra("username");
-        gameList = incomingIntent.getParcelableArrayListExtra("game_list");
+        gameList = (ArrayList<Game>) getIntent().getExtras().getSerializable("myClassList");
+
 
         welcomePlayerTxt.setText("My Turns:");
 

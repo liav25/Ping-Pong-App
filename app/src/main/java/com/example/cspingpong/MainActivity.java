@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        server = new Server();
+        server = Server.getInstance();
 
         connectViewsToXML();
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         setDefaultDateAndTime();
 
-        server.fabricateGames(selectedDate);
+
 
         updateHeaders();
 
@@ -93,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
 
         launchNameDialog();
 
+        fabricateGames(selectedDate);
+
+
+
 
 
 
@@ -102,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), MyTurnsActivity.class);
         intent.putExtra("username", this.username);
 
-        intent.putParcelableArrayListExtra("game_list", server.getPlayerAgenda(username));
+        intent.putExtra("game_list", server.getPlayerAgenda(username));
 
         startActivity(intent);
     }
@@ -369,4 +373,33 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    void fabricateGames(int date) {
+        server.addPlayer(date, 1200, "Nir");
+        server.addPlayer(date, 1200, "Eyal");
+        server.addPlayer(date, 1215, "Liav");
+        server.addPlayer(date, 1215, "Ran");
+        server.addPlayer(date, 1230, "Yoni");
+        server.addPlayer(date, 1300, "Avner");
+        server.addPlayer(date, 1500, "Nir");
+        server.addPlayer(date, 1515, "Ran");
+        server.addPlayer(date, 1515, "Nir");
+        server.addPlayer(date, 1645, "Ran");
+        server.addPlayer(date, 1645, "Nir");
+        server.addPlayer(date, 1615, "Nir");
+//        addPlayer(22122019, 1600, "Eyal");
+//        addPlayer(22122019, 1200, "Liav");
+//        addPlayer(22122019, 1200, "Ran");
+        server.addPlayer(date, 1400, "Avner");
+    }
+
+    /**
+     * Returns a Game object according to a give time and date
+     *
+     * @param date - an integer in the format DDMMYEAR or DMMYEAR,
+     *             ex. 20112019, 1012020
+     * @param hour - a round hour in the format of HHMM or HMM or MM:
+     *             ex. 1215 (=12:15), 2330(=23:30), 100(=1:00), 0(=00:00)
+     * @return a Game object according to the given data. If there is no such game, returns null
+     */
 }
