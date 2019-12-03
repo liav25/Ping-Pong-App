@@ -92,6 +92,7 @@
             android:layout_weight="10"
             android:paddingBottom="10dp">
 
+
             <com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout
                 android:id="@+id/slotButtonsLayout"
                 android:layout_width="250dp"

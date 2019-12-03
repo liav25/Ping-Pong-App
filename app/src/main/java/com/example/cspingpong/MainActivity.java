@@ -1,11 +1,10 @@
 package com.example.cspingpong;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.FragmentManager;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,11 +21,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 
+import com.github.florent37.expansionpanel.ExpansionHeader;
 import com.github.florent37.expansionpanel.ExpansionLayout;
+import com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout;
 import com.maxproj.calendarpicker.Builder;
 import com.maxproj.calendarpicker.Models.YearMonthDay;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -49,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
     private Button dateButton;
 //    private Button myTurnsBtn;
 
+    float x1, x2;
+
+
+    private ExpansionHeader[] slotHeaders = new ExpansionHeader[GAMES_PER_HOUR];
     private ExpansionLayout[] slotExpansions = new ExpansionLayout[GAMES_PER_HOUR];
     private TextView[] headerTexts = new TextView[GAMES_PER_HOUR];
     private ImageView[] headerRacketIcons = new ImageView[GAMES_PER_HOUR];
@@ -58,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
 
+    private ExpansionsViewGroupLinearLayout linearLayout;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,12 +103,45 @@ public class MainActivity extends AppCompatActivity {
 
         fabricateGames(selectedDate);
 
+        for (int i=0; i<4; i++){
+            slotHeaders[i].setOnTouchListener(
+                    new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            // TODO Auto-generated method stub
+                            switch (event.getAction()) {
+                                case MotionEvent.ACTION_DOWN:
+                                    x1 = event.getY();
+                                    break;
+                                case MotionEvent.ACTION_UP:
+                                    x2 = event.getY();
+                                    float deltaX = x2 - x1;
+                                    if (deltaX < 0) {
+                                        Toast.makeText(MainActivity.this,
+                                                "Right to Left swipe",
+                                                Toast.LENGTH_SHORT).show();
+                                        hourPicker.setValue(hourPicker.getValue()+1);
+                                        selectedHour= selectedHour+100;
+                                        updateHeaders();
+                                    } else if (deltaX > 0) {
+                                        Toast.makeText(MainActivity.this,
+                                                "Left to Right swipe",
+                                                Toast.LENGTH_SHORT).show();
+                                        hourPicker.setValue(hourPicker.getValue()-1);
+                                        selectedHour = selectedHour-100;
+                                        updateHeaders();
 
+                                    }
+                                    break;
+                            }
 
-
-
+                            return false;
+                        }
+                    });
+        }
 
     }
+
 
     public void moveToMyTurnsActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), MyTurnsActivity.class);
@@ -216,6 +256,11 @@ public class MainActivity extends AppCompatActivity {
         slotExpansions[2] = findViewById(R.id.expansionLayout3);
         slotExpansions[3] = findViewById(R.id.expansionLayout4);
 
+        slotHeaders[0] = findViewById(R.id.slot_header_1);
+        slotHeaders[1] = findViewById(R.id.slot_header_2);
+        slotHeaders[2] = findViewById(R.id.slot_header_3);
+        slotHeaders[3] = findViewById(R.id.slot_header_4);
+
         headerTexts[0] = findViewById(R.id.header_text1);
         headerTexts[1] = findViewById(R.id.header_text2);
         headerTexts[2] = findViewById(R.id.header_text3);
@@ -235,6 +280,8 @@ public class MainActivity extends AppCompatActivity {
         rightJoinButtons[1] = findViewById(R.id.join_button_right2);
         rightJoinButtons[2] = findViewById(R.id.join_button_right3);
         rightJoinButtons[3] = findViewById(R.id.join_button_right4);
+
+        linearLayout = findViewById(R.id.slotButtonsLayout);
     }
 
     private void updateHeaderIcons() {
