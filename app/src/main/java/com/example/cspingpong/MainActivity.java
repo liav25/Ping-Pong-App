@@ -162,7 +162,12 @@ public class MainActivity extends AppCompatActivity {
                 // design
                 .setPromptText("Select a day to play !")
                 .setMonthBaseBgColor(0xF2FCFCFC)
-                .setSelectedBgColor(0xFFF9AD90);
+                .setSelectedColor(0xFF284186)
+                .setSelectedText("")
+                .setConfirmBgColor(0xFF284186)
+                .setConfirmColor(0xFFFCFCFC)
+                .setSelectedBgColor(0xFFFFFFFF);
+
         builder.show();
     }
 
