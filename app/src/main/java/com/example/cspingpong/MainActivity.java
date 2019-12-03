@@ -119,10 +119,16 @@ public class MainActivity extends AppCompatActivity {
                                     if (deltaX < -20) {
                                         hourPicker.setValue(hourPicker.getValue()+1);
                                         selectedHour= selectedHour+100;
+                                        if(selectedHour>2301){
+                                            selectedHour=0;
+                                        }
                                         updateHeaders();
                                     } else if (deltaX > 20) {
                                         hourPicker.setValue(hourPicker.getValue()-1);
                                         selectedHour = selectedHour-100;
+                                        if(selectedHour<-1){
+                                            selectedHour=2300;
+                                        }
                                         updateHeaders();
 
                                     }
