@@ -117,16 +117,10 @@ public class MainActivity extends AppCompatActivity {
                                     x2 = event.getY();
                                     float deltaX = x2 - x1;
                                     if (deltaX < -20) {
-                                        Toast.makeText(MainActivity.this,
-                                                "Right to Left swipe",
-                                                Toast.LENGTH_SHORT).show();
                                         hourPicker.setValue(hourPicker.getValue()+1);
                                         selectedHour= selectedHour+100;
                                         updateHeaders();
                                     } else if (deltaX > 20) {
-                                        Toast.makeText(MainActivity.this,
-                                                "Left to Right swipe",
-                                                Toast.LENGTH_SHORT).show();
                                         hourPicker.setValue(hourPicker.getValue()-1);
                                         selectedHour = selectedHour-100;
                                         updateHeaders();
