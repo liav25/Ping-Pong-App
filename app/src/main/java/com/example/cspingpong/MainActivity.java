@@ -332,10 +332,10 @@ public class MainActivity extends AppCompatActivity {
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-//                for (ExpansionLayout e : slotExpansions) {
-//                    e.collapse(true);
-//                }
-                valueChangeAnimate(oldVal, newVal);
+               for (ExpansionLayout e : slotExpansions) {
+                    e.collapse(true);
+               }
+               //valueChangeAnimate(oldVal, newVal);
                 selectedHour = newVal * Server.INTERVAL;
                 updateHeaders();
                 updateExpansions();
