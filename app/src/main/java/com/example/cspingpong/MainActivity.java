@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.FragmentManager;
 
+import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -67,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ExpansionsViewGroupLinearLayout linearLayout;
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,12 +90,11 @@ public class MainActivity extends AppCompatActivity {
         sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
-        username = sharedPref.getString(getString(R.string.username),null);
+        username = sharedPref.getString(getString(R.string.username), null);
 
-        if(username==null){
+        if (username == null) {
             launchNameDialog();
-        }
-        else{
+        } else {
             updateExpansions();
             welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
         }
@@ -103,7 +103,67 @@ public class MainActivity extends AppCompatActivity {
 
         fabricateGames(selectedDate);
 
-        for (int i=0; i<4; i++){
+        slideGestureMaker();
+
+
+    }
+
+    private void valueChangeAnimate(int oldVal, int newVal) {
+        ObjectAnimator flipDown;
+        int deltaX = oldVal - newVal;
+        if (deltaX < 0) {
+            for (int i = 0; i < 4; i++) {
+                slotExpansions[i].collapse(true);
+                flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_up);
+                flipDown.setTarget(slotHeaders[i]);
+                switch (i) {
+                    case 0:
+                        flipDown.setStartDelay(60);
+                        break;
+                    case 1:
+                        flipDown.setStartDelay(40);
+                        break;
+                    case 2:
+                        flipDown.setStartDelay(20);
+                        break;
+                    case 3:
+                        flipDown.setStartDelay(0);
+                        break;
+                }
+                final int finalI = i;
+                flipDown.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        updateHeaders(finalI);
+                    }
+                });
+                flipDown.start();
+            }
+        } else if (deltaX > 0) {
+            for (int i = 0; i < 4; i++) {
+                slotExpansions[i].collapse(true);
+                flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_down);
+                flipDown.setTarget(slotHeaders[i]);
+                flipDown.setStartDelay(i * 20);
+                final int finalI = i;
+                flipDown.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        updateHeaders(finalI);
+                    }
+                });
+                flipDown.start();
+            }
+        }
+        updateExpansions();
+    }
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void slideGestureMaker() {
+        for (int i = 0; i < 4; i++) {
             slotHeaders[i].setOnTouchListener(
                     new View.OnTouchListener() {
                         @Override
@@ -117,39 +177,69 @@ public class MainActivity extends AppCompatActivity {
                                     x2 = event.getY();
                                     float deltaX = x2 - x1;
                                     if (deltaX < -20) {
-                                        hourPicker.setValue(hourPicker.getValue()+1);
-                                        selectedHour= selectedHour+100;
-                                        if(selectedHour>2301){
-                                            selectedHour=0;
+                                        hourPicker.setValue(hourPicker.getValue() + 1);
+                                        selectedHour = selectedHour + 100;
+                                        if (selectedHour > 2301) {
+                                            selectedHour = 0;
                                         }
-                                        ObjectAnimator flipUp = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_up);
-                                        for (int i=0; i<4;i++) {
+                                        ObjectAnimator flipUp;
+                                        for (int i = 0; i < 4; i++) {
+                                            slotExpansions[i].collapse(true);
                                             flipUp = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_up);
                                             flipUp.setTarget(slotHeaders[i]);
-                                            flipUp.setDuration(1000);
+                                            switch (i) {
+                                                case 0:
+                                                    flipUp.setStartDelay(300);
+                                                    break;
+                                                case 1:
+                                                    flipUp.setStartDelay(200);
+                                                    break;
+                                                case 2:
+                                                    flipUp.setStartDelay(100);
+                                                    break;
+                                                case 3:
+                                                    flipUp.setStartDelay(0);
+                                                    break;
+                                            }
+                                            final int finalI = i;
+                                            flipUp.addListener(new AnimatorListenerAdapter() {
+                                                @Override
+                                                public void onAnimationEnd(Animator animation) {
+                                                    super.onAnimationEnd(animation);
+                                                    updateHeaders(finalI);
+
+                                                }
+                                            });
                                             flipUp.start();
+                                            updateExpansions();
+
+
                                         }
-                                        updateHeaders();
+
                                     } else if (deltaX > 20) {
-                                        hourPicker.setValue(hourPicker.getValue()-1);
-                                        selectedHour = selectedHour-100;
-                                        if(selectedHour<-1){
-                                            selectedHour=2300;
+                                        hourPicker.setValue(hourPicker.getValue() - 1);
+                                        selectedHour = selectedHour - 100;
+                                        if (selectedHour < -1) {
+                                            selectedHour = 2300;
                                         }
                                         ObjectAnimator flipDown;
-                                        for (int i=0; i<4;i++) {
+                                        for (int i = 0; i < 4; i++) {
+                                            slotExpansions[i].collapse(true);
                                             flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_down);
                                             flipDown.setTarget(slotHeaders[i]);
-                                            flipDown.setDuration(1000);
+                                            flipDown.setStartDelay(i * 100);
+                                            final int finalI = i;
+                                            flipDown.addListener(new AnimatorListenerAdapter() {
+                                                @Override
+                                                public void onAnimationEnd(Animator animation) {
+                                                    super.onAnimationEnd(animation);
+                                                    updateHeaders(finalI);
+
+                                                }
+                                            });
                                             flipDown.start();
                                         }
-//                                        flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_down);
-//
-//                                        flipDown.setTarget(slotHeaders[2]);
-//                                        flipDown.setDuration(1000);
-//                                        flipDown.start();
-//                                        updateHeaders();
-
+                                        updateExpansions();
                                     }
                                     break;
                             }
@@ -158,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         }
-
     }
 
 
@@ -175,6 +264,11 @@ public class MainActivity extends AppCompatActivity {
     private void updateHeaders() {
         updateHeaderIcons();
         updateHeaderTimes();
+    }
+
+    private void updateHeaders(int i) {
+        updateHeaderIcons(i);
+        updateHeaderTimes(i);
     }
 
     private void launchNameDialog() {
@@ -238,9 +332,10 @@ public class MainActivity extends AppCompatActivity {
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                for (ExpansionLayout e : slotExpansions) {
-                    e.collapse(true);
-                }
+//                for (ExpansionLayout e : slotExpansions) {
+//                    e.collapse(true);
+//                }
+                valueChangeAnimate(oldVal, newVal);
                 selectedHour = newVal * Server.INTERVAL;
                 updateHeaders();
                 updateExpansions();
@@ -257,6 +352,15 @@ public class MainActivity extends AppCompatActivity {
             headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
         }
     }
+
+    private void updateHeaderTimes(int i) {
+
+        String[] headerTimes = getResources().getStringArray(R.array.header_times);
+        headerTexts[i].setText(String.format(headerTimes[i], hourPicker.getValue()));
+        headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
+
+    }
+
 
     /**
      * Connect between Objects and XML representation of them
@@ -311,12 +415,11 @@ public class MainActivity extends AppCompatActivity {
 //            headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
             switch (games.get(i).empty_slots()) {
                 case 0:
-                    if(games.get(i).getPlayer1().equals(username) || games.get(i).getPlayer2().equals(username)){
+                    if (games.get(i).getPlayer1().equals(username) || games.get(i).getPlayer2().equals(username)) {
                         headerRacketIcons[i].setImageResource(R.drawable.ic_star_gray_24dp);
                         headerRacketIcons[i].setVisibility(View.VISIBLE);
                         headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
-                    }
-                    else {
+                    } else {
                         headerRacketIcons[i].setImageResource(R.drawable.lock);
                         headerRacketIcons[i].setVisibility(View.VISIBLE);
                         headerTexts[i].setTextColor(getResources().getColor(R.color.GREY));
@@ -327,12 +430,11 @@ public class MainActivity extends AppCompatActivity {
                     headerRacketIcons[i].setVisibility(View.VISIBLE);
                     headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
 
-                    if( ( (games.get(i).getPlayer1()!=null)&&(games.get(i).getPlayer1().equals(username))
-                    )|| ( (games.get(i).getPlayer2()!=null)&&(games.get(i).getPlayer2().equals(username)) )  ){
+                    if (((games.get(i).getPlayer1() != null) && (games.get(i).getPlayer1().equals(username))
+                    ) || ((games.get(i).getPlayer2() != null) && (games.get(i).getPlayer2().equals(username)))) {
                         headerRacketIcons[i].setImageResource(R.drawable.ic_star_half_black_24dp);
-                    }
-                    else{
-                    headerRacketIcons[i].setImageResource(R.drawable.matka);
+                    } else {
+                        headerRacketIcons[i].setImageResource(R.drawable.matka);
                     }
                     break;
                 case 2:
@@ -342,6 +444,43 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void updateHeaderIcons(int i) {
+        ArrayList<Game> games = server.getHourAgenda(selectedDate, selectedHour);
+        server.saveState();
+
+        headerTexts[i].setTypeface(Typeface.DEFAULT_BOLD);
+        switch (games.get(i).empty_slots()) {
+            case 0:
+                if (games.get(i).getPlayer1().equals(username) || games.get(i).getPlayer2().equals(username)) {
+                    headerRacketIcons[i].setImageResource(R.drawable.ic_star_gray_24dp);
+                    headerRacketIcons[i].setVisibility(View.VISIBLE);
+                    headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
+                } else {
+                    headerRacketIcons[i].setImageResource(R.drawable.lock);
+                    headerRacketIcons[i].setVisibility(View.VISIBLE);
+                    headerTexts[i].setTextColor(getResources().getColor(R.color.GREY));
+                }
+
+                break;
+            case 1:
+                headerRacketIcons[i].setVisibility(View.VISIBLE);
+                headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                if (((games.get(i).getPlayer1() != null) && (games.get(i).getPlayer1().equals(username))
+                ) || ((games.get(i).getPlayer2() != null) && (games.get(i).getPlayer2().equals(username)))) {
+                    headerRacketIcons[i].setImageResource(R.drawable.ic_star_half_black_24dp);
+                } else {
+                    headerRacketIcons[i].setImageResource(R.drawable.matka);
+                }
+                break;
+            case 2:
+                headerRacketIcons[i].setVisibility(View.INVISIBLE);
+                headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
+                break;
+        }
+    }
+
 
     private void setHourPickerValues() {
 
@@ -410,16 +549,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (username.length() == 0) {
             tx.getBackground().setTint(Color.RED);
-        }
-        else if (username.length() > MAX_USERNAME_LEN)
-        {
+        } else if (username.length() > MAX_USERNAME_LEN) {
             Toast.makeText(this, getString(R.string.name_too_long_message), Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
             nameDialog.dismiss();
             username = username.toLowerCase();
             username = username.substring(0, 1).toUpperCase() + username.substring(1);
-            editor.putString(getString(R.string.username),username);
+            editor.putString(getString(R.string.username), username);
             editor.commit();
             updateExpansions();
             welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
