@@ -95,7 +95,7 @@
 
             <com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout
                 android:id="@+id/slotButtonsLayout"
-                android:layout_width="250dp"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/pickTurnTxt"
                 android:layout_centerHorizontal="true"
@@ -113,6 +113,7 @@
                     android:background="@drawable/header_bg"
                     android:elevation="3dp"
                     android:textSize="16sp"
+                    android:layout_marginHorizontal="10dp"
                     app:expansion_headerIndicator="@id/headerIndicator1"
                     app:expansion_layout="@id/expansionLayout1">
 
@@ -216,6 +217,8 @@
                     android:background="@drawable/header_bg"
                     android:elevation="3dp"
                     android:textSize="16sp"
+                    android:layout_marginHorizontal="10dp"
+
                     app:expansion_headerIndicator="@id/headerIndicator2"
                     app:expansion_layout="@id/expansionLayout2">
 
@@ -315,6 +318,8 @@
                 <com.github.florent37.expansionpanel.ExpansionHeader
                     android:id="@+id/slot_header_3"
                     android:layout_width="match_parent"
+                    android:layout_marginHorizontal="10dp"
+
                     android:layout_height="60dp"
                     android:layout_marginBottom="-10dp"
                     android:background="@drawable/header_bg"
@@ -420,6 +425,7 @@
                     android:layout_marginBottom="-10dp"
                     android:background="@drawable/header_bg"
                     android:elevation="3dp"
+                    android:layout_marginHorizontal="10dp"
                     android:textSize="16sp"
                     app:expansion_headerIndicator="@id/headerIndicator4"
                     app:expansion_layout="@id/expansionLayout4">

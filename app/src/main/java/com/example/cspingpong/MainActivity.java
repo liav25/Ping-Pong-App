@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.FragmentManager;
 
+import android.animation.AnimatorInflater;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -81,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
         setDefaultDateAndTime();
 
-
-
         updateHeaders();
 
 
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
         }
 
-        launchNameDialog();
+        //launchNameDialog();
 
         fabricateGames(selectedDate);
 
@@ -122,12 +122,24 @@ public class MainActivity extends AppCompatActivity {
                                         if(selectedHour>2301){
                                             selectedHour=0;
                                         }
+                                        ObjectAnimator flipUp = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_up);
+                                        for (int i=0; i<4;i++) {
+                                            flipUp.setTarget(slotHeaders[i]);
+                                            flipUp.setDuration(1000);
+                                            flipUp.start();
+                                        }
                                         updateHeaders();
                                     } else if (deltaX > 20) {
                                         hourPicker.setValue(hourPicker.getValue()-1);
                                         selectedHour = selectedHour-100;
                                         if(selectedHour<-1){
                                             selectedHour=2300;
+                                        }
+                                        ObjectAnimator flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_down);
+                                        for (int i=0; i<4;i++) {
+                                            flipDown.setTarget(slotHeaders[i]);
+                                            flipDown.setDuration(1000);
+                                            flipDown.start();
                                         }
                                         updateHeaders();
 
