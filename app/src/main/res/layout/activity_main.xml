@@ -585,6 +585,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:backgroundTint="@color/colorAccent"
+                android:theme="@style/AppTheme.Picker"
+
                 android:clickable="false"
                 android:descendantFocusability="blocksDescendants"
                 android:focusable="true" />
