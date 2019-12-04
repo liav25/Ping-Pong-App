@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                         ObjectAnimator flipUp = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_up);
                                         for (int i=0; i<4;i++) {
+                                            flipUp = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_up);
                                             flipUp.setTarget(slotHeaders[i]);
                                             flipUp.setDuration(1000);
                                             flipUp.start();
@@ -135,13 +136,19 @@ public class MainActivity extends AppCompatActivity {
                                         if(selectedHour<-1){
                                             selectedHour=2300;
                                         }
-                                        ObjectAnimator flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_down);
+                                        ObjectAnimator flipDown;
                                         for (int i=0; i<4;i++) {
+                                            flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_down);
                                             flipDown.setTarget(slotHeaders[i]);
                                             flipDown.setDuration(1000);
                                             flipDown.start();
                                         }
-                                        updateHeaders();
+//                                        flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_down);
+//
+//                                        flipDown.setTarget(slotHeaders[2]);
+//                                        flipDown.setDuration(1000);
+//                                        flipDown.start();
+//                                        updateHeaders();
 
                                     }
                                     break;
