@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 slotExpansions[i].collapse(true);
                 flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_up);
                 flipDown.setTarget(slotHeaders[i]);
+                flipDown.setDuration(500);
                 switch (i) {
                     case 0:
                         flipDown.setStartDelay(60);
@@ -145,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 slotExpansions[i].collapse(true);
                 flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_down);
                 flipDown.setTarget(slotHeaders[i]);
+                flipDown.setDuration(500);
                 flipDown.setStartDelay(i * 20);
                 final int finalI = i;
                 flipDown.addListener(new AnimatorListenerAdapter() {
@@ -332,11 +334,11 @@ public class MainActivity extends AppCompatActivity {
         hourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-               for (ExpansionLayout e : slotExpansions) {
-                    e.collapse(true);
-               }
-               //valueChangeAnimate(oldVal, newVal);
-                selectedHour = newVal * Server.INTERVAL;
+//               for (ExpansionLayout e : slotExpansions) {
+//                    e.collapse(true);
+//               }
+               valueChangeAnimate(oldVal, newVal);
+                 selectedHour = newVal * Server.INTERVAL;
                 updateHeaders();
                 updateExpansions();
             }
@@ -416,7 +418,7 @@ public class MainActivity extends AppCompatActivity {
             switch (games.get(i).empty_slots()) {
                 case 0:
                     if (games.get(i).getPlayer1().equals(username) || games.get(i).getPlayer2().equals(username)) {
-                        headerRacketIcons[i].setImageResource(R.drawable.ic_star_gray_24dp);
+                        headerRacketIcons[i].setImageResource(R.drawable.game_full);
                         headerRacketIcons[i].setVisibility(View.VISIBLE);
                         headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
                     } else {
@@ -432,13 +434,14 @@ public class MainActivity extends AppCompatActivity {
 
                     if (((games.get(i).getPlayer1() != null) && (games.get(i).getPlayer1().equals(username))
                     ) || ((games.get(i).getPlayer2() != null) && (games.get(i).getPlayer2().equals(username)))) {
-                        headerRacketIcons[i].setImageResource(R.drawable.ic_star_half_black_24dp);
+                        headerRacketIcons[i].setImageResource(R.drawable.half_open);
                     } else {
-                        headerRacketIcons[i].setImageResource(R.drawable.matka);
+                        headerRacketIcons[i].setImageResource(R.drawable.half_open);
                     }
                     break;
                 case 2:
-                    headerRacketIcons[i].setVisibility(View.INVISIBLE);
+                    headerRacketIcons[i].setImageResource(R.drawable.game_open);
+                    headerRacketIcons[i].setVisibility(View.VISIBLE);
                     headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
                     break;
             }
@@ -453,7 +456,7 @@ public class MainActivity extends AppCompatActivity {
         switch (games.get(i).empty_slots()) {
             case 0:
                 if (games.get(i).getPlayer1().equals(username) || games.get(i).getPlayer2().equals(username)) {
-                    headerRacketIcons[i].setImageResource(R.drawable.ic_star_gray_24dp);
+                    headerRacketIcons[i].setImageResource(R.drawable.game_full);
                     headerRacketIcons[i].setVisibility(View.VISIBLE);
                     headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
                 } else {
@@ -469,13 +472,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if (((games.get(i).getPlayer1() != null) && (games.get(i).getPlayer1().equals(username))
                 ) || ((games.get(i).getPlayer2() != null) && (games.get(i).getPlayer2().equals(username)))) {
-                    headerRacketIcons[i].setImageResource(R.drawable.ic_star_half_black_24dp);
+                    headerRacketIcons[i].setImageResource(R.drawable.half_open);
                 } else {
-                    headerRacketIcons[i].setImageResource(R.drawable.matka);
+                    headerRacketIcons[i].setImageResource(R.drawable.half_open);
                 }
                 break;
             case 2:
-                headerRacketIcons[i].setVisibility(View.INVISIBLE);
+                headerRacketIcons[i].setImageResource(R.drawable.game_open);
+                headerRacketIcons[i].setVisibility(View.VISIBLE);
                 headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
                 break;
         }
@@ -526,14 +530,17 @@ public class MainActivity extends AppCompatActivity {
         Game chosenGame = server.getGame(selectedDate, time);
 
         if (chosenGame.addPlayer(username)) {
-            DrawableCompat.setTint(bg, getResources().getColor(R.color.apple));
-            joinButton.setText(username);
+
+            DrawableCompat.setTint(bg, getResources().getColor(R.color.com_maxproj_calendarpicker_Navy));
+                        joinButton.setText(username);
+            joinButton.setTextColor(getResources().getColor(R.color.white));
             server.saveState();
             Toast.makeText(this, getString(R.string.join_message), Toast.LENGTH_SHORT).show();
 
         } else if (joinButton.getText().toString().equals(username)) {
-            DrawableCompat.setTint(bg, getResources().getColor(R.color.orange));
+            DrawableCompat.setTint(bg, getResources().getColor(R.color.com_maxproj_calendarpicker_Green));
             joinButton.setText(R.string.join_button_init_text);
+            joinButton.setTextColor(getResources().getColor(R.color.white));
             chosenGame.removePlayer(username);
 
         } else {
@@ -541,6 +548,8 @@ public class MainActivity extends AppCompatActivity {
         }
         updateHeaderIcons();
     }
+
+
 
     public void confirmName(View view) {
         // todo - do something if name is empty
@@ -579,17 +588,20 @@ public class MainActivity extends AppCompatActivity {
 
         if (playerName == null) {
             joinButton.setText(R.string.join_button_init_text);
-            DrawableCompat.setTint(bg, getResources().getColor(R.color.orange));
+            joinButton.setTextColor(getResources().getColor(R.color.white));
+            DrawableCompat.setTint(bg, getResources().getColor(R.color.com_maxproj_calendarpicker_Green));
             joinButton.setClickable(true);
 
         } else if (username.equals(playerName)) {
-            DrawableCompat.setTint(bg, getResources().getColor(R.color.apple));
+            DrawableCompat.setTint(bg, getResources().getColor(R.color.com_maxproj_calendarpicker_Navy));
             joinButton.setText(playerName);
+            joinButton.setTextColor(getResources().getColor(R.color.white));
             joinButton.setClickable(true);
 
         } else {
             DrawableCompat.setTint(bg, Color.TRANSPARENT);
             joinButton.setText(playerName);
+            joinButton.setTextColor(getResources().getColor(R.color.colorPrimary));
             joinButton.setClickable(false);
 
         }

@@ -174,7 +174,7 @@
                             android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="12sp"
 />
 
@@ -201,7 +201,7 @@
                             android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="12sp"
 />
 
@@ -284,7 +284,7 @@
                             android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="12sp"
 />
 
@@ -311,7 +311,7 @@
                             android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
 
                             android:textSize="12sp"
 />
@@ -390,7 +390,7 @@
                             android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="12sp"
  />
 
@@ -417,7 +417,7 @@
                             android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="12sp"
 />
                     </RelativeLayout>
@@ -493,7 +493,7 @@
                             android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="12sp"
  />
 
@@ -521,7 +521,7 @@
                             android:fontFamily="@font/roboto"
                             android:onClick="joinButtonHandler"
                             android:text="@string/join_button_init_text"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="12sp"
 />
                     </RelativeLayout>
