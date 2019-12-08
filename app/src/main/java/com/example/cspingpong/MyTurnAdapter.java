@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import pl.droidsonroids.gif.GifDrawable;
+
 public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
 
     private Context c;
@@ -40,7 +42,7 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
 
         holder.mTextView1.setText(myTurns.get(position).getTurnTime());
         holder.mTextView2.setText(myTurns.get(position).getTurnAgainst());
-        holder.mImageView.setImageResource(myTurns.get(position).getSlotImage());
+//        holder.mImageView.setImageResource(myTurns.get(position).getSlotImage());
         holder.mShareImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +65,8 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
             holder.mTextView2.setTextColor(Color.BLACK);
 
         }
+
+
     }
 
 

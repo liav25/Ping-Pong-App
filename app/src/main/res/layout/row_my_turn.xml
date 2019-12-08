@@ -18,8 +18,8 @@
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/imgViewTurn1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:padding="2dp"
             android:tint="@color/primary_blue"
             android:rotation="10"
@@ -31,12 +31,13 @@
             android:layout_width='wrap_content'
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="18dp"
             android:layout_toEndOf="@+id/imgViewTurn1"
             android:layout_toRightOf="@+id/imgViewTurn1"
             android:text="Turn's Time:"
             android:textSize="15dp"
             android:fontFamily="@font/roboto"
+            android:textStyle="bold"
  />
 
         <TextView
@@ -44,12 +45,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="18dp"
             android:layout_marginTop="40dp"
             android:layout_toEndOf="@+id/imgViewTurn1"
             android:layout_toRightOf="@+id/imgViewTurn1"
             android:text="Your turn is against:"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:textStyle="bold"
             android:fontFamily="@font/roboto"/>
         <LinearLayout
