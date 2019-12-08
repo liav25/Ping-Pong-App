@@ -6,16 +6,19 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder> {
+public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
 
-    Context c;
-    ArrayList<MyTurnSlot> myTurns;
+    private Context c;
+    private ArrayList<MyTurnSlot> myTurns;
+    ItemClickListener mListener;
+
 
     public MyTurnAdapter(Context c, ArrayList<MyTurnSlot> myTurns) {
         this.c = c;
@@ -27,8 +30,7 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder> {
     public MyTurnHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_my_turn,parent, false);
-
-        return new MyTurnHolder(view);
+        return new MyTurnHolder(view, mListener);
     }
 
     @Override
@@ -48,18 +50,31 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder> {
                 else{
                     sendIntent.putExtra(Intent.EXTRA_TEXT, "Watch me play PingPong against "+ myTurns.get(position).getTurnAgainst().substring(17) + " in: " + myTurns.get(position).getTurnTime());
                 }
-
                 sendIntent.setType("text/plain");
-
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
                 c.startActivity(shareIntent);
             }
         });
 
+
     }
+
 
     @Override
     public int getItemCount() {
         return myTurns.size();
+    }
+
+    public int getPosition(){
+        return this.getPosition();
+    }
+
+    public void setItemClickListener(ItemClickListener listener){
+        this.mListener = listener;
+    }
+
+    public void removeGame(int position){
+        myTurns.remove(position);
+        notifyItemRemoved(position);
     }
 }

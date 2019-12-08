@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Game implements java.io.Serializable{
-    private transient Server server;
+    private Server server;
     private int date;
     private int time;
     private String player1;
@@ -37,14 +37,6 @@ public class Game implements java.io.Serializable{
 
     int getTime(){
         return this.time;
-    }
-
-    String getDateString(){
-        return Integer.toString(this.date);
-    }
-
-    String getTimeString(){
-        return Integer.toString(this.time);
     }
 
     String getPlayer1(){ return this.player1; }
@@ -127,4 +119,19 @@ public class Game implements java.io.Serializable{
         this.server = server;
     }
 
+    String getTimeString() {
+        int hour, offset;
+        hour = time / Server.INTERVAL;
+        offset = time - hour * Server.INTERVAL;
+        return hour + ":" + (offset == 0 ? "00" : offset);
+    }
+
+    String getDateString() {
+        int day, month, year;
+        day = date / 1000000;
+        month = (date - day * 1000000) / 10000;
+        year = date % 10000;
+
+        return day + "/" + month + "/" + year;
+    }
 }

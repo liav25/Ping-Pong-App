@@ -1,5 +1,6 @@
 package com.example.cspingpong;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.FragmentManager;
@@ -31,13 +32,14 @@ import com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLa
 import com.maxproj.calendarpicker.Builder;
 import com.maxproj.calendarpicker.Models.YearMonthDay;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Serializable {
 
     private static final int GAMES_PER_HOUR = Server.MINUTES_IN_HOUR / Server.SLOT_TIME;
     private static final int MIN_HOUR_PICK = 0;
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private int selectedHour;
     private Server server;
     private String username;
+    private ArrayList<Game> deletedGames;
     private NumberPicker hourPicker;
     private TextView welcomePlayerTxt;
     private NameDialog nameDialog;
@@ -73,24 +76,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         server = Server.getInstance();
-
         connectViewsToXML();
-
         setHourPickerValues();
-
         setHourPickerListener();
-
         setDefaultDateAndTime();
-
         updateHeaders();
-
 
         sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
-        username = sharedPref.getString(getString(R.string.username), null);
+//        username = sharedPref.getString(getString(R.string.username), null);
 
         if (username == null) {
             launchNameDialog();
@@ -100,12 +96,35 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //launchNameDialog();
-
         fabricateGames(selectedDate);
-
         slideGestureMaker();
 
+        deletedGames = new ArrayList<Game>();
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                this.deletedGames = (ArrayList<Game>) data.getSerializableExtra("deletedGames");
+                if (this.deletedGames != null) {
+                    for (Game game : deletedGames) {
+                        int date = game.getDate();
+                        int time = game.getTime();
+                        server.removePlayer(date,time,username);
+                    }
+                }
+            }
+        }
+    }
+
+    public void moveToMyTurnsActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), MyTurnsActivity.class);
+        intent.putExtra("username", this.username);
+        intent.putExtra("game_list", server.getPlayerAgenda(username));
+        startActivityForResult(intent,1);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     private void valueChangeAnimate(int oldVal, int newVal) {
@@ -252,16 +271,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    public void moveToMyTurnsActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), MyTurnsActivity.class);
-        intent.putExtra("username", this.username);
-
-        intent.putExtra("game_list", server.getPlayerAgenda(username));
-
-        startActivity(intent);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-    }
 
     private void updateHeaders() {
         updateHeaderIcons();
@@ -625,13 +634,4 @@ public class MainActivity extends AppCompatActivity {
         server.addPlayer(date, 1400, "Avner");
     }
 
-    /**
-     * Returns a Game object according to a give time and date
-     *
-     * @param date - an integer in the format DDMMYEAR or DMMYEAR,
-     *             ex. 20112019, 1012020
-     * @param hour - a round hour in the format of HHMM or HMM or MM:
-     *             ex. 1215 (=12:15), 2330(=23:30), 100(=1:00), 0(=00:00)
-     * @return a Game object according to the given data. If there is no such game, returns null
-     */
 }
