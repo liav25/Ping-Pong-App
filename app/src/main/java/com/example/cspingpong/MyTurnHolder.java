@@ -42,7 +42,4 @@ public class MyTurnHolder extends RecyclerView.ViewHolder{
 
     }
 
-
-
-
 }

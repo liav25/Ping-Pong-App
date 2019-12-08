@@ -1,5 +1,7 @@
 package com.example.cspingpong;
 
+import android.graphics.Color;
+
 import java.util.concurrent.TimeUnit;
 
 public class MyTurnSlot {
@@ -43,5 +45,7 @@ public class MyTurnSlot {
     void setTurnAgainst(String turnAgainst){
         this.turnAgainst = turnAgainst;
     }
+
+
 
 }

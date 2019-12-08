@@ -3,6 +3,8 @@ package com.example.cspingpong;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +58,11 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
             }
         });
 
+        if(!myTurns.get(position).getTurnAgainst().equals("Waiting for an opponent")) {
+            holder.mTextView1.setTextColor(Color.BLACK);
+            holder.mTextView2.setTextColor(Color.BLACK);
 
+        }
     }
 
 
@@ -73,8 +79,10 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
         this.mListener = listener;
     }
 
-    public void removeGame(int position){
+    void removeGame(int position){
         myTurns.remove(position);
         notifyItemRemoved(position);
     }
+
+
 }

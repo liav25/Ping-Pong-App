@@ -16,6 +16,8 @@ import android.widget.Toast;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import pl.droidsonroids.gif.GifDrawable;
+
 
 public class MyTurnsActivity extends AppCompatActivity implements Serializable {
 
@@ -62,7 +64,6 @@ public class MyTurnsActivity extends AppCompatActivity implements Serializable {
     private ArrayList<MyTurnSlot> getMyList() {
         
         ArrayList<MyTurnSlot> turns = new ArrayList<>();
-
         for (Game game : gameList)
         {
             MyTurnSlot slot = new MyTurnSlot();
@@ -73,11 +74,11 @@ public class MyTurnsActivity extends AppCompatActivity implements Serializable {
                 String opponent =
                         username.equals(game.getPlayer1()) ? game.getPlayer2() : game.getPlayer1();
                 slot.setTurnAgainst("Playing against: " + opponent);
-                slot.setSlotImage(R.drawable.two_racket_icon);
+//                slot.setSlotImage(R.drawable.waiting);
             }
             else {
                 slot.setTurnAgainst("Waiting for an opponent");
-                slot.setSlotImage(R.drawable.single_racket_icon);
+//                slot.setSlotImage(R.drawable.header_bg);
             }
             turns.add(slot);
         }
@@ -100,6 +101,7 @@ public class MyTurnsActivity extends AppCompatActivity implements Serializable {
         Game game = gameList.get(position);
         deletedGameList.add(game);
         gameList.remove(position);
+        Toast.makeText(getApplicationContext(),"Turn: "+game.getDate() +" at "+ game.getTime() +" was deleted",Toast.LENGTH_SHORT).show();
 
     }
 
