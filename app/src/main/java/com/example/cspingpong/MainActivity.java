@@ -38,6 +38,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import pl.droidsonroids.gif.GifImageView;
+
 
 public class MainActivity extends AppCompatActivity implements Serializable {
 
@@ -70,6 +72,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
     private ExpansionsViewGroupLinearLayout linearLayout;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -420,6 +424,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         rightJoinButtons[3] = findViewById(R.id.join_button_right4);
 
         linearLayout = findViewById(R.id.slotButtonsLayout);
+
     }
 
     private void updateHeaderIcons() {

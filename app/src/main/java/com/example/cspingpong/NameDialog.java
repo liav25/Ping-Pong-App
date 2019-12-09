@@ -6,9 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
+import pl.droidsonroids.gif.GifImageView;
 
 // ...
 
@@ -16,6 +19,7 @@ import androidx.fragment.app.DialogFragment;
 public class NameDialog extends DialogFragment {
 
     EditText mEditText;
+    private GifImageView enterGif;
 
     public NameDialog() {
         // Empty constructor is required for DialogFragment
@@ -41,8 +45,21 @@ public class NameDialog extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+
         // Get field from view
         mEditText = view.findViewById(R.id.txt_your_name);
+        enterGif = view.findViewById(R.id.enter_gif);
+
+
+        //set onclick
+        enterGif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), getString(R.string.copyright), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         // Fetch arguments from bundle and set title
         String title = getArguments().getString("title", "Enter Name");
@@ -57,5 +74,8 @@ public class NameDialog extends DialogFragment {
         getDialog().setCanceledOnTouchOutside(false);
         this.setCancelable(false);
 
+
     }
+
+
 }

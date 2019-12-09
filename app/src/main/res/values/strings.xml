@@ -11,6 +11,7 @@
     <string name="join_twice_message">You can\'t play against yourself ;)</string>
     <string name="name_too_long_message">Sorry. Pick a nickname shorter than 10 characters</string>
     <string name="username">username</string>
+    <string name="copyright">Animation by Feitosa in Motion</string>
     <string-array name="header_times">
         <item>%d:00</item>
         <item>%d:15</item>
