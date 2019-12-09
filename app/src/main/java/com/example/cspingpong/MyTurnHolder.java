@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 class MyTurnHolder extends RecyclerView.ViewHolder{
 
-    private ImageView mImageView;
+    ImageView mImageView;
     TextView mTextView1;
     TextView mTextView2;
     private ImageView mDeleteImage;

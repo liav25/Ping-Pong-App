@@ -38,6 +38,7 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
 
         holder.mTextView1.setText(myTurns.get(position).getTurnTime());
         holder.mTextView2.setText(myTurns.get(position).getTurnAgainst());
+        holder.mImageView.setVisibility(View.INVISIBLE);
         holder.mShareImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +59,7 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
         if(!myTurns.get(position).getTurnAgainst().equals("Waiting for an opponent")) {
             holder.mTextView1.setTextColor(Color.BLACK);
             holder.mTextView2.setTextColor(Color.BLACK);
+            holder.mImageView.setVisibility(View.VISIBLE);
         }
     }
 
