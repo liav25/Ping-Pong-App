@@ -80,10 +80,15 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         server = Server.getInstance();
+
+
         connectViewsToXML();
         setHourPickerValues();
         setHourPickerListener();
         setDefaultDateAndTime();
+        fabricateGames(selectedDate);
+
+
         updateHeaders();
 
         sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
@@ -104,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
 
         //launchNameDialog();
-        fabricateGames(selectedDate);
         slideGestureMaker();
 
         deletedGames = new ArrayList<Game>();
