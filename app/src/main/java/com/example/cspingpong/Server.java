@@ -74,7 +74,7 @@ class Server implements java.io.Serializable{
      * This method is used when loading data from files.
      * It is crucial since the server field in the Game object is transient.
      */
-    private void refreshGames(){
+    public void refreshGames(){
         for(Game g : game_list){
             g.setServer(this);
         }
