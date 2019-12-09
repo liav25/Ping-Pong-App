@@ -38,8 +38,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import pl.droidsonroids.gif.GifImageView;
-
 
 public class MainActivity extends AppCompatActivity implements Serializable {
 
@@ -57,9 +55,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private TextView welcomePlayerTxt;
     private NameDialog nameDialog;
     private Button dateButton;
-//    private Button myTurnsBtn;
 
-    float x1, x2;
+    private float gestureCoord1, gestureCoord2;
 
 
     private ExpansionHeader[] slotHeaders = new ExpansionHeader[GAMES_PER_HOUR];
@@ -69,11 +66,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     private Button[] leftJoinButtons = new Button[GAMES_PER_HOUR];
     private Button[] rightJoinButtons = new Button[GAMES_PER_HOUR];
 
-    private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
-    private ExpansionsViewGroupLinearLayout linearLayout;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,22 +74,15 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_main);
         server = Server.getInstance();
 
-
         connectViewsToXML();
         setHourPickerValues();
         setHourPickerListener();
         setDefaultDateAndTime();
         fabricateGames(selectedDate);
 
-
         updateHeaders();
 
-        sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
-        editor = sharedPref.edit();
-
-
-
-        username = sharedPref.getString(getString(R.string.username), null);
+        loadSavedUsername();
 
         if (username == null) {
             launchNameDialog();
@@ -105,12 +91,16 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
         }
 
-
-
-        //launchNameDialog();
-        slideGestureMaker();
+        makeSlideGesture();
 
         deletedGames = new ArrayList<Game>();
+    }
+
+    private void loadSavedUsername() {
+        SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
+
+        username = sharedPref.getString(getString(R.string.username), null);
     }
 
     @Override
@@ -199,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
 
     @SuppressLint("ClickableViewAccessibility")
-    private void slideGestureMaker() {
+    private void makeSlideGesture() {
         for (int i = 0; i < 4; i++) {
             slotHeaders[i].setOnTouchListener(
                     new View.OnTouchListener() {
@@ -208,11 +198,11 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                             // TODO Auto-generated method stub
                             switch (event.getAction()) {
                                 case MotionEvent.ACTION_DOWN:
-                                    x1 = event.getY();
+                                    gestureCoord1 = event.getY();
                                     break;
                                 case MotionEvent.ACTION_UP:
-                                    x2 = event.getY();
-                                    float deltaX = x2 - x1;
+                                    gestureCoord2 = event.getY();
+                                    float deltaX = gestureCoord2 - gestureCoord1;
                                     if (deltaX < -20) {
                                         hourPicker.setValue(hourPicker.getValue() + 1);
                                         selectedHour = selectedHour + 100;
@@ -433,7 +423,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         rightJoinButtons[2] = findViewById(R.id.join_button_right3);
         rightJoinButtons[3] = findViewById(R.id.join_button_right4);
 
-        linearLayout = findViewById(R.id.slotButtonsLayout);
+        ExpansionsViewGroupLinearLayout linearLayout = findViewById(R.id.slotButtonsLayout);
 
     }
 
