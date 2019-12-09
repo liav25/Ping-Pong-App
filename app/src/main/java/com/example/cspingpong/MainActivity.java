@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
+        Toast.makeText(this,Integer.toString(selectedDate) , Toast.LENGTH_LONG).show();
 
 
         username = sharedPref.getString(getString(R.string.username), null);
