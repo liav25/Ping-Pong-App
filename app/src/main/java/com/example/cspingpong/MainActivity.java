@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
-
     private ExpansionsViewGroupLinearLayout linearLayout;
 
     @Override
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
-//        username = sharedPref.getString(getString(R.string.username), null);
+        username = sharedPref.getString(getString(R.string.username), null);
 
         if (username == null) {
             launchNameDialog();
@@ -116,6 +115,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     }
                 }
             }
+            updateHeaders();
+            updateExpansions();
         }
     }
 
@@ -123,6 +124,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         Intent intent = new Intent(getApplicationContext(), MyTurnsActivity.class);
         intent.putExtra("username", this.username);
         intent.putExtra("game_list", server.getPlayerAgenda(username));
+        for (int i=0; i<4;i++){
+            slotExpansions[i].collapse(true);
+        }
         startActivityForResult(intent,1);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }

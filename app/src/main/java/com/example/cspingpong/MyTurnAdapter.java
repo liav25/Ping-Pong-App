@@ -3,28 +3,24 @@ package com.example.cspingpong;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
-import pl.droidsonroids.gif.GifDrawable;
+
 
 public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
 
     private Context c;
     private ArrayList<MyTurnSlot> myTurns;
-    ItemClickListener mListener;
+    private ItemClickListener mListener;
 
 
-    public MyTurnAdapter(Context c, ArrayList<MyTurnSlot> myTurns) {
+    MyTurnAdapter(Context c, ArrayList<MyTurnSlot> myTurns) {
         this.c = c;
         this.myTurns = myTurns;
     }
@@ -42,7 +38,6 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
 
         holder.mTextView1.setText(myTurns.get(position).getTurnTime());
         holder.mTextView2.setText(myTurns.get(position).getTurnAgainst());
-//        holder.mImageView.setImageResource(myTurns.get(position).getSlotImage());
         holder.mShareImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,10 +58,7 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
         if(!myTurns.get(position).getTurnAgainst().equals("Waiting for an opponent")) {
             holder.mTextView1.setTextColor(Color.BLACK);
             holder.mTextView2.setTextColor(Color.BLACK);
-
         }
-
-
     }
 
 
@@ -75,11 +67,11 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
         return myTurns.size();
     }
 
-    public int getPosition(){
+    private int getPosition(){
         return this.getPosition();
     }
 
-    public void setItemClickListener(ItemClickListener listener){
+    void setItemClickListener(ItemClickListener listener){
         this.mListener = listener;
     }
 
@@ -87,6 +79,5 @@ public class MyTurnAdapter extends RecyclerView.Adapter<MyTurnHolder>{
         myTurns.remove(position);
         notifyItemRemoved(position);
     }
-
 
 }

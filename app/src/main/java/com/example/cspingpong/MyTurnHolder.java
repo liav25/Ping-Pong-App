@@ -1,22 +1,18 @@
 package com.example.cspingpong;
 
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyTurnHolder extends RecyclerView.ViewHolder{
+class MyTurnHolder extends RecyclerView.ViewHolder{
 
-    public ImageView mImageView;
-    public TextView mTextView1;
-    public TextView mTextView2;
-    public ImageView mDeleteImage;
-    public ImageView mShareImage;
-
+    private ImageView mImageView;
+    TextView mTextView1;
+    TextView mTextView2;
+    private ImageView mDeleteImage;
+    ImageView mShareImage;
 
 
     MyTurnHolder(@NonNull final View itemView,final ItemClickListener mListener) {

@@ -1,8 +1,6 @@
 package com.example.cspingpong;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,7 +14,6 @@ import android.widget.Toast;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import pl.droidsonroids.gif.GifDrawable;
 
 
 public class MyTurnsActivity extends AppCompatActivity implements Serializable {
@@ -91,6 +88,7 @@ public class MyTurnsActivity extends AppCompatActivity implements Serializable {
         Intent backIntent = new Intent();
         backIntent.putExtra("deletedGames", this.deletedGameList);
         setResult(RESULT_OK, backIntent);
+
         finish();
         overridePendingTransition(0, android.R.anim.fade_out);
     }
