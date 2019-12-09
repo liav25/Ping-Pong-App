@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
+        Toast.makeText(this,Integer.toString(selectedDate) , Toast.LENGTH_LONG).show();
+
+
         username = sharedPref.getString(getString(R.string.username), null);
 
         if (username == null) {
@@ -97,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             updateExpansions();
             welcomePlayerTxt.setText(getString(R.string.welcome_text, username));
         }
+
+
 
         //launchNameDialog();
         fabricateGames(selectedDate);
@@ -309,6 +314,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         selectedDate = Integer.parseInt(datetime);
         hourPicker.setValue(calendar.get(Calendar.HOUR_OF_DAY));
         selectedHour = hourPicker.getValue() * Server.INTERVAL;
+
+
 
         // fixes default hour being invisibleArrayList<MyClass> list = (ArrayList<MyClass>)getIntent().getExtras()getSerializable("myClassList");
         View firstItem = hourPicker.getChildAt(0);
