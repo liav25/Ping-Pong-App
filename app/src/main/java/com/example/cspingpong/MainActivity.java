@@ -441,7 +441,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 2:
                     headerRacketIcons[i].setImageResource(R.drawable.game_open);
-                    headerRacketIcons[i].setVisibility(View.VISIBLE);
+                    headerRacketIcons[i].setVisibility(View.INVISIBLE);
                     headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
                     break;
             }
@@ -479,7 +479,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 2:
                 headerRacketIcons[i].setImageResource(R.drawable.game_open);
-                headerRacketIcons[i].setVisibility(View.VISIBLE);
+                headerRacketIcons[i].setVisibility(View.INVISIBLE);
                 headerTexts[i].setTextColor(getResources().getColor(R.color.colorPrimary));
                 break;
         }
