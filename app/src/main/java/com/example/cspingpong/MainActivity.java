@@ -106,14 +106,14 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1) {
+        if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 this.deletedGames = (ArrayList<Game>) data.getSerializableExtra("deletedGames");
                 if (this.deletedGames != null) {
                     for (Game game : deletedGames) {
                         int date = game.getDate();
                         int time = game.getTime();
-                        server.removePlayer(date,time,username);
+                        server.removePlayer(date, time, username);
                     }
                 }
             }
@@ -126,10 +126,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         Intent intent = new Intent(getApplicationContext(), MyTurnsActivity.class);
         intent.putExtra("username", this.username);
         intent.putExtra("game_list", server.getPlayerAgenda(username));
-        for (int i=0; i<4;i++){
+        for (int i = 0; i < 4; i++) {
             slotExpansions[i].collapse(true);
         }
-        startActivityForResult(intent,1);
+        startActivityForResult(intent, 1);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
@@ -140,38 +140,17 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             for (int i = 0; i < 4; i++) {
                 slotExpansions[i].collapse(true);
                 flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_up);
-                flipDown.setTarget(slotHeaders[i]);
-                flipDown.setDuration(500);
-                switch (i) {
-                    case 0:
-                        flipDown.setStartDelay(60);
-                        break;
-                    case 1:
-                        flipDown.setStartDelay(40);
-                        break;
-                    case 2:
-                        flipDown.setStartDelay(20);
-                        break;
-                    case 3:
-                        flipDown.setStartDelay(0);
-                        break;
-                }
-                final int finalI = i;
-                flipDown.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        updateHeaders(finalI);
-                    }
-                });
-                flipDown.start();
+
+//                flipDown.setDuration(500);
+
+                startAnimationUp(i, flipDown, 1);
             }
         } else if (deltaX > 0) {
             for (int i = 0; i < 4; i++) {
                 slotExpansions[i].collapse(true);
                 flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_down);
                 flipDown.setTarget(slotHeaders[i]);
-                flipDown.setDuration(500);
+//                flipDown.setDuration(500);
                 flipDown.setStartDelay(i * 20);
                 final int finalI = i;
                 flipDown.addListener(new AnimatorListenerAdapter() {
@@ -187,94 +166,113 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         updateExpansions();
     }
 
-
     @SuppressLint("ClickableViewAccessibility")
     private void makeSlideGesture() {
+
         for (int i = 0; i < 4; i++) {
-            slotHeaders[i].setOnTouchListener(
-                    new View.OnTouchListener() {
-                        @Override
-                        public boolean onTouch(View v, MotionEvent event) {
-                            // TODO Auto-generated method stub
-                            switch (event.getAction()) {
-                                case MotionEvent.ACTION_DOWN:
-                                    gestureCoord1 = event.getY();
-                                    break;
-                                case MotionEvent.ACTION_UP:
-                                    gestureCoord2 = event.getY();
-                                    float deltaX = gestureCoord2 - gestureCoord1;
-                                    if (deltaX < -20) {
-                                        hourPicker.setValue(hourPicker.getValue() + 1);
-                                        selectedHour = selectedHour + 100;
-                                        if (selectedHour > 2301) {
-                                            selectedHour = 0;
-                                        }
-                                        ObjectAnimator flipUp;
-                                        for (int i = 0; i < 4; i++) {
-                                            slotExpansions[i].collapse(true);
-                                            flipUp = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_up);
-                                            flipUp.setTarget(slotHeaders[i]);
-                                            switch (i) {
-                                                case 0:
-                                                    flipUp.setStartDelay(300);
-                                                    break;
-                                                case 1:
-                                                    flipUp.setStartDelay(200);
-                                                    break;
-                                                case 2:
-                                                    flipUp.setStartDelay(100);
-                                                    break;
-                                                case 3:
-                                                    flipUp.setStartDelay(0);
-                                                    break;
-                                            }
-                                            final int finalI = i;
-                                            flipUp.addListener(new AnimatorListenerAdapter() {
-                                                @Override
-                                                public void onAnimationEnd(Animator animation) {
-                                                    super.onAnimationEnd(animation);
-                                                    updateHeaders(finalI);
 
-                                                }
-                                            });
-                                            flipUp.start();
-                                            updateExpansions();
+            slotHeaders[i].setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    // TODO Auto-generated method stub
+                    switch (event.getAction()) {
 
+                        case MotionEvent.ACTION_DOWN:
+                            gestureCoord1 = event.getY();
+                            break;
 
-                                        }
+                        case MotionEvent.ACTION_UP:
 
-                                    } else if (deltaX > 20) {
-                                        hourPicker.setValue(hourPicker.getValue() - 1);
-                                        selectedHour = selectedHour - 100;
-                                        if (selectedHour < -1) {
-                                            selectedHour = 2300;
-                                        }
-                                        ObjectAnimator flipDown;
-                                        for (int i = 0; i < 4; i++) {
-                                            slotExpansions[i].collapse(true);
-                                            flipDown = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_down);
-                                            flipDown.setTarget(slotHeaders[i]);
-                                            flipDown.setStartDelay(i * 100);
-                                            final int finalI = i;
-                                            flipDown.addListener(new AnimatorListenerAdapter() {
-                                                @Override
-                                                public void onAnimationEnd(Animator animation) {
-                                                    super.onAnimationEnd(animation);
-                                                    updateHeaders(finalI);
+                            gestureCoord2 = event.getY();
+                            float deltaY = gestureCoord2 - gestureCoord1;
+                            ObjectAnimator flip;
 
-                                                }
-                                            });
-                                            flipDown.start();
-                                        }
-                                        updateExpansions();
-                                    }
-                                    break;
+                            if (deltaY < -20) {
+                                hourPicker.setValue(hourPicker.getValue() + 1);
+                                selectedHour = selectedHour + 100;
+
+                                if (selectedHour > 2301) {
+                                    selectedHour = 0;
+                                }
+                                for (int i = 0; i < 4; i++) {
+                                    slotExpansions[i].collapse(true);
+
+                                    flip = (ObjectAnimator) AnimatorInflater.loadAnimator(
+                                            getApplicationContext(), R.animator.flip_up);
+
+                                    startAnimationUp(i, flip, 5);
+
+                                    updateExpansions();
+                                }
+
+                            } else if (deltaY > 20) {
+                                flip = (ObjectAnimator) AnimatorInflater.loadAnimator(
+                                        getApplicationContext(), R.animator.flip_up);
+                                startAnimationDown(flip);
+
+                                updateExpansions();
                             }
-
-                            return false;
-                        }
-                    });
+                            break;
+                    }
+                    return false;
+                }
+            });
         }
+    }
+
+
+    private void startAnimationDown(ObjectAnimator flipAnimator) {
+        hourPicker.setValue(hourPicker.getValue() - 1);
+        selectedHour = selectedHour - 100;
+        if (selectedHour < -1) {
+            selectedHour = 2300;
+        }
+        for (int i = 0; i < 4; i++) {
+            slotExpansions[i].collapse(true);
+            flipAnimator = (ObjectAnimator) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.flip_down);
+            flipAnimator.setTarget(slotHeaders[i]);
+            flipAnimator.setStartDelay(i * 100);
+            final int finalI = i;
+            flipAnimator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    updateHeaders(finalI);
+
+                }
+            });
+            flipAnimator.start();
+        }
+    }
+
+
+    private void startAnimationUp(int headerIndex, ObjectAnimator flipAnimator, int delayMultiplier) {
+
+        flipAnimator.setTarget(slotHeaders[headerIndex]);
+        switch (headerIndex) {
+            case 0:
+                flipAnimator.setStartDelay(60 * delayMultiplier);
+                break;
+            case 1:
+                flipAnimator.setStartDelay(40 * delayMultiplier);
+                break;
+            case 2:
+                flipAnimator.setStartDelay(20 * delayMultiplier);
+                break;
+            case 3:
+                flipAnimator.setStartDelay(0);
+                break;
+        }
+        final int finalI = headerIndex;
+        flipAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                updateHeaders(finalI);
+
+            }
+        });
+        flipAnimator.start();
     }
 
 
@@ -307,7 +305,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         selectedDate = Integer.parseInt(datetime);
         hourPicker.setValue(calendar.get(Calendar.HOUR_OF_DAY));
         selectedHour = hourPicker.getValue() * Server.INTERVAL;
-
 
 
         // fixes default hour being invisibleArrayList<MyClass> list = (ArrayList<MyClass>)getIntent().getExtras()getSerializable("myClassList");
@@ -354,8 +351,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 //               for (ExpansionLayout e : slotExpansions) {
 //                    e.collapse(true);
 //               }
-               valueChangeAnimate(oldVal, newVal);
-                 selectedHour = newVal * Server.INTERVAL;
+                valueChangeAnimate(oldVal, newVal);
+                selectedHour = newVal * Server.INTERVAL;
                 updateHeaders();
                 updateExpansions();
             }
@@ -550,7 +547,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         if (chosenGame.addPlayer(username)) {
 
             DrawableCompat.setTint(bg, getResources().getColor(R.color.com_maxproj_calendarpicker_Navy));
-                        joinButton.setText(username);
+            joinButton.setText(username);
             joinButton.setTextColor(getResources().getColor(R.color.white));
             server.saveState();
             Toast.makeText(this, getString(R.string.join_message), Toast.LENGTH_SHORT).show();
@@ -566,7 +563,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         }
         updateHeaderIcons();
     }
-
 
 
     public void confirmName(View view) {
